@@ -11,6 +11,10 @@
   </defs>
   <rect x="0.5" y="0.5" width="194" height="41" rx="10" fill="url(#btn-bg)" stroke="url(#btn-border)" stroke-width="1"/>
   <line x1="12" y1="1" x2="183" y2="1" stroke="#38BDF8" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="12" y1="1" x2="60" y2="1" stroke="#00D2FF" stroke-width="1.8" stroke-linecap="round">
+    <animate attributeName="x1" values="12;135;12" dur="3.5s" repeatCount="indefinite"/>
+    <animate attributeName="x2" values="60;183;60" dur="3.5s" repeatCount="indefinite"/>
+  </line>
 
   <g transform="translate(14, 11)">
     <rect width="20" height="20" rx="4" fill="#0C203B" stroke="#0284C7" stroke-width="0.6"/>

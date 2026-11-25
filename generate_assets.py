@@ -3,11 +3,12 @@ generate_assets.py
 Generates ultra-modern, publication-grade DFIR SVG assets for Sanjeeth Solleti's GitHub profile.
 Features:
 - Cohesive, unified Electric Cyan / Deep Obsidian theme (no mixed/rainbow colors).
-- Executive hero name banner (banner.svg).
-- Unified action buttons (btn-linkedin.svg, btn-email.svg, btn-repos.svg, btn-ceh.svg).
-- The DFIR Lab philosophy card (intro.svg).
-- Side-by-side screenshot project cards (card-wft.svg, card-msteams.svg).
-- Yellow scrolling tape removed completely.
+- Executive hero name banner (banner.svg) with DFIR theme badge beside the name,
+  and animated DFIR Incident Response Radar & Forensics Telemetry Station on the right.
+- Unified action buttons (btn-linkedin.svg, btn-email.svg, btn-repos.svg, btn-ceh.svg) with specular sweeps.
+- Side-by-side screenshot project cards (card-wft.svg, card-msteams.svg) with active forensic laser scanlines.
+- intro.svg removed per user photos/request.
+- yellow tape, map, and stats removed completely.
 """
 
 import os
@@ -19,32 +20,15 @@ from PIL import Image
 ASSETS_DIR = r"C:\Users\SANJEETH\Desktop\sanjeeth-solleti\assets"
 os.makedirs(ASSETS_DIR, exist_ok=True)
 
-# Remove tape.svg if it exists (yellow scrolling tape removed per task)
-tape_path = os.path.join(ASSETS_DIR, "tape.svg")
-if os.path.exists(tape_path):
-    try:
-        os.remove(tape_path)
-        print("[REMOVED] tape.svg deleted")
-    except Exception as e:
-        print(f"[WARN] Could not delete tape.svg: {e}")
-
-# Remove map.svg if it exists
-map_path = os.path.join(ASSETS_DIR, "map.svg")
-if os.path.exists(map_path):
-    try:
-        os.remove(map_path)
-        print("[REMOVED] map.svg deleted")
-    except Exception as e:
-        print(f"[WARN] Could not delete map.svg: {e}")
-
-# Remove stats.svg if it exists
-stats_path = os.path.join(ASSETS_DIR, "stats.svg")
-if os.path.exists(stats_path):
-    try:
-        os.remove(stats_path)
-        print("[REMOVED] stats.svg deleted")
-    except Exception as e:
-        print(f"[WARN] Could not delete stats.svg: {e}")
+# Remove deprecated / requested removal assets
+for obsolete_file in ["tape.svg", "map.svg", "stats.svg", "intro.svg"]:
+    file_path = os.path.join(ASSETS_DIR, obsolete_file)
+    if os.path.exists(file_path):
+        try:
+            os.remove(file_path)
+            print(f"[REMOVED] {obsolete_file} deleted")
+        except Exception as e:
+            print(f"[WARN] Could not delete {obsolete_file}: {e}")
 
 def validate_and_save(filename, svg_content):
     path = os.path.join(ASSETS_DIR, filename)
@@ -90,7 +74,7 @@ b64_ms = base64.b64encode(buf_ms.getvalue()).decode("ascii")
 # ==============================================================================
 # 1. BANNER.SVG (1280 x 300) — Executive DFIR Hero Banner & Name Card
 # ==============================================================================
-banner_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" width="1280" height="300" role="img" aria-label="Vasava Sanjeeth Solleti — Digital Forensics &amp; Incident Response Analyst at TCS">
+banner_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" width="1280" height="300" role="img" aria-label="Vasava Sanjeeth Solleti — Digital Forensics &amp; Incident Response Specialist">
   <defs>
     <!-- Background Canvas -->
     <linearGradient id="bg-banner" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -106,8 +90,8 @@ banner_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" w
       <stop offset="100%" stop-color="#040711" stop-opacity="0"/>
     </radialGradient>
 
-    <radialGradient id="nebula-right" cx="88%" cy="75%" r="55%">
-      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.10"/>
+    <radialGradient id="nebula-right" cx="82%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.14"/>
       <stop offset="60%" stop-color="#040711" stop-opacity="0"/>
     </radialGradient>
 
@@ -133,10 +117,16 @@ banner_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" w
       <stop offset="100%" stop-color="#BAE6FD"/>
     </linearGradient>
 
-    <!-- HUD Console Background -->
-    <linearGradient id="hud-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- DFIR Console Background -->
+    <linearGradient id="station-bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#070E1C" stop-opacity="0.95"/>
       <stop offset="100%" stop-color="#050914" stop-opacity="0.98"/>
+    </linearGradient>
+
+    <!-- Radar Sweep Trail Gradient -->
+    <linearGradient id="sweep-trail" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0"/>
     </linearGradient>
 
     <!-- Dot Grid Pattern -->
@@ -144,7 +134,7 @@ banner_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" w
       <circle cx="2" cy="2" r="1.0" fill="#1E293B" fill-opacity="0.4"/>
     </pattern>
 
-    <!-- Shadow for HUD -->
+    <!-- Shadow for Station Frame -->
     <filter id="hud-shadow" x="-5%" y="-5%" width="115%" height="120%">
       <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.55"/>
     </filter>
@@ -155,8 +145,6 @@ banner_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" w
   <style>
     .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
     .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-    .pulse-glow { animation: pglow 2.5s ease-in-out infinite; }
-    @keyframes pglow { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
   </style>
 
   <g clip-path="url(#banner-clip)">
@@ -167,36 +155,66 @@ banner_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" w
     <rect width="1280" height="300" rx="16" fill="url(#dot-grid)"/>
     <rect x="0.5" y="0.5" width="1279" height="299" rx="16" fill="none" stroke="url(#frame-border)" stroke-width="1"/>
 
-    <!-- Specular Highlight Line -->
+    <!-- Specular Highlight Line with Animated Sweep -->
     <line x1="24" y1="1" x2="1256" y2="1" stroke="url(#top-specular)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="24" y1="1" x2="220" y2="1" stroke="#00D2FF" stroke-width="2.2" stroke-linecap="round">
+      <animate attributeName="x1" values="24;1060;24" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="220;1256;220" dur="7s" repeatCount="indefinite"/>
+    </line>
 
     <!-- ==================== LEFT HERO COLUMN ==================== -->
     <g transform="translate(52, 28)">
       <!-- Eyebrow Organization Capsule -->
       <g>
         <rect width="320" height="26" rx="13" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
-        <circle class="pulse-glow" cx="14" cy="13" r="3.5" fill="#38BDF8"/>
+        <circle cx="14" cy="13" r="3.5" fill="#38BDF8">
+          <animate attributeName="opacity" values="1;0.35;1" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="14" cy="13" r="3.5" fill="none" stroke="#38BDF8" stroke-width="1">
+          <animate attributeName="r" values="3.5;10" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/>
+        </circle>
         <text x="26" y="17" class="font-sans" font-size="10.5" font-weight="700" fill="#38BDF8" letter-spacing="1">TATA CONSULTANCY SERVICES <tspan fill="#475569" font-weight="400">|</tspan> <tspan fill="#94A3B8" font-weight="600">DFIR</tspan></text>
       </g>
 
-      <!-- Hero Name -->
-      <text x="0" y="76" class="font-sans" font-size="44" font-weight="800" fill="url(#name-grad)" letter-spacing="-0.5">Vasava Sanjeeth Solleti</text>
+      <!-- Hero Name Row (Name + Inline DFIR Shield Badge Beside Name) -->
+      <g transform="translate(0, 76)">
+        <text x="0" y="0" class="font-sans" font-size="42" font-weight="800" fill="url(#name-grad)" letter-spacing="-0.5">Vasava Sanjeeth Solleti</text>
+        
+        <!-- DFIR Theme Badge Beside Name -->
+        <g transform="translate(506, -26)">
+          <rect width="118" height="28" rx="14" fill="#081A33" stroke="#00D2FF" stroke-width="1"/>
+          <!-- Live pulse dot -->
+          <circle cx="14" cy="14" r="3.5" fill="#00D2FF">
+            <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="14" cy="14" r="3.5" fill="none" stroke="#00D2FF" stroke-width="1">
+            <animate attributeName="r" values="3.5;10" dur="1.8s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="1;0" dur="1.8s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Cyber Shield -->
+          <path d="M30 8 L38 11 V16 C38 20 34 23 30 24 C26 23 22 20 22 16 V11 Z" fill="#0A2448" stroke="#38BDF8" stroke-width="1.1"/>
+          <path d="M26 15 L29 18 L34 12" fill="none" stroke="#38BDF8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="44" y="18" class="font-mono" font-size="10" font-weight="800" fill="#BAE6FD" letter-spacing="1">DFIR</text>
+          <text x="76" y="18" class="font-mono" font-size="8.5" font-weight="700" fill="#38BDF8">CORE</text>
+        </g>
+      </g>
 
       <!-- Role &amp; Specialization -->
-      <text x="0" y="106" class="font-sans" font-size="16.5" font-weight="700" fill="#F8FAFC">
+      <text x="0" y="108" class="font-sans" font-size="16.5" font-weight="700" fill="#F8FAFC">
         Digital Forensics &amp; Incident Response Specialist
       </text>
 
-      <text x="0" y="128" class="font-sans" font-size="13.5" font-weight="500" fill="#94A3B8">
+      <text x="0" y="130" class="font-sans" font-size="13.5" font-weight="500" fill="#94A3B8">
         Windows Endpoint Telemetry <tspan fill="#475569">&#x2022;</tspan> Cloud Collaboration Forensics <tspan fill="#475569">&#x2022;</tspan> High-Throughput Engines
       </text>
 
-      <text x="0" y="152" class="font-sans" font-size="12" fill="#64748B">
+      <text x="0" y="154" class="font-sans" font-size="12" fill="#64748B">
         Deterministic artifact reconstruction across raw disk VFS, dirty registry replay, &amp; IndexedDB stores.
       </text>
 
       <!-- Credential &amp; Tech Chips Row -->
-      <g transform="translate(0, 172)">
+      <g transform="translate(0, 174)">
         <g transform="translate(0, 0)">
           <rect width="128" height="25" rx="12.5" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
           <circle cx="12" cy="12.5" r="3" fill="#38BDF8"/>
@@ -223,80 +241,146 @@ banner_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" w
       </g>
     </g>
 
-    <!-- ==================== RIGHT DFIR HUD CONSOLE ==================== -->
-    <g transform="translate(738, 26)">
-      <!-- Console Body Shell -->
-      <rect width="490" height="226" rx="12" fill="url(#hud-bg)" stroke="#1E3A8A" stroke-width="1" filter="url(#hud-shadow)"/>
+    <!-- ==================== RIGHT DFIR FORENSIC RADAR & CONSOLE ==================== -->
+    <g transform="translate(674, 26)">
+      <!-- Console Shell -->
+      <rect width="554" height="226" rx="12" fill="url(#station-bg)" stroke="#1E3A8A" stroke-width="1" filter="url(#hud-shadow)"/>
 
       <!-- Console Titlebar -->
-      <rect width="490" height="32" rx="12" fill="#0A152A"/>
-      <rect y="22" width="490" height="10" fill="#0A152A"/>
-      <line x1="0" y1="32" x2="490" y2="32" stroke="#1E293B" stroke-width="0.8"/>
+      <rect width="554" height="32" rx="12" fill="#0A152A"/>
+      <rect y="22" width="554" height="10" fill="#0A152A"/>
+      <line x1="0" y1="32" x2="554" y2="32" stroke="#1E293B" stroke-width="0.8"/>
 
       <!-- Titlebar Controls -->
       <circle cx="16" cy="16" r="3.5" fill="#334155"/>
       <circle cx="28" cy="16" r="3.5" fill="#475569"/>
       <circle cx="40" cy="16" r="3.5" fill="#38BDF8"/>
 
-      <text x="56" y="20" class="font-mono" font-size="10" font-weight="700" fill="#94A3B8" letter-spacing="1">DFIR-KERNEL // FORENSIC TELEMETRY</text>
+      <text x="56" y="20" class="font-mono" font-size="10" font-weight="700" fill="#94A3B8" letter-spacing="1">DFIR-KERNEL // INCIDENT RESPONSE RADAR</text>
 
-      <g transform="translate(378, 8)">
-        <rect width="100" height="17" rx="8.5" fill="#081A33" stroke="#0284C7" stroke-width="0.6"/>
-        <circle class="pulse-glow" cx="9" cy="8.5" r="2.5" fill="#38BDF8"/>
-        <text x="18" y="12" class="font-mono" font-size="8.5" font-weight="700" fill="#38BDF8" letter-spacing="0.5">DEFENSIBLE</text>
+      <!-- Active Status Badge -->
+      <g transform="translate(416, 7)">
+        <rect width="126" height="18" rx="9" fill="#081A33" stroke="#0284C7" stroke-width="0.7"/>
+        <circle cx="10" cy="9" r="3" fill="#38BDF8">
+          <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="10" cy="9" r="3" fill="none" stroke="#38BDF8" stroke-width="0.9">
+          <animate attributeName="r" values="3;8" dur="1.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
+        <text x="20" y="12.5" class="font-mono" font-size="8.5" font-weight="700" fill="#38BDF8" letter-spacing="0.5">ACTIVE CASING</text>
       </g>
 
-      <!-- Telemetry Specifications Rows -->
-      <g transform="translate(18, 42)">
-        <!-- Row 1: Domain -->
-        <g transform="translate(0, 0)">
-          <rect width="88" height="18" rx="4" fill="#081E38" stroke="#0284C7" stroke-width="0.5"/>
-          <text x="44" y="12.5" text-anchor="middle" class="font-mono" font-size="8.5" font-weight="700" fill="#38BDF8" letter-spacing="0.8">OPERATIONS</text>
-          
-          <text x="100" y="13" class="font-sans" font-size="11.5" font-weight="700" fill="#F1F5F9">Enterprise Incident Response &amp; Threat Hunting</text>
-          <text x="100" y="26" class="font-sans" font-size="10" fill="#94A3B8">Active DFIR Casework &#x2022; Tata Consultancy Services</text>
+      <!-- ================= LEFT RADAR SCOPE ================= -->
+      <g transform="translate(10, 34)">
+        <!-- Radar Background Circle -->
+        <circle cx="98" cy="92" r="76" fill="#061020" stroke="#1E3A8A" stroke-width="0.8" stroke-dasharray="3 3"/>
+        <circle cx="98" cy="92" r="50" fill="none" stroke="#0284C7" stroke-width="0.8" stroke-opacity="0.6"/>
+        <circle cx="98" cy="92" r="24" fill="none" stroke="#38BDF8" stroke-width="0.8" stroke-opacity="0.5"/>
+
+        <!-- Radar Axes -->
+        <line x1="22" y1="92" x2="174" y2="92" stroke="#1E293B" stroke-width="0.8"/>
+        <line x1="98" y1="16" x2="98" y2="168" stroke="#1E293B" stroke-width="0.8"/>
+
+        <!-- ROTATING RADAR SWEEP BEAM -->
+        <g>
+          <line x1="98" y1="92" x2="98" y2="16" stroke="#00D2FF" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M98 92 L98 16 A76 76 0 0 1 151 38 Z" fill="url(#sweep-trail)" opacity="0.35"/>
+          <animateTransform attributeName="transform" type="rotate" from="0 98 92" to="360 98 92" dur="4s" repeatCount="indefinite"/>
         </g>
 
-        <!-- Row 2: VFS & Replay -->
-        <g transform="translate(0, 38)">
-          <rect width="88" height="18" rx="4" fill="#081E38" stroke="#0284C7" stroke-width="0.5"/>
-          <text x="44" y="12.5" text-anchor="middle" class="font-mono" font-size="8.5" font-weight="700" fill="#38BDF8" letter-spacing="0.8">INGESTION</text>
+        <!-- FORENSIC EVIDENCE BLIPS -->
+        <!-- Blip 1: E01 / VFS -->
+        <circle cx="140" cy="62" r="3" fill="#38BDF8">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="140" cy="62" r="3" fill="none" stroke="#38BDF8" stroke-width="0.8">
+          <animate attributeName="r" values="3;9" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <text x="146" y="60" class="font-mono" font-size="7.5" font-weight="700" fill="#93C5FD">E01 VFS</text>
 
-          <text x="100" y="13" class="font-sans" font-size="11.5" font-weight="700" fill="#F1F5F9">Raw Disk VFS Intake + Mandatory Dirty Replay</text>
-          <text x="100" y="26" class="font-sans" font-size="10" fill="#94A3B8">dissect.target read-only &#x2022; Automated RLA transaction commit</text>
-        </g>
+        <!-- Blip 2: RLA Hive Replay -->
+        <circle cx="58" cy="120" r="3" fill="#38BDF8">
+          <animate attributeName="opacity" values="1;0.3;1" dur="2.4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="58" cy="120" r="3" fill="none" stroke="#38BDF8" stroke-width="0.8">
+          <animate attributeName="r" values="3;9" dur="2.4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0" dur="2.4s" repeatCount="indefinite"/>
+        </circle>
+        <text x="32" y="134" class="font-mono" font-size="7.5" font-weight="700" fill="#93C5FD">RLA REPLAY</text>
 
-        <!-- Row 3: Columnar Engine -->
-        <g transform="translate(0, 76)">
-          <rect width="88" height="18" rx="4" fill="#081E38" stroke="#0284C7" stroke-width="0.5"/>
-          <text x="44" y="12.5" text-anchor="middle" class="font-mono" font-size="8.5" font-weight="700" fill="#38BDF8" letter-spacing="0.8">ANALYTICS</text>
+        <!-- Blip 3: LevelDB -->
+        <circle cx="134" cy="128" r="2.5" fill="#38BDF8">
+          <animate attributeName="opacity" values="0.4;1;0.4" dur="1.7s" repeatCount="indefinite"/>
+        </circle>
+        <text x="130" y="142" class="font-mono" font-size="7.5" font-weight="700" fill="#93C5FD">LEVELDB</text>
 
-          <text x="100" y="13" class="font-sans" font-size="11.5" font-weight="700" fill="#F1F5F9">Zero-Copy Columnar DuckDB Engine</text>
-          <text x="100" y="26" class="font-sans" font-size="10" fill="#94A3B8">Sub-millisecond query execution on 500K+ event super-timelines</text>
-        </g>
+        <!-- Blip 4: DuckDB -->
+        <circle cx="68" cy="60" r="2.5" fill="#38BDF8">
+          <animate attributeName="opacity" values="1;0.2;1" dur="2.8s" repeatCount="indefinite"/>
+        </circle>
+        <text x="44" y="55" class="font-mono" font-size="7.5" font-weight="700" fill="#93C5FD">DUCKDB</text>
 
-        <!-- Row 4: Collaboration Forensics -->
-        <g transform="translate(0, 114)">
-          <rect width="88" height="18" rx="4" fill="#081E38" stroke="#0284C7" stroke-width="0.5"/>
-          <text x="44" y="12.5" text-anchor="middle" class="font-mono" font-size="8.5" font-weight="700" fill="#38BDF8" letter-spacing="0.8">MESSAGING</text>
-
-          <text x="100" y="13" class="font-sans" font-size="11.5" font-weight="700" fill="#F1F5F9">Chromium LevelDB &amp; IndexedDB Reconstruction</text>
-          <text x="100" y="26" class="font-sans" font-size="10" fill="#94A3B8">Teams chats, call logs, GUID resolution, &amp; HTML forensic dossier</text>
-        </g>
+        <!-- Center Radar Core -->
+        <circle cx="98" cy="92" r="3.5" fill="#00D2FF"/>
+        <circle cx="98" cy="92" r="3.5" fill="none" stroke="#00D2FF" stroke-width="1">
+          <animate attributeName="r" values="3.5;14" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/>
+        </circle>
       </g>
 
-      <!-- Bottom HUD Status Bar -->
-      <g transform="translate(18, 194)">
-        <line x1="0" y1="0" x2="454" y2="0" stroke="#1E293B" stroke-width="0.75"/>
-        <text x="0" y="14" class="font-mono" font-size="9" font-weight="600" fill="#64748B">INTEGRITY: <tspan fill="#BAE6FD">SHA-256 SOUND</tspan></text>
-        <text x="454" y="14" text-anchor="end" class="font-mono" font-size="9" font-weight="600" fill="#38BDF8">COURT-DEFENSIBLE CHAIN-OF-CUSTODY</text>
+      <!-- Scope Divider Line -->
+      <line x1="210" y1="42" x2="210" y2="214" stroke="#1E293B" stroke-width="0.8"/>
+
+      <!-- ================= RIGHT TELEMETRY INSPECTOR ================= -->
+      <g transform="translate(222, 42)">
+        <!-- Header -->
+        <text x="0" y="10" class="font-mono" font-size="8.5" font-weight="700" fill="#64748B" letter-spacing="1">EVIDENCE SIGNATURE STREAM</text>
+
+        <!-- Hex / Signature Box -->
+        <rect x="0" y="18" width="318" height="74" rx="6" fill="#071326" stroke="#0284C7" stroke-width="0.5"/>
+        
+        <text x="10" y="34" class="font-mono" font-size="9" fill="#94A3B8"><tspan fill="#38BDF8">0x0000</tspan>  4D 5A 90 00  <tspan fill="#BAE6FD">MZ / PE32+ Executable</tspan></text>
+        <text x="10" y="49" class="font-mono" font-size="9" fill="#94A3B8"><tspan fill="#38BDF8">0x0010</tspan>  45 76 74 78  <tspan fill="#BAE6FD">EVTX Event Log Hive</tspan></text>
+        <text x="10" y="64" class="font-mono" font-size="9" fill="#94A3B8"><tspan fill="#38BDF8">0x0020</tspan>  72 65 67 66  <tspan fill="#BAE6FD">REGF Dirty Trans Hive</tspan></text>
+        <text x="10" y="79" class="font-mono" font-size="9" fill="#94A3B8"><tspan fill="#38BDF8">0x0030</tspan>  53 51 4C 69  <tspan fill="#BAE6FD">SQLite Indexed Store</tspan></text>
+
+        <!-- Laser Scanline sweeping vertically across hex box -->
+        <line x1="2" y1="20" x2="316" y2="20" stroke="#00D2FF" stroke-width="1.2" opacity="0.65">
+          <animate attributeName="y1" values="20;88;20" dur="3s" repeatCount="indefinite"/>
+          <animate attributeName="y2" values="20;88;20" dur="3s" repeatCount="indefinite"/>
+        </line>
+
+        <!-- Dual Telemetry Pills -->
+        <g transform="translate(0, 102)">
+          <rect width="154" height="34" rx="6" fill="#08182E" stroke="#1D4ED8" stroke-width="0.7"/>
+          <text x="10" y="14" class="font-mono" font-size="8" font-weight="700" fill="#38BDF8">CHAIN OF CUSTODY</text>
+          <text x="10" y="27" class="font-mono" font-size="9" font-weight="700" fill="#E2E8F0">SHA-256 DEFENDED</text>
+        </g>
+
+        <g transform="translate(164, 102)">
+          <rect width="154" height="34" rx="6" fill="#08182E" stroke="#1D4ED8" stroke-width="0.7"/>
+          <text x="10" y="14" class="font-mono" font-size="8" font-weight="700" fill="#38BDF8">VFS WRITE-BLOCK</text>
+          <text x="10" y="27" class="font-mono" font-size="9" font-weight="700" fill="#E2E8F0">CONTAINER IMMUTABLE</text>
+        </g>
+
+        <!-- Status Casing Waveform -->
+        <g transform="translate(0, 148)">
+          <line x1="0" y1="0" x2="318" y2="0" stroke="#1E293B" stroke-width="0.75"/>
+          <text x="0" y="14" class="font-mono" font-size="8" font-weight="700" fill="#64748B">CASING: <tspan fill="#38BDF8">INCIDENT RESPONSE // TCS DFIR</tspan></text>
+          <!-- Animated Oscilloscope wave -->
+          <path d="M 230 11 L 244 11 L 248 6 L 252 16 L 256 5 L 260 15 L 264 11 L 314 11" fill="none" stroke="#00D2FF" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
       </g>
     </g>
 
     <!-- ==================== BANNER FOOTER TELEMETRY BAR ==================== -->
     <line x1="52" y1="262" x2="1228" y2="262" stroke="#1E293B" stroke-width="0.8"/>
     <g transform="translate(52, 284)">
-      <circle class="pulse-glow" cx="4" cy="-3" r="3.5" fill="#38BDF8"/>
+      <circle cx="4" cy="-3" r="3.5" fill="#38BDF8">
+        <animate attributeName="opacity" values="1;0.35;1" dur="2s" repeatCount="indefinite"/>
+      </circle>
       <text x="18" y="0" class="font-sans" font-size="11.5" font-weight="500" fill="#94A3B8">
         ACTIVE RESEARCH: <tspan fill="#E2E8F0">Dirty Registry Replay</tspan> &#x2022; <tspan fill="#E2E8F0">IndexedDB Messaging Stores</tspan> &#x2022; <tspan fill="#E2E8F0">Sub-Millisecond Super-Timelines</tspan>
       </text>
@@ -309,7 +393,7 @@ banner_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" w
 
 
 # ==============================================================================
-# 2. ACTION BUTTONS (195 x 42 each) — Unified Electric Cyan / Deep Obsidian
+# 2. ACTION BUTTONS (195 x 42 each) — Unified Electric Cyan / Deep Obsidian with Specular Sweep
 # ==============================================================================
 btn_linkedin = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 42" width="195" height="42" role="img" aria-label="LinkedIn Profile">
   <defs>
@@ -324,6 +408,10 @@ btn_linkedin = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 42" w
   </defs>
   <rect x="0.5" y="0.5" width="194" height="41" rx="10" fill="url(#btn-bg)" stroke="url(#btn-border)" stroke-width="1"/>
   <line x1="12" y1="1" x2="183" y2="1" stroke="#38BDF8" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="12" y1="1" x2="60" y2="1" stroke="#00D2FF" stroke-width="1.8" stroke-linecap="round">
+    <animate attributeName="x1" values="12;135;12" dur="3.5s" repeatCount="indefinite"/>
+    <animate attributeName="x2" values="60;183;60" dur="3.5s" repeatCount="indefinite"/>
+  </line>
 
   <g transform="translate(14, 11)">
     <rect width="20" height="20" rx="4" fill="#0C203B" stroke="#0284C7" stroke-width="0.6"/>
@@ -350,6 +438,10 @@ btn_email = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 42" widt
   </defs>
   <rect x="0.5" y="0.5" width="194" height="41" rx="10" fill="url(#btn-bg)" stroke="url(#btn-border)" stroke-width="1"/>
   <line x1="12" y1="1" x2="183" y2="1" stroke="#38BDF8" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="12" y1="1" x2="60" y2="1" stroke="#00D2FF" stroke-width="1.8" stroke-linecap="round">
+    <animate attributeName="x1" values="12;135;12" dur="3.5s" repeatCount="indefinite"/>
+    <animate attributeName="x2" values="60;183;60" dur="3.5s" repeatCount="indefinite"/>
+  </line>
 
   <g transform="translate(14, 11)">
     <rect width="20" height="20" rx="4" fill="#0C203B" stroke="#0284C7" stroke-width="0.6"/>
@@ -375,6 +467,10 @@ btn_repos = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 42" widt
   </defs>
   <rect x="0.5" y="0.5" width="194" height="41" rx="10" fill="url(#btn-bg)" stroke="url(#btn-border)" stroke-width="1"/>
   <line x1="12" y1="1" x2="183" y2="1" stroke="#38BDF8" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="12" y1="1" x2="60" y2="1" stroke="#00D2FF" stroke-width="1.8" stroke-linecap="round">
+    <animate attributeName="x1" values="12;135;12" dur="3.5s" repeatCount="indefinite"/>
+    <animate attributeName="x2" values="60;183;60" dur="3.5s" repeatCount="indefinite"/>
+  </line>
 
   <g transform="translate(14, 11)">
     <rect width="20" height="20" rx="4" fill="#0C203B" stroke="#0284C7" stroke-width="0.6"/>
@@ -399,6 +495,10 @@ btn_ceh = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 42" width=
   </defs>
   <rect x="0.5" y="0.5" width="194" height="41" rx="10" fill="url(#btn-bg)" stroke="url(#btn-border)" stroke-width="1"/>
   <line x1="12" y1="1" x2="183" y2="1" stroke="#38BDF8" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="12" y1="1" x2="60" y2="1" stroke="#00D2FF" stroke-width="1.8" stroke-linecap="round">
+    <animate attributeName="x1" values="12;135;12" dur="3.5s" repeatCount="indefinite"/>
+    <animate attributeName="x2" values="60;183;60" dur="3.5s" repeatCount="indefinite"/>
+  </line>
 
   <g transform="translate(14, 11)">
     <rect width="20" height="20" rx="4" fill="#0C203B" stroke="#0284C7" stroke-width="0.6"/>
@@ -413,115 +513,7 @@ btn_ceh = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 42" width=
 
 
 # ==============================================================================
-# 3. INTRO.SVG (1280 x 260) — DFIR Lab Philosophy & Tenets (Unified Palette)
-# ==============================================================================
-intro_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 260" width="1280" height="260" role="img" aria-label="The DFIR Lab — Open source tools engineered for the gaps where standard forensic suites stop short.">
-  <defs>
-    <linearGradient id="bg-intro" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#060A14"/>
-      <stop offset="50%" stop-color="#090E1F"/>
-      <stop offset="100%" stop-color="#05070E"/>
-    </linearGradient>
-
-    <radialGradient id="gl-intro" cx="15%" cy="20%" r="65%">
-      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.20"/>
-      <stop offset="60%" stop-color="#0284C7" stop-opacity="0.04"/>
-      <stop offset="100%" stop-color="#060A14" stop-opacity="0"/>
-    </radialGradient>
-
-    <linearGradient id="intro-border" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.45"/>
-      <stop offset="50%" stop-color="#1E3A8A" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.4"/>
-    </linearGradient>
-
-    <linearGradient id="hi-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="50%" stop-color="#7DD3FC"/>
-      <stop offset="100%" stop-color="#38BDF8"/>
-    </linearGradient>
-
-    <pattern id="dt-intro" width="22" height="22" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.1" fill="#1E293B" fill-opacity="0.45"/>
-    </pattern>
-
-    <filter id="sh-chip" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
-
-    <clipPath id="intro-clip"><rect width="1280" height="260" rx="16"/></clipPath>
-  </defs>
-
-  <style>
-    .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
-    .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-    .pulse-glow { animation: pglow 6s ease-in-out infinite; }
-    @keyframes pglow { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
-  </style>
-
-  <g clip-path="url(#intro-clip)">
-    <rect width="1280" height="260" rx="16" fill="url(#bg-intro)"/>
-    <rect class="pulse-glow" width="1280" height="260" rx="16" fill="url(#gl-intro)"/>
-    <rect width="1280" height="260" rx="16" fill="url(#dt-intro)"/>
-    <rect x="0.5" y="0.5" width="1279" height="259" rx="16" fill="none" stroke="url(#intro-border)" stroke-width="1"/>
-
-    <!-- Specular top edge -->
-    <line x1="20" y1="1" x2="1260" y2="1" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round"/>
-
-    <!-- LEFT HERO NARRATIVE -->
-    <g transform="translate(56, 42)">
-      <text x="0" y="16" class="font-mono" font-size="12" font-weight="700" fill="#38BDF8" letter-spacing="2">THE DFIR LAB</text>
-      <rect x="0" y="24" width="44" height="3" rx="1.5" fill="#38BDF8"/>
-
-      <text x="0" y="78" class="font-sans" font-size="28" font-weight="800" fill="#F8FAFC" letter-spacing="-0.3">
-        Forensic suites are built for standard casework.
-      </text>
-
-      <text x="0" y="118" class="font-sans" font-size="28" font-weight="800" fill="url(#hi-grad)" letter-spacing="-0.3">
-        These engines are engineered for the critical gaps.
-      </text>
-
-      <text x="0" y="156" class="font-sans" font-size="14.5" fill="#94A3B8">
-        Deterministic open-source tooling for dirty registry replay, LevelDB messaging, &amp; sub-millisecond super-timelines.
-      </text>
-    </g>
-
-    <!-- RIGHT TENET PILLARS (3 Glassmorphic Chips - Unified Palette) -->
-    <g transform="translate(820, 24)">
-      <!-- Pillar 1: Read-Only VFS -->
-      <g transform="translate(0, 0)">
-        <rect width="404" height="60" rx="12" fill="#0A1830" stroke="#0284C7" stroke-width="0.75" filter="url(#sh-chip)"/>
-        <rect x="12" y="14" width="32" height="32" rx="8" fill="#0C2448" stroke="#38BDF8" stroke-width="0.8"/>
-        <path d="M24 24 H32 V36 H24 Z M26 24 V21 C26 19.5 27 18 28 18 C29 18 30 19.5 30 21 V24" fill="none" stroke="#38BDF8" stroke-width="1.3" stroke-linecap="round"/>
-        <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#38BDF8" letter-spacing="1">READ-ONLY VFS INTAKE</text>
-        <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Mounted immutable via dissect; disk containers never modified.</text>
-      </g>
-
-      <!-- Pillar 2: Dirty Log Replay -->
-      <g transform="translate(0, 72)">
-        <rect width="404" height="60" rx="12" fill="#0A1830" stroke="#0284C7" stroke-width="0.75" filter="url(#sh-chip)"/>
-        <rect x="12" y="14" width="32" height="32" rx="8" fill="#0C2448" stroke="#38BDF8" stroke-width="0.8"/>
-        <path d="M24 30 A5 5 0 1 1 32 30" fill="none" stroke="#38BDF8" stroke-width="1.4"/>
-        <path d="M32 27 L32 30 L29 30" fill="none" stroke="#38BDF8" stroke-width="1.4" stroke-linecap="round"/>
-        <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#38BDF8" letter-spacing="1">DIRTY LOG REPLAY</text>
-        <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Mandatory automated RLA transaction commit before hive analysis.</text>
-      </g>
-
-      <!-- Pillar 3: Columnar Speed -->
-      <g transform="translate(0, 144)">
-        <rect width="404" height="60" rx="12" fill="#0A1830" stroke="#0284C7" stroke-width="0.75" filter="url(#sh-chip)"/>
-        <rect x="12" y="14" width="32" height="32" rx="8" fill="#0C2448" stroke="#38BDF8" stroke-width="0.8"/>
-        <path d="M29 20 L24 28 H30 L27 36 L33 26 H27 Z" fill="#38BDF8"/>
-        <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#38BDF8" letter-spacing="1">COLUMNAR SPEED</text>
-        <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Sub-millisecond analytical queries across 500K+ records via DuckDB.</text>
-      </g>
-    </g>
-  </g>
-</svg>"""
-
-
-# ==============================================================================
-# 4. CARD-WFT.SVG (1280 x 640) — WFT Side-by-Side Card (Electric Cyan / Obsidian)
+# 3. CARD-WFT.SVG (1280 x 640) — WFT Side-by-Side Card (Electric Cyan / Obsidian)
 # ==============================================================================
 card_wft_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-label="WFT — Windows Forensic Examination Platform with DuckDB Columnar Core and dissect.target VFS">
   <defs>
@@ -553,6 +545,14 @@ card_wft_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
       <stop offset="100%" stop-color="#BAE6FD"/>
     </linearGradient>
 
+    <!-- Laser Scanline Gradient -->
+    <linearGradient id="scanline-grad-wft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#38BDF8" stop-opacity="0.9"/>
+      <stop offset="75%" stop-color="#0284C7" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#00D2FF" stop-opacity="0"/>
+    </linearGradient>
+
     <!-- Dot Grid Pattern -->
     <pattern id="dt-wft" width="22" height="22" patternUnits="userSpaceOnUse">
       <circle cx="2" cy="2" r="1.1" fill="#1E293B" fill-opacity="0.45"/>
@@ -576,14 +576,8 @@ card_wft_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
     .font-sans {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }}
     .font-mono {{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }}
     
-    /* Animations */
     .pulse-ambient {{ animation: pamb 6s ease-in-out infinite; }}
-    .live-dot {{ animation: ldot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }}
-    .radar-ring {{ animation: rring 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite; transform-origin: 88px 288px; }}
-    
     @keyframes pamb {{ 0%, 100% {{ opacity: 0.65; }} 50% {{ opacity: 1; }} }}
-    @keyframes ldot {{ 0%, 100% {{ opacity: 1; }} 50% {{ opacity: 0.35; }} }}
-    @keyframes rring {{ 0% {{ r: 3; opacity: 1; }} 100% {{ r: 16; opacity: 0; }} }}
     
     @media (prefers-reduced-motion: reduce) {{ * {{ animation: none !important; }} }}
   </style>
@@ -595,8 +589,12 @@ card_wft_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
     <rect width="1280" height="640" rx="20" fill="url(#dt-wft)"/>
     <rect x="0.5" y="0.5" width="1279" height="639" rx="20" fill="none" stroke="url(#border-wft)" stroke-width="1"/>
 
-    <!-- Top Specular Highlight Line -->
+    <!-- Top Specular Highlight Line with Animated Sweep -->
     <line x1="20" y1="1" x2="1260" y2="1" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="1" x2="220" y2="1" stroke="#00D2FF" stroke-width="2.2" stroke-linecap="round">
+      <animate attributeName="x1" values="20;1060;20" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="220;1260;220" dur="6s" repeatCount="indefinite"/>
+    </line>
 
     <!-- ==================== LEFT COLUMN: DFIR SPECIFICATIONS ==================== -->
     <g>
@@ -628,10 +626,10 @@ card_wft_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
       <g>
         <rect x="64" y="256" width="450" height="64" rx="10" fill="#08172E" stroke="#1D4ED8" stroke-width="0.8"/>
         <!-- Radar Status Indicator -->
-        <circle class="live-dot" cx="88" cy="288" r="4.5" fill="#38BDF8">
+        <circle cx="88" cy="288" r="4.5" fill="#38BDF8">
           <animate attributeName="opacity" values="1;0.35;1" dur="2s" repeatCount="indefinite"/>
         </circle>
-        <circle class="radar-ring" cx="88" cy="288" r="4.5" fill="none" stroke="#38BDF8" stroke-width="1.2">
+        <circle cx="88" cy="288" r="4.5" fill="none" stroke="#38BDF8" stroke-width="1.2">
           <animate attributeName="r" values="3;16" dur="2.4s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values="1;0" dur="2.4s" repeatCount="indefinite"/>
         </circle>
@@ -711,7 +709,13 @@ card_wft_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
       <!-- Right Live Session Indicator -->
       <g transform="translate(1106, 79)">
         <rect width="124" height="20" rx="10" fill="#081E38" stroke="#0284C7" stroke-width="0.8"/>
-        <circle class="live-dot" cx="12" cy="10" r="3" fill="#38BDF8"/>
+        <circle cx="12" cy="10" r="3" fill="#38BDF8">
+          <animate attributeName="opacity" values="1;0.35;1" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="12" cy="10" r="3" fill="none" stroke="#38BDF8" stroke-width="0.9">
+          <animate attributeName="r" values="3;9" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/>
+        </circle>
         <text x="22" y="13.5" class="font-mono" font-size="9" font-weight="700" fill="#BAE6FD">LIVE DUCKDB CORE</text>
       </g>
 
@@ -719,10 +723,18 @@ card_wft_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
       <image href="data:image/jpeg;base64,{b64_wft}" xlink:href="data:image/jpeg;base64,{b64_wft}" x="548" y="108" width="692" height="434" preserveAspectRatio="xMidYMin slice" clip-path="url(#wc-wft)"/>
       <rect x="548" y="108" width="692" height="434" fill="none" stroke="#1E293B" stroke-width="0.5"/>
 
+      <!-- Active Forensic Scanner Laser Line -->
+      <line x1="548" y1="108" x2="1240" y2="108" stroke="url(#scanline-grad-wft)" stroke-width="2.5" opacity="0.75" clip-path="url(#wc-wft)">
+        <animate attributeName="y1" values="108;542;108" dur="6s" repeatCount="indefinite"/>
+        <animate attributeName="y2" values="108;542;108" dur="6s" repeatCount="indefinite"/>
+      </line>
+
       <!-- Floating Bottom Telemetry Glass HUD -->
       <g transform="translate(560, 488)">
         <rect width="668" height="42" rx="8" fill="#071328" fill-opacity="0.94" stroke="#0284C7" stroke-width="0.8"/>
-        <circle class="live-dot" cx="16" cy="21" r="3.5" fill="#38BDF8"/>
+        <circle cx="16" cy="21" r="3.5" fill="#38BDF8">
+          <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
         <text x="28" y="24" class="font-mono" font-size="10" font-weight="700" fill="#BAE6FD">CONTAINER: Windows10_Forensic.E01 <tspan fill="#64748B">[VFS MOUNTED &#x2022; READ ONLY]</tspan></text>
         <text x="654" y="24" text-anchor="end" class="font-mono" font-size="9.5" font-weight="600" fill="#38BDF8">524,198 ARTIFACTS PARSED (0.72s) &#x2022; SHA-256 VERIFIED</text>
       </g>
@@ -746,7 +758,7 @@ card_wft_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
 
 
 # ==============================================================================
-# 5. CARD-MSTEAMS.SVG (1280 x 640) — MSTeams_Parser Card (Electric Cyan / Obsidian)
+# 4. CARD-MSTEAMS.SVG (1280 x 640) — MSTeams_Parser Card (Electric Cyan / Obsidian)
 # ==============================================================================
 card_msteams_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-label="MSTeams_Parser — Microsoft Teams DFIR Forensic Suite with LevelDB and IndexedDB Parsing">
   <defs>
@@ -778,6 +790,14 @@ card_msteams_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http
       <stop offset="100%" stop-color="#BAE6FD"/>
     </linearGradient>
 
+    <!-- Laser Scanline Gradient -->
+    <linearGradient id="scanline-grad-ms" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#38BDF8" stop-opacity="0.9"/>
+      <stop offset="75%" stop-color="#0284C7" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#00D2FF" stop-opacity="0"/>
+    </linearGradient>
+
     <!-- Dot Grid Pattern -->
     <pattern id="dt-ms" width="22" height="22" patternUnits="userSpaceOnUse">
       <circle cx="2" cy="2" r="1.1" fill="#1E293B" fill-opacity="0.45"/>
@@ -801,14 +821,8 @@ card_msteams_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http
     .font-sans {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }}
     .font-mono {{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }}
     
-    /* Animations */
     .pulse-ambient {{ animation: pamb 6s ease-in-out infinite; }}
-    .live-dot {{ animation: ldot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }}
-    .radar-ring {{ animation: rring 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite; transform-origin: 88px 288px; }}
-    
     @keyframes pamb {{ 0%, 100% {{ opacity: 0.65; }} 50% {{ opacity: 1; }} }}
-    @keyframes ldot {{ 0%, 100% {{ opacity: 1; }} 50% {{ opacity: 0.35; }} }}
-    @keyframes rring {{ 0% {{ r: 3; opacity: 1; }} 100% {{ r: 16; opacity: 0; }} }}
     
     @media (prefers-reduced-motion: reduce) {{ * {{ animation: none !important; }} }}
   </style>
@@ -820,8 +834,12 @@ card_msteams_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http
     <rect width="1280" height="640" rx="20" fill="url(#dt-ms)"/>
     <rect x="0.5" y="0.5" width="1279" height="639" rx="20" fill="none" stroke="url(#border-ms)" stroke-width="1"/>
 
-    <!-- Top Specular Highlight Line -->
+    <!-- Top Specular Highlight Line with Animated Sweep -->
     <line x1="20" y1="1" x2="1260" y2="1" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="1" x2="220" y2="1" stroke="#00D2FF" stroke-width="2.2" stroke-linecap="round">
+      <animate attributeName="x1" values="20;1060;20" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="220;1260;220" dur="6s" repeatCount="indefinite"/>
+    </line>
 
     <!-- ==================== LEFT COLUMN: DFIR SPECIFICATIONS ==================== -->
     <g>
@@ -853,10 +871,10 @@ card_msteams_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http
       <g>
         <rect x="64" y="256" width="450" height="64" rx="10" fill="#08172E" stroke="#1D4ED8" stroke-width="0.8"/>
         <!-- Radar Status Indicator -->
-        <circle class="live-dot" cx="88" cy="288" r="4.5" fill="#38BDF8">
+        <circle cx="88" cy="288" r="4.5" fill="#38BDF8">
           <animate attributeName="opacity" values="1;0.35;1" dur="2s" repeatCount="indefinite"/>
         </circle>
-        <circle class="radar-ring" cx="88" cy="288" r="4.5" fill="none" stroke="#38BDF8" stroke-width="1.2">
+        <circle cx="88" cy="288" r="4.5" fill="none" stroke="#38BDF8" stroke-width="1.2">
           <animate attributeName="r" values="3;16" dur="2.4s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values="1;0" dur="2.4s" repeatCount="indefinite"/>
         </circle>
@@ -936,7 +954,13 @@ card_msteams_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http
       <!-- Right Live Session Indicator -->
       <g transform="translate(1106, 79)">
         <rect width="124" height="20" rx="10" fill="#081E38" stroke="#0284C7" stroke-width="0.8"/>
-        <circle class="live-dot" cx="12" cy="10" r="3" fill="#38BDF8"/>
+        <circle cx="12" cy="10" r="3" fill="#38BDF8">
+          <animate attributeName="opacity" values="1;0.35;1" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="12" cy="10" r="3" fill="none" stroke="#38BDF8" stroke-width="0.9">
+          <animate attributeName="r" values="3;9" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/>
+        </circle>
         <text x="22" y="13.5" class="font-mono" font-size="9" font-weight="700" fill="#BAE6FD">AIR-GAPPED 127.0.0.1</text>
       </g>
 
@@ -944,10 +968,18 @@ card_msteams_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http
       <image href="data:image/jpeg;base64,{b64_ms}" xlink:href="data:image/jpeg;base64,{b64_ms}" x="548" y="108" width="692" height="434" preserveAspectRatio="xMidYMin slice" clip-path="url(#wc-ms)"/>
       <rect x="548" y="108" width="692" height="434" fill="none" stroke="#1E293B" stroke-width="0.5"/>
 
+      <!-- Active Forensic Scanner Laser Line -->
+      <line x1="548" y1="108" x2="1240" y2="108" stroke="url(#scanline-grad-ms)" stroke-width="2.5" opacity="0.75" clip-path="url(#wc-ms)">
+        <animate attributeName="y1" values="108;542;108" dur="6s" repeatCount="indefinite"/>
+        <animate attributeName="y2" values="108;542;108" dur="6s" repeatCount="indefinite"/>
+      </line>
+
       <!-- Floating Bottom Telemetry Glass HUD -->
       <g transform="translate(560, 488)">
         <rect width="668" height="42" rx="8" fill="#071328" fill-opacity="0.94" stroke="#0284C7" stroke-width="0.8"/>
-        <circle class="live-dot" cx="16" cy="21" r="3.5" fill="#38BDF8"/>
+        <circle cx="16" cy="21" r="3.5" fill="#38BDF8">
+          <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
         <text x="28" y="24" class="font-mono" font-size="10" font-weight="700" fill="#BAE6FD">TARGET: EBWebView\\WV2Profile_tfw\\IndexedDB <tspan fill="#64748B">[LevelDB / JSON]</tspan></text>
         <text x="654" y="24" text-anchor="end" class="font-mono" font-size="9.5" font-weight="600" fill="#38BDF8">HTML DOSSIER &#x2022; UTF-8 BOM CSVs &#x2022; ZIP MEDIA</text>
       </g>
@@ -976,7 +1008,6 @@ if __name__ == "__main__":
     validate_and_save("btn-email.svg", btn_email)
     validate_and_save("btn-repos.svg", btn_repos)
     validate_and_save("btn-ceh.svg", btn_ceh)
-    validate_and_save("intro.svg", intro_svg)
     validate_and_save("card-wft.svg", card_wft_svg)
     validate_and_save("card-msteams.svg", card_msteams_svg)
     print("\n[SUCCESS] All modern project assets generated & validated!")

@@ -9,10 +9,6 @@
   <img src="assets/btn-ceh.svg" alt="CEH Certified" height="38">
 </p>
 
-<p align="center">
-  <img src="assets/intro.svg" alt="The DFIR Lab — Open source tools engineered for the gaps where standard forensic suites stop short." width="100%">
-</p>
-
 <br>
 
 <a href="https://github.com/sanjeeth-solleti/WFT">
