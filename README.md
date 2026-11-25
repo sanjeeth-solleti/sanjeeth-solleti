@@ -15,25 +15,25 @@
 
 <br>
 
-## ▍whoami
+## Executive Profile
 
-Digital Forensics &amp; Incident Response (**DFIR**) Analyst at **Tata Consultancy Services (TCS)**, specializing in enterprise Windows forensics, endpoint triage, cloud collaboration evidence, and attack-timeline reconstruction.
+Digital Forensics &amp; Incident Response (**DFIR**) Analyst at **Tata Consultancy Services (TCS)**, specializing in enterprise Windows endpoint forensics, deep triage, cloud collaboration evidence, and end-to-end attack timeline reconstruction.
 
-Forensic investigations routinely encounter edge cases where standard commercial suites slow down or stop short—unflushed registry transactions locked in `.LOG` files, high-volume event streams exceeding millions of rows, or undocumented IndexedDB and LevelDB messaging stores. My work focuses on building forensically sound, deterministic engines that ingest raw disk images, replay transactions, and correlate telemetry into unshakeable evidence timelines.
+Forensic investigations routinely encounter critical failure points where standard commercial suites slow down or stop short—unflushed registry transactions locked in volatile `.LOG` files, high-volume event streams exceeding millions of rows, or undocumented IndexedDB and LevelDB messaging stores. My focus centers on building forensically sound, deterministic engines that ingest raw disk containers, replay transactions, and correlate cross-source telemetry into unshakeable, defensible chronologies.
 
-```yaml
-endpoint_forensics:  Windows 10 / 11 / Server · E01 / RAW / VHDX / VMDK · NTFS ($MFT, $LogFile, $UsnJrnl)
-registry_integrity:  Automated transaction log replay (RLA .LOG1/.LOG2) · Multi-hive correlation (SAM, SYSTEM, SOFTWARE, NTUSER)
-execution_triage:    PECmd (Prefetch) · AppCompatCache (Shimcache) · Amcache · UserAssist · BAM/DAM · SRUM
-messaging_&_cloud:   Microsoft Teams (LevelDB/IndexedDB) · Discord · Slack · OneDrive · Google Drive
-browser_forensics:   Chromium SQLite + WAL recovery (Chrome/Edge/Brave) · Firefox places.sqlite (PRTime)
-threat_hunting:      YARA-X compiled scanning · RapidOCR on carved media · LOLBins & webshell detection
-analytical_stack:    Python 3.10+ · DuckDB Columnar Engine · FastAPI · React 18 / TypeScript · AG Grid · Cytoscape
-```
+| Domain | Technical Scope &amp; Forensic Focus |
+| :--- | :--- |
+| **Endpoint Forensics** | Windows 10 / 11 / Server · Disk containers (`.E01`, `.RAW`, `.VHDX`, `.VMDK`) · Low-level NTFS (`$MFT`, `$LogFile`, `$UsnJrnl`) |
+| **Registry Integrity** | Automated dirty transaction log replay (`.LOG1` / `.LOG2` via RLA) · Multi-hive correlation (`SAM`, `SYSTEM`, `SOFTWARE`, `NTUSER`) |
+| **Execution Triage** | PECmd (Prefetch) · AppCompatCache (Shimcache) · Amcache · UserAssist · BAM/DAM · SRUM metrics |
+| **Collaboration &amp; Cloud** | Microsoft Teams (LevelDB/IndexedDB) · Discord · Slack · OneDrive sync database · Google Drive metadata |
+| **Browser Forensics** | Chromium SQLite + WAL recovery (Chrome/Edge/Brave) · Firefox `places.sqlite` (PRTime conversion) |
+| **Threat Hunting** | Compiled Rust YARA-X scanning · RapidOCR on carved artifacts · LOLBins &amp; webshell detection |
+| **Analytical Stack** | Python 3.10+ · DuckDB Columnar Engine · FastAPI · React 18 / TypeScript · AG Grid · Cytoscape |
 
 <br>
 
-## ▍DFIR Dual-Engine Architecture
+## DFIR Dual-Engine Architecture
 
 <p align="center">
   <img src="assets/map.svg" alt="DFIR Dual-Engine Architecture: WFT Platform and MSTeams_Parser evidence intake, dirty hive replay, and cross-source timeline correlation." width="100%">
@@ -41,7 +41,7 @@ analytical_stack:    Python 3.10+ · DuckDB Columnar Engine · FastAPI · React 
 
 <br>
 
-## ▍Flagship DFIR Workstations & Tooling
+## Flagship DFIR Workstations & Tooling
 
 <p align="center">
   <a href="https://github.com/sanjeeth-solleti/WFT"><img src="assets/card-wft.svg" alt="WFT — Windows Forensic Examination Platform" width="49%"></a>
@@ -52,9 +52,9 @@ analytical_stack:    Python 3.10+ · DuckDB Columnar Engine · FastAPI · React 
 
 ### 1. [WFT — Windows Forensic Examination Platform](https://github.com/sanjeeth-solleti/WFT)
 
-An enterprise-grade Windows Digital Forensics and Incident Response platform designed for end-to-end investigation (**Process + Examine**). WFT combines virtual file system disk mounting, automated dirty registry transaction replay, external CLI toolchain orchestration, custom non-EZ parsers, YARA-X scanning, and RapidOCR into an unified analytics workstation.
+An enterprise-grade Windows Digital Forensics and Incident Response platform engineered for comprehensive investigation (**Process + Examine**). WFT integrates virtual file system disk mounting, automated dirty registry transaction replay, external CLI toolchain orchestration, custom non-EZ parsers, YARA-X scanning, and RapidOCR into an unified analytics workstation.
 
-- **Zero-Copy DuckDB Columnar Core:** In-process columnar database delivering sub-millisecond queries, live multi-timestamp super-timelines unpivoted across all artifacts, and zero-latency filtering over 500,000+ records.
+- **Zero-Copy DuckDB Columnar Core:** In-process columnar analytical database delivering sub-millisecond queries, live multi-timestamp super-timelines unpivoted across all artifacts, and zero-latency filtering over 500,000+ forensic records.
 - **Native Evidence Intake &amp; VFS:** Direct mounting and forensic extraction from `.E01`, `.Ex01`, `.VHDX`, `.VHD`, `.VMDK`, `.RAW`, `.DD`, and `.ISO` disk containers via native `dissect.target` VFS, as well as live triage folders.
 - **Automated Registry Integrity:** Mandatory automated dirty registry transaction log replay (`.LOG1` / `.LOG2` via RLA) before hive analysis to ensure no unflushed forensic transactions are lost.
 - **Full Eric Zimmerman Toolchain Orchestration:** Seamless batch processing with PECmd (Prefetch), MFTECmd ($MFT, $J, $LogFile), EvtxECmd (Event Logs), RECmd (Batch Registry), LECmd (LNK Shortcuts), JLECmd (Jump Lists), AmcacheParser, AppCompatCacheParser (Shimcache), SBECmd (ShellBags), SrumECmd (SRUM metrics), WxTCmd (ActivitiesCache), and SQLECmd.
@@ -82,7 +82,7 @@ A standalone DFIR suite engineered for parsing, reconstructing, and analyzing Mi
 
 <br>
 
-## ▍Field Kit & Arsenal
+## Field Kit & Technical Arsenal
 
 <table>
 <tr><td width="22%"><b>Forensic Suites</b></td><td>
@@ -135,9 +135,9 @@ A standalone DFIR suite engineered for parsing, reconstructing, and analyzing Mi
 
 <br>
 
-## ▍Investigative Principles & Evidence Handling
+## Defensible Forensic Standards
 
-In DFIR, the defensibility of conclusions relies entirely on data integrity and process reproducibility. Every investigation and parser adheres to four principles:
+In DFIR, the defensibility of conclusions relies entirely on data integrity and process reproducibility. Every investigation and parser adheres to four core principles:
 
 1. **Read-Only Ingestion:** Evidence is never mounted with write permissions. Forensic disk containers (`.E01`, `.RAW`, `.VHDX`) are mounted through read-only VFS virtual devices with strict write-blocking.
 2. **Deterministic Transaction Replay:** Registry hives are never parsed "dirty" without replaying associated `.LOG1` and `.LOG2` transaction logs first, guaranteeing that pending system transactions are properly committed.
@@ -149,7 +149,7 @@ In DFIR, the defensibility of conclusions relies entirely on data integrity and 
 ---
 
 <p align="center">
-  <sub>Open to conversations regarding digital forensics, artifact parser development, and incident response automation.</sub><br><br>
+  <sub>Open to technical discussions regarding digital forensics, artifact parser engineering, and incident response automation.</sub><br><br>
   <a href="https://www.linkedin.com/in/sanjeeth-solleti/"><img src="assets/btn-linkedin.svg" alt="LinkedIn" height="34"></a>
   <a href="mailto:vasavasanjeeth@gmail.com"><img src="assets/btn-email.svg" alt="Email" height="34"></a>
   <a href="https://github.com/sanjeeth-solleti?tab=repositories"><img src="assets/btn-repos.svg" alt="GitHub Repositories" height="34"></a>

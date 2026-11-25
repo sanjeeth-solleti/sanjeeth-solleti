@@ -1,52 +1,65 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 96" width="1000" height="96" role="img" aria-label="Forensic Telemetry: TCS DFIR Analyst, WFT Platform, MSTeams_Parser, DuckDB Columnar Core">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 96" width="1000" height="96" role="img" aria-label="Operational Telemetry: TCS DFIR Analyst, WFT Platform, MSTeams_Parser Suite, DuckDB Columnar Core">
   <defs>
-    <linearGradient id="sgrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#080D1A"/>
-      <stop offset="50%" stop-color="#0F172A"/>
-      <stop offset="100%" stop-color="#0A1122"/>
+    <linearGradient id="hud-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080C16"/>
+      <stop offset="50%" stop-color="#0E1628"/>
+      <stop offset="100%" stop-color="#090E1B"/>
+    </linearGradient>
+    <linearGradient id="hud-border" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.3"/>
+      <stop offset="35%" stop-color="#818CF8" stop-opacity="0.3"/>
+      <stop offset="70%" stop-color="#C084FC" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#34D399" stop-opacity="0.3"/>
     </linearGradient>
   </defs>
 
-  <rect width="1000" height="96" rx="12" fill="url(#sgrad)"/>
-  <rect x="0.5" y="0.5" width="999" height="95" rx="12" fill="none" stroke="#1E293B" stroke-width="1"/>
+  <style>
+    .hud-title { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 21px; font-weight: 800; fill: #FFFFFF; }
+    .hud-sub { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10.5px; fill: #94A3B8; }
+    .hud-tag { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 9.5px; font-weight: 700; letter-spacing: 1.3px; }
+  </style>
 
-  <!-- Station 1: Organization & Role -->
+  <!-- HUD Container Frame -->
+  <rect width="1000" height="96" rx="14" fill="url(#hud-bg)"/>
+  <rect x="0.5" y="0.5" width="999" height="95" rx="14" fill="none" stroke="url(#hud-border)" stroke-width="1"/>
+
+  <!-- Station 1: Organization & Role (Center x=125) -->
   <g transform="translate(125, 0)">
-    <text x="0" y="26" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#38BDF8" letter-spacing="1.4">ENTERPRISE DFIR</text>
-    <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">TCS</text>
-    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#CBD5E1">Tata Consultancy Services</text>
+    <text x="0" y="26" text-anchor="middle" class="hud-tag" fill="#38BDF8">ENTERPRISE DFIR</text>
+    <text x="0" y="55" text-anchor="middle" class="hud-title">TCS</text>
+    <text x="0" y="75" text-anchor="middle" class="hud-sub">Tata Consultancy Services</text>
   </g>
 
   <!-- Divider 1 -->
   <line x1="250" y1="18" x2="250" y2="78" stroke="#1E293B" stroke-width="1"/>
-  <circle cx="250" cy="48" r="2.5" fill="#38BDF8"/>
+  <circle cx="250" cy="48" r="2.5" fill="#38BDF8" fill-opacity="0.6"/>
 
-  <!-- Station 2: WFT Platform -->
+  <!-- Station 2: WFT Flagship Platform (Center x=375) -->
   <g transform="translate(375, 0)">
-    <text x="0" y="26" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#34D399" letter-spacing="1.4">PRIMARY PLATFORM</text>
-    <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">WFT</text>
-    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#CBD5E1">Windows Forensics Suite</text>
+    <text x="0" y="26" text-anchor="middle" class="hud-tag" fill="#60A5FA">HOST FORENSICS</text>
+    <text x="0" y="55" text-anchor="middle" class="hud-title">WFT</text>
+    <text x="0" y="75" text-anchor="middle" class="hud-sub">Windows Forensics Workstation</text>
   </g>
 
   <!-- Divider 2 -->
   <line x1="500" y1="18" x2="500" y2="78" stroke="#1E293B" stroke-width="1"/>
-  <circle cx="500" cy="48" r="2.5" fill="#34D399"/>
+  <circle cx="500" cy="48" r="2.5" fill="#818CF8" fill-opacity="0.6"/>
 
-  <!-- Station 3: MSTeams_Parser -->
+  <!-- Station 3: MSTeams Collaboration Suite (Center x=625) -->
   <g transform="translate(625, 0)">
-    <text x="0" y="26" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#C084FC" letter-spacing="1.4">COLLABORATION DFIR</text>
-    <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">MSTeams</text>
-    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#CBD5E1">IndexedDB / LevelDB Suite</text>
+    <text x="0" y="26" text-anchor="middle" class="hud-tag" fill="#C084FC">COLLAB DFIR</text>
+    <text x="0" y="55" text-anchor="middle" class="hud-title">MSTeams</text>
+    <text x="0" y="75" text-anchor="middle" class="hud-sub">IndexedDB &amp; LevelDB Suite</text>
   </g>
 
   <!-- Divider 3 -->
   <line x1="750" y1="18" x2="750" y2="78" stroke="#1E293B" stroke-width="1"/>
-  <circle cx="750" cy="48" r="2.5" fill="#C084FC"/>
+  <circle cx="750" cy="48" r="2.5" fill="#C084FC" fill-opacity="0.6"/>
 
-  <!-- Station 4: Engine Backbone -->
+  <!-- Station 4: Analytical Core (Center x=875) -->
   <g transform="translate(875, 0)">
-    <text x="0" y="26" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#FBBF24" letter-spacing="1.4">ANALYTIC CORE</text>
-    <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">DuckDB</text>
-    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#CBD5E1">Zero-Copy Super-Timeline</text>
+    <text x="0" y="26" text-anchor="middle" class="hud-tag" fill="#34D399">ANALYTIC CORE</text>
+    <text x="0" y="55" text-anchor="middle" class="hud-title">DuckDB</text>
+    <text x="0" y="75" text-anchor="middle" class="hud-sub">Zero-Copy Super-Timeline</text>
   </g>
 </svg>

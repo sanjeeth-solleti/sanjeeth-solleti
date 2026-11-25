@@ -1,91 +1,181 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300" role="img" aria-label="Vasava Sanjeeth Solleti — Digital Forensics and Incident Response Analyst at TCS">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300" role="img" aria-label="Vasava Sanjeeth Solleti — Digital Forensics &amp; Incident Response Analyst at TCS">
   <defs>
-    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#080D1A"/>
-      <stop offset="50%" stop-color="#0F172A"/>
-      <stop offset="100%" stop-color="#060913"/>
+    <!-- Background Dark Gradient -->
+    <linearGradient id="hero-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080C16"/>
+      <stop offset="45%" stop-color="#0C1322"/>
+      <stop offset="100%" stop-color="#070A12"/>
     </linearGradient>
-    <radialGradient id="cyan-glow" cx="20%" cy="30%" r="65%">
-      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.20"/>
-      <stop offset="100%" stop-color="#080D1A" stop-opacity="0"/>
+
+    <!-- Ambient Cyan Radial Glow (Top Left) -->
+    <radialGradient id="hero-cyan-glow" cx="15%" cy="10%" r="65%">
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.16"/>
+      <stop offset="50%" stop-color="#0284C7" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#080C16" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="purple-glow" cx="80%" cy="70%" r="60%">
-      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.15"/>
-      <stop offset="100%" stop-color="#060913" stop-opacity="0"/>
+
+    <!-- Ambient Indigo/Purple Glow (Bottom Right) -->
+    <radialGradient id="hero-indigo-glow" cx="88%" cy="85%" r="60%">
+      <stop offset="0%" stop-color="#6366F1" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#7C3AED" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#070A12" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="header-accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.1"/>
-      <stop offset="25%" stop-color="#38BDF8" stop-opacity="0.95"/>
-      <stop offset="75%" stop-color="#818CF8" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.1"/>
+
+    <!-- Glowing Top Border Accent -->
+    <linearGradient id="hero-border-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#00D2FF" stop-opacity="0.8"/>
+      <stop offset="55%" stop-color="#6366F1" stop-opacity="0.8"/>
+      <stop offset="85%" stop-color="#A855F7" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#A855F7" stop-opacity="0"/>
     </linearGradient>
-    <pattern id="dot-grid" width="22" height="22" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="0.8" fill="#334155" opacity="0.35"/>
+
+    <!-- Refined Glass Stroke -->
+    <linearGradient id="hero-frame-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.35"/>
+      <stop offset="40%" stop-color="#1E293B" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <!-- Widget Glass Stroke -->
+    <linearGradient id="widget-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#1E293B" stop-opacity="0.6"/>
+    </linearGradient>
+
+    <!-- Modern Minimalist Grid Pattern -->
+    <pattern id="modern-grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#334155" stroke-width="0.6" stroke-opacity="0.2"/>
+      <circle cx="0" cy="0" r="1" fill="#38BDF8" fill-opacity="0.2"/>
     </pattern>
   </defs>
 
   <style>
-    .pulse-live { animation: plive 2.2s ease-in-out infinite; }
-    @keyframes plive { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+    .pulse-dot { animation: pulseAnim 2.4s ease-in-out infinite; }
+    @keyframes pulseAnim { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.45; transform: scale(0.92); } }
+    .text-title { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; letter-spacing: -0.5px; }
+    .text-body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
   </style>
 
-  <!-- Frame Background -->
-  <rect width="1000" height="300" rx="14" fill="url(#bg-grad)"/>
-  <rect width="1000" height="300" rx="14" fill="url(#cyan-glow)"/>
-  <rect width="1000" height="300" rx="14" fill="url(#purple-glow)"/>
-  <rect width="1000" height="300" rx="14" fill="url(#dot-grid)"/>
-  <rect x="0.5" y="0.5" width="999" height="299" rx="14" fill="none" stroke="#1E293B" stroke-width="1"/>
-  <rect x="12" y="1" width="976" height="2.5" fill="url(#header-accent)"/>
+  <!-- Frame Background with Ambient Lighting -->
+  <rect width="1000" height="300" rx="16" fill="url(#hero-bg)"/>
+  <rect width="1000" height="300" rx="16" fill="url(#hero-cyan-glow)"/>
+  <rect width="1000" height="300" rx="16" fill="url(#hero-indigo-glow)"/>
+  <rect width="1000" height="300" rx="16" fill="url(#modern-grid)"/>
+  <rect x="0.5" y="0.5" width="999" height="299" rx="16" fill="none" stroke="url(#hero-frame-stroke)" stroke-width="1"/>
+  
+  <!-- Sleek Top Glow Horizon -->
+  <rect x="20" y="1" width="960" height="2" rx="1" fill="url(#hero-border-accent)"/>
 
   <!-- Top Status Bar -->
-  <circle class="pulse-live" cx="36" cy="30" r="4.5" fill="#10B981"/>
-  <text x="48" y="34" font-family="'Segoe UI', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.5">FORENSIC OPERATIONS <tspan fill="#475569">//</tspan> TATA CONSULTANCY SERVICES</text>
-  <text x="964" y="34" text-anchor="end" font-family="'Segoe UI', -apple-system, sans-serif" font-size="10.5" font-weight="600" fill="#94A3B8" letter-spacing="1">DEFENSIBLE CHAIN-OF-CUSTODY &#x2022; VERIFIED HASH</text>
-  <line x1="30" y1="48" x2="970" y2="48" stroke="#1E293B" stroke-width="1"/>
+  <g transform="translate(36, 20)">
+    <!-- TCS Pill Badge (Spacious, Single text element to eliminate overlap) -->
+    <rect x="0" y="0" width="310" height="24" rx="12" fill="#0E1E38" stroke="#1D4ED8" stroke-width="0.8" stroke-opacity="0.8"/>
+    <circle class="pulse-dot" cx="12" cy="12" r="3.5" fill="#10B981"/>
+    <text x="24" y="16" class="text-body" font-size="10" font-weight="700" fill="#38BDF8" letter-spacing="1">TATA CONSULTANCY SERVICES <tspan fill="#64748B" font-weight="400">|</tspan> <tspan fill="#94A3B8" font-weight="600">DFIR OPERATIONS</tspan></text>
 
-  <!-- Left Content (bounded safely within x=36 to x=610) -->
-  <rect x="36" y="66" width="220" height="22" rx="11" fill="#0C1E3A" stroke="#1D4ED8" stroke-width="1"/>
-  <text x="146" y="81" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="700" fill="#38BDF8" letter-spacing="1.4">ENTERPRISE DFIR ANALYST</text>
-
-  <text x="36" y="126" font-family="'Segoe UI', -apple-system, 'SF Pro Display', sans-serif" font-size="36" font-weight="800" fill="#FFFFFF" letter-spacing="1.5">VASAVA SANJEETH SOLLETI</text>
-  <text x="36" y="154" font-family="'Segoe UI', sans-serif" font-size="14.5" font-weight="600" fill="#38BDF8">DFIR Analyst @ TCS <tspan fill="#475569">|</tspan> Windows Forensics &amp; Engine Architect</text>
-  <text x="36" y="180" font-family="'Segoe UI', sans-serif" font-size="12.5" fill="#CBD5E1">Reconstructing attack chronologies across raw disks, dirty hives, &amp; cloud apps.</text>
-
-  <!-- Capability Pills on Left -->
-  <g transform="translate(36, 206)">
-    <rect x="0" y="0" width="132" height="26" rx="6" fill="#0B1E38" stroke="#1D4ED8" stroke-width="1"/>
-    <text x="66" y="17" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="600" fill="#93C5FD">&#x2B21; WFT Platform</text>
-
-    <rect x="140" y="0" width="148" height="26" rx="6" fill="#1C1035" stroke="#7C3AED" stroke-width="1"/>
-    <text x="214" y="17" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="600" fill="#C4B5FD">&#x2B22; MSTeams_Parser</text>
-
-    <rect x="296" y="0" width="144" height="26" rx="6" fill="#241804" stroke="#D97706" stroke-width="1"/>
-    <text x="368" y="17" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="600" fill="#FCD34D">&#x26A1; DuckDB Core</text>
-
-    <rect x="448" y="0" width="130" height="26" rx="6" fill="#062117" stroke="#059669" stroke-width="1"/>
-    <text x="513" y="17" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="600" fill="#6EE7B7">&#x1F6E1; CEH Certified</text>
+    <!-- Defensible Chain Chip on Right -->
+    <text x="928" y="16" text-anchor="end" class="text-body" font-size="10" font-weight="600" fill="#94A3B8" letter-spacing="0.8">DEFENSIBLE CHAIN-OF-CUSTODY &#x2022; CRYPTOGRAPHICALLY SOUND</text>
   </g>
 
-  <!-- Right Side Forensic Specification Card (Starts at x=640, width=324, zero overlap) -->
-  <g transform="translate(640, 66)">
-    <rect width="324" height="166" rx="10" fill="#0A1224" stroke="#1E293B" stroke-width="1.2"/>
-    <rect width="324" height="30" rx="10" fill="#0E1A33"/>
-    <rect y="26" width="324" height="4" fill="#0E1A33"/>
-    <circle cx="16" cy="15" r="3.5" fill="#38BDF8"/>
-    <text x="28" y="19" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="700" fill="#E2E8F0" letter-spacing="1.2">SPECIALIZED INVESTIGATIVE SCOPE</text>
+  <!-- Thin Horizontal Horizon Line -->
+  <line x1="36" y1="52" x2="964" y2="52" stroke="#1E293B" stroke-width="0.8" stroke-opacity="0.7"/>
+
+  <!-- Left Main Content Block -->
+  <g transform="translate(36, 72)">
+    <!-- Role Sub-eyebrow with glow -->
+    <text x="0" y="14" class="text-body" font-size="10.5" font-weight="700" fill="#38BDF8" letter-spacing="1.8">ENTERPRISE DIGITAL FORENSICS &amp; INCIDENT RESPONSE</text>
     
-    <g font-family="'Segoe UI', sans-serif" font-size="11" fill="#CBD5E1" transform="translate(16, 50)">
-      <text x="0" y="0"><tspan fill="#38BDF8">&#x25AA;</tspan> Native VFS Ingestion <tspan fill="#94A3B8">(E01, RAW, VHDX, VMDK)</tspan></text>
-      <text x="0" y="22"><tspan fill="#38BDF8">&#x25AA;</tspan> Automated Dirty Registry Replay <tspan fill="#94A3B8">(RLA)</tspan></text>
-      <text x="0" y="44"><tspan fill="#38BDF8">&#x25AA;</tspan> Sub-Ms Columnar Super-Timelines <tspan fill="#94A3B8">(DuckDB)</tspan></text>
-      <text x="0" y="66"><tspan fill="#A855F7">&#x25AA;</tspan> Collaboration Stores <tspan fill="#94A3B8">(Teams IndexedDB/LevelDB)</tspan></text>
-      <text x="0" y="88"><tspan fill="#10B981">&#x25AA;</tspan> Compiled Threat Triage <tspan fill="#94A3B8">(Rust YARA-X + RapidOCR)</tspan></text>
+    <!-- Primary Identity Headline -->
+    <text x="0" y="52" class="text-title" font-size="34" fill="#FFFFFF">Vasava Sanjeeth Solleti</text>
+    
+    <!-- Role Description -->
+    <text x="0" y="78" class="text-body" font-size="14" font-weight="600" fill="#E2E8F0">
+      DFIR Analyst @ TCS <tspan fill="#475569" font-weight="400">|</tspan> Windows Forensics &amp; Engine Architect
+    </text>
+    
+    <text x="0" y="102" class="text-body" font-size="12.5" fill="#94A3B8">
+      Reconstructing complex attack chronologies across raw disk images, dirty hives, &amp; cloud collaboration stores.
+    </text>
+
+    <!-- Modern Feature Capability Pills -->
+    <g transform="translate(0, 126)">
+      <!-- Pill 1: WFT -->
+      <rect x="0" y="0" width="138" height="28" rx="8" fill="#0C1F3F" stroke="#2563EB" stroke-width="0.9"/>
+      <circle cx="14" cy="14" r="3" fill="#38BDF8"/>
+      <text x="24" y="18" class="text-body" font-size="10.5" font-weight="700" fill="#BAE6FD">WFT Platform</text>
+      <text x="98" y="18" class="text-body" font-size="9" font-weight="500" fill="#60A5FA">DuckDB</text>
+
+      <!-- Pill 2: MSTeams -->
+      <rect x="146" y="0" width="158" height="28" rx="8" fill="#1C1138" stroke="#7C3AED" stroke-width="0.9"/>
+      <circle cx="160" cy="14" r="3" fill="#C084FC"/>
+      <text x="170" y="18" class="text-body" font-size="10.5" font-weight="700" fill="#E9D5FF">MSTeams_Parser</text>
+      <text x="264" y="18" class="text-body" font-size="9" font-weight="500" fill="#C084FC">DFIR</text>
+
+      <!-- Pill 3: CEH Certified -->
+      <rect x="312" y="0" width="132" height="28" rx="8" fill="#09221B" stroke="#059669" stroke-width="0.9"/>
+      <circle cx="326" cy="14" r="3" fill="#34D399"/>
+      <text x="336" y="18" class="text-body" font-size="10.5" font-weight="700" fill="#A7F3D0">CEH Certified</text>
+      <text x="412" y="18" class="text-body" font-size="9" font-weight="500" fill="#6EE7B7">v12</text>
+
+      <!-- Pill 4: Analytical Core -->
+      <rect x="452" y="0" width="136" height="28" rx="8" fill="#261A05" stroke="#D97706" stroke-width="0.9"/>
+      <circle cx="466" cy="14" r="3" fill="#FBBF24"/>
+      <text x="476" y="18" class="text-body" font-size="10.5" font-weight="700" fill="#FDE68A">Columnar Core</text>
+      <text x="556" y="18" class="text-body" font-size="9" font-weight="500" fill="#FCD34D">&lt;1ms</text>
+    </g>
+  </g>
+
+  <!-- Right Side: Sleek Glassmorphism Widget (x=634 to 964, w=330, h=170) -->
+  <g transform="translate(634, 70)">
+    <!-- Glass Panel Fill with subtle gradient -->
+    <rect width="330" height="170" rx="12" fill="#0D1627" fill-opacity="0.85" stroke="url(#widget-border)" stroke-width="1"/>
+    
+    <!-- Widget Header Bar -->
+    <rect width="330" height="32" rx="12" fill="#111E36" fill-opacity="0.9"/>
+    <rect y="28" width="330" height="4" fill="#111E36" fill-opacity="0.9"/>
+    
+    <circle cx="16" cy="16" r="3.5" fill="#38BDF8"/>
+    <text x="28" y="20" class="text-body" font-size="10" font-weight="700" fill="#BAE6FD" letter-spacing="1.2">SPECIALIZED INVESTIGATIVE SCOPE</text>
+
+    <!-- Scope Items with modern iconography -->
+    <g transform="translate(16, 52)" class="text-body" font-size="11">
+      <!-- Item 1 -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="-10" width="18" height="18" rx="4" fill="#0C203E"/>
+        <text x="9" y="3" text-anchor="middle" font-size="10" font-weight="bold" fill="#38BDF8">&#x25C7;</text>
+        <text x="26" y="3" fill="#E2E8F0" font-weight="600">Native VFS Ingestion <tspan fill="#94A3B8" font-size="10" font-weight="normal">(E01, RAW, VHDX, VMDK)</tspan></text>
+      </g>
+      <!-- Item 2 -->
+      <g transform="translate(0, 26)">
+        <rect x="0" y="-10" width="18" height="18" rx="4" fill="#0C203E"/>
+        <text x="9" y="3" text-anchor="middle" font-size="10" font-weight="bold" fill="#38BDF8">&#x25C7;</text>
+        <text x="26" y="3" fill="#E2E8F0" font-weight="600">Dirty Registry Replay <tspan fill="#94A3B8" font-size="10" font-weight="normal">(Automated RLA Commit)</tspan></text>
+      </g>
+      <!-- Item 3 -->
+      <g transform="translate(0, 52)">
+        <rect x="0" y="-10" width="18" height="18" rx="4" fill="#0C203E"/>
+        <text x="9" y="3" text-anchor="middle" font-size="10" font-weight="bold" fill="#38BDF8">&#x25C7;</text>
+        <text x="26" y="3" fill="#E2E8F0" font-weight="600">Sub-Ms Super-Timelines <tspan fill="#94A3B8" font-size="10" font-weight="normal">(DuckDB Engine)</tspan></text>
+      </g>
+      <!-- Item 4 -->
+      <g transform="translate(0, 78)">
+        <rect x="0" y="-10" width="18" height="18" rx="4" fill="#201138"/>
+        <text x="9" y="3" text-anchor="middle" font-size="10" font-weight="bold" fill="#C084FC">&#x25C7;</text>
+        <text x="26" y="3" fill="#E2E8F0" font-weight="600">Collab Forensics <tspan fill="#C084FC" font-size="10" font-weight="normal">(Teams Level/IndexedDB)</tspan></text>
+      </g>
     </g>
   </g>
 
   <!-- Bottom Telemetry Bar -->
-  <line x1="30" y1="256" x2="970" y2="256" stroke="#1E293B" stroke-width="1"/>
-  <circle class="pulse-live" cx="36" cy="276" r="3" fill="#00E5FF"/>
-  <text x="46" y="280" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#94A3B8">ACTIVE RESEARCH: Dirty Registry Replay &#x2022; IndexedDB Forensics &#x2022; Multi-Source Attack Chronologies</text>
-  <text x="964" y="280" text-anchor="end" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="600" fill="#94A3B8">HYDERABAD, INDIA</text>
+  <line x1="36" y1="262" x2="964" y2="262" stroke="#1E293B" stroke-width="0.8" stroke-opacity="0.7"/>
+  <g transform="translate(36, 280)">
+    <circle class="pulse-dot" cx="4" cy="-3" r="3" fill="#00D2FF"/>
+    <text x="16" y="0" class="text-body" font-size="10.5" font-weight="500" fill="#94A3B8">
+      ACTIVE RESEARCH: <tspan fill="#E2E8F0">Dirty Registry Replay</tspan> &#x2022; <tspan fill="#E2E8F0">IndexedDB Messaging Stores</tspan> &#x2022; <tspan fill="#E2E8F0">Multi-Timestamp Attack Chronologies</tspan>
+    </text>
+    <text x="928" y="0" text-anchor="end" class="text-body" font-size="10.5" font-weight="600" fill="#94A3B8">
+      HYDERABAD, INDIA
+    </text>
+  </g>
 </svg>
