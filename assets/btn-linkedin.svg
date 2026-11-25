@@ -1,17 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 44" width="215" height="44" role="img" aria-label="LinkedIn Profile">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 42" width="195" height="42" role="img" aria-label="LinkedIn Profile">
   <defs>
-    <linearGradient id="btn-li-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="li-bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0A1428"/>
-      <stop offset="100%" stop-color="#0E1B36"/>
+      <stop offset="100%" stop-color="#0D1C38"/>
+    </linearGradient>
+    <linearGradient id="li-border" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0.5"/>
     </linearGradient>
   </defs>
-  <rect x="0.5" y="0.5" width="214" height="43" rx="10" fill="url(#btn-li-grad)" stroke="#1D4ED8" stroke-width="1" stroke-opacity="0.6"/>
-  <line x1="12" y1="1" x2="203" y2="1" stroke="#0A66C2" stroke-width="1.8" stroke-linecap="round"/>
+  <rect x="0.5" y="0.5" width="194" height="41" rx="10" fill="url(#li-bg)" stroke="url(#li-border)" stroke-width="1"/>
+  <line x1="12" y1="1" x2="183" y2="1" stroke="#38BDF8" stroke-width="1.6" stroke-linecap="round"/>
+
+  <!-- LinkedIn Vector Icon -->
+  <g transform="translate(14, 11)">
+    <rect width="20" height="20" rx="4" fill="#0A66C2"/>
+    <circle cx="6" cy="6" r="1.5" fill="#FFFFFF"/>
+    <rect x="4.5" y="9" width="3" height="7" fill="#FFFFFF"/>
+    <path d="M10 9 H12.8 V10.2 C13.3 9.4 14.2 9 15.3 9 C17.4 9 18.2 10.3 18.2 12.4 V16 H15.4 V12.8 C15.4 11.8 15 11.2 14.1 11.2 C13.3 11.2 12.8 11.7 12.8 12.6 V16 H10 Z" fill="#FFFFFF"/>
+  </g>
+
+  <text x="44" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#F1F5F9" letter-spacing="1">LINKEDIN</text>
   
-  <!-- LinkedIn Icon -->
-  <rect x="14" y="11" width="22" height="22" rx="4" fill="#0A66C2"/>
-  <text x="25" y="27" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF">in</text>
-  
-  <text x="46" y="27" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#F1F5F9" letter-spacing="1">LINKEDIN</text>
-  <text x="198" y="27" text-anchor="end" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#38BDF8">&#x2197;</text>
+  <!-- Sleek Vector Arrow -->
+  <path d="M174 24 L179 19 M179 19 H175 M179 19 V23" stroke="#38BDF8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>

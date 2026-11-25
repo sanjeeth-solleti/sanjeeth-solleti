@@ -1,99 +1,123 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 270" width="485" height="270" role="img" aria-label="WFT — Windows Forensic Examination Platform">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 285" width="485" height="285" role="img" aria-label="WFT — Windows Forensic Examination Platform">
   <defs>
     <linearGradient id="wft-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#080E1C"/>
-      <stop offset="50%" stop-color="#0C152B"/>
-      <stop offset="100%" stop-color="#070B16"/>
+      <stop offset="0%" stop-color="#060A16"/>
+      <stop offset="50%" stop-color="#0A1326"/>
+      <stop offset="100%" stop-color="#050811"/>
     </linearGradient>
     <radialGradient id="wft-glow" cx="15%" cy="15%" r="65%">
-      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.14"/>
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.16"/>
       <stop offset="60%" stop-color="#1D4ED8" stop-opacity="0.04"/>
-      <stop offset="100%" stop-color="#080E1C" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#060A16" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="wft-border" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.5"/>
-      <stop offset="50%" stop-color="#1E3A8A" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#1E3A8A" stop-opacity="0.4"/>
       <stop offset="100%" stop-color="#1E293B" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="wft-title-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#93C5FD"/>
     </linearGradient>
   </defs>
 
   <style>
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
     .pulse-wft { animation: pwft 2.4s ease-in-out infinite; }
     @keyframes pwft { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
   </style>
 
-  <!-- Card Frame -->
-  <rect width="485" height="270" rx="14" fill="url(#wft-bg)"/>
-  <rect width="485" height="270" rx="14" fill="url(#wft-glow)"/>
-  <rect x="0.5" y="0.5" width="484" height="269" rx="14" fill="none" stroke="url(#wft-border)" stroke-width="1"/>
-  
-  <!-- Glowing Top Accent -->
+  <!-- Frame Background -->
+  <rect width="485" height="285" rx="14" fill="url(#wft-bg)"/>
+  <rect width="485" height="285" rx="14" fill="url(#wft-glow)"/>
+  <rect x="0.5" y="0.5" width="484" height="284" rx="14" fill="none" stroke="url(#wft-border)" stroke-width="1"/>
+
+  <!-- Top Specular Highlight Accent -->
   <line x1="16" y1="1" x2="469" y2="1" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round"/>
 
-  <!-- Top Header Bar -->
+  <!-- Header Status Bar -->
   <g transform="translate(24, 20)">
     <circle class="pulse-wft" cx="4" cy="5" r="3.5" fill="#00D2FF"/>
-    <text x="14" y="9" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#38BDF8" letter-spacing="1.4">FLAGSHIP DFIR WORKSTATION</text>
+    <text x="14" y="9" class="font-sans" font-size="10" font-weight="700" fill="#38BDF8" letter-spacing="1.4">FLAGSHIP DFIR WORKSTATION</text>
     
-    <!-- Version Pill -->
-    <rect x="345" y="-3" width="92" height="20" rx="6" fill="#0E2344" stroke="#1D4ED8" stroke-width="0.8"/>
-    <text x="391" y="11" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#93C5FD">v1.0 ACTIVE</text>
+    <!-- Version Tag -->
+    <rect x="345" y="-3" width="92" height="20" rx="6" fill="#0C203E" stroke="#1D4ED8" stroke-width="0.8"/>
+    <text x="391" y="11" text-anchor="middle" class="font-sans" font-size="9" font-weight="700" fill="#93C5FD">v1.0 ACTIVE</text>
   </g>
 
   <!-- Title & Subtitle -->
-  <text x="24" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="21" font-weight="800" fill="#FFFFFF">WFT — Windows Forensics</text>
-  <text x="24" y="85" font-family="system-ui, sans-serif" font-size="12" font-weight="500" fill="#94A3B8">Enterprise "Process + Examine" Digital Forensics Platform</text>
-  
-  <!-- Sleek Separator -->
-  <line x1="24" y1="98" x2="461" y2="98" stroke="#1E293B" stroke-width="0.8"/>
+  <text x="24" y="66" class="font-sans" font-size="20" font-weight="800" fill="url(#wft-title-grad)">WFT — Windows Forensics</text>
+  <text x="24" y="85" class="font-sans" font-size="11.5" font-weight="500" fill="#94A3B8">Enterprise "Process + Examine" Digital Forensics Platform</text>
 
-  <!-- Core Forensic Highlights -->
-  <g font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#E2E8F0" transform="translate(24, 118)">
+  <!-- Telemetry Pipeline Preview Capsule -->
+  <g transform="translate(24, 98)">
+    <rect width="437" height="22" rx="6" fill="#08172E" stroke="#1E3A8A" stroke-width="0.75"/>
+    <text x="10" y="15" class="font-sans" font-size="9" font-weight="700" fill="#38BDF8">PIPELINE:</text>
+    <text x="64" y="15" class="font-sans" font-size="9" fill="#94A3B8">
+      dissect.target VFS <tspan fill="#38BDF8">&#x2192;</tspan> Dirty RLA Commit <tspan fill="#38BDF8">&#x2192;</tspan> DuckDB Columnar <tspan fill="#38BDF8">&#x2192;</tspan> Cytoscape
+    </text>
+  </g>
+
+  <!-- Core Highlights with Bespoke Micro-Icons -->
+  <g class="font-sans" font-size="11" fill="#E2E8F0" transform="translate(24, 138)">
+    <!-- Point 1: DuckDB Lightning Bolt -->
     <g transform="translate(0, 0)">
-      <circle cx="4" cy="-4" r="2.5" fill="#38BDF8"/>
-      <text x="14" y="0"><tspan font-weight="700" fill="#FFFFFF">DuckDB Columnar Core:</tspan> <tspan fill="#CBD5E1">Sub-millisecond unpivoted super-timeline</tspan></text>
+      <rect x="0" y="-9" width="16" height="16" rx="4" fill="#0A2244" stroke="#0284C7" stroke-width="0.6"/>
+      <path d="M9 -7 L5 -2 H9 L7 4 L12 -1 H8 Z" fill="#38BDF8"/>
+      <text x="24" y="3"><tspan font-weight="700" fill="#FFFFFF">DuckDB Columnar Core:</tspan> <tspan fill="#CBD5E1">Sub-ms unpivoted super-timeline (500K+ records)</tspan></text>
     </g>
-    <g transform="translate(0, 20)">
-      <circle cx="4" cy="-4" r="2.5" fill="#38BDF8"/>
-      <text x="14" y="0"><tspan font-weight="700" fill="#FFFFFF">Dirty Registry Replay:</tspan> <tspan fill="#CBD5E1">Automated RLA .LOG1/.LOG2 transaction commit</tspan></text>
+    <!-- Point 2: Dirty Registry Replay Refresh Icon -->
+    <g transform="translate(0, 21)">
+      <rect x="0" y="-9" width="16" height="16" rx="4" fill="#0A2244" stroke="#0284C7" stroke-width="0.6"/>
+      <path d="M5 -1 A4 4 0 1 1 11 -1" fill="none" stroke="#38BDF8" stroke-width="1.2"/>
+      <path d="M11 -3 L11 -1 L9 -1" fill="none" stroke="#38BDF8" stroke-width="1.2" stroke-linecap="round"/>
+      <text x="24" y="3"><tspan font-weight="700" fill="#FFFFFF">Dirty Registry Replay:</tspan> <tspan fill="#CBD5E1">Automated RLA commit for volatile .LOG1/.LOG2</tspan></text>
     </g>
-    <g transform="translate(0, 40)">
-      <circle cx="4" cy="-4" r="2.5" fill="#38BDF8"/>
-      <text x="14" y="0"><tspan font-weight="700" fill="#FFFFFF">Native VFS Intake:</tspan> <tspan fill="#CBD5E1">Direct E01, RAW, VHDX, VMDK mount via dissect</tspan></text>
+    <!-- Point 3: VFS Intake Disk Icon -->
+    <g transform="translate(0, 42)">
+      <rect x="0" y="-9" width="16" height="16" rx="4" fill="#0A2244" stroke="#0284C7" stroke-width="0.6"/>
+      <path d="M3 -4 H13 V2 H3 Z" fill="none" stroke="#38BDF8" stroke-width="1.1"/>
+      <line x1="3" y1="-1" x2="13" y2="-1" stroke="#38BDF8" stroke-width="0.8"/>
+      <circle cx="10.5" cy="0.5" r="0.6" fill="#38BDF8"/>
+      <text x="24" y="3"><tspan font-weight="700" fill="#FFFFFF">Native VFS Intake:</tspan> <tspan fill="#CBD5E1">Direct E01, RAW, VHDX, VMDK mount via dissect</tspan></text>
     </g>
-    <g transform="translate(0, 60)">
-      <circle cx="4" cy="-4" r="2.5" fill="#38BDF8"/>
-      <text x="14" y="0"><tspan font-weight="700" fill="#FFFFFF">Threat Hunting &amp; Carving:</tspan> <tspan fill="#CBD5E1">Rust YARA-X scanning + RapidOCR triage</tspan></text>
+    <!-- Point 4: Threat Hunting Crosshair -->
+    <g transform="translate(0, 63)">
+      <rect x="0" y="-9" width="16" height="16" rx="4" fill="#0A2244" stroke="#0284C7" stroke-width="0.6"/>
+      <circle cx="8" cy="-1" r="4.5" fill="none" stroke="#38BDF8" stroke-width="1"/>
+      <line x1="8" y1="-7" x2="8" y2="5" stroke="#38BDF8" stroke-width="0.8"/>
+      <line x1="2" y1="-1" x2="14" y2="-1" stroke="#38BDF8" stroke-width="0.8"/>
+      <text x="24" y="3"><tspan font-weight="700" fill="#FFFFFF">Threat Hunting &amp; Carving:</tspan> <tspan fill="#CBD5E1">Rust YARA-X scanning + RapidOCR triage</tspan></text>
     </g>
   </g>
 
   <!-- Divider before pills -->
-  <line x1="24" y1="198" x2="461" y2="198" stroke="#1E293B" stroke-width="0.8"/>
+  <line x1="24" y1="216" x2="461" y2="216" stroke="#1E293B" stroke-width="0.8"/>
 
-  <!-- Modern Tech Stack Pills -->
-  <g transform="translate(24, 208)">
-    <rect x="0" y="0" width="62" height="22" rx="6" fill="#0C203E" stroke="#1D4ED8" stroke-width="0.6"/>
-    <text x="31" y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600" fill="#93C5FD">DuckDB</text>
+  <!-- Tech Stack Chips -->
+  <g transform="translate(24, 226)">
+    <rect x="0" y="0" width="64" height="22" rx="6" fill="#0C203E" stroke="#1D4ED8" stroke-width="0.6"/>
+    <text x="32" y="15" text-anchor="middle" class="font-sans" font-size="9.5" font-weight="600" fill="#93C5FD">DuckDB</text>
 
-    <rect x="68" y="0" width="58" height="22" rx="6" fill="#0C203E" stroke="#1D4ED8" stroke-width="0.6"/>
-    <text x="97" y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600" fill="#93C5FD">FastAPI</text>
+    <rect x="70" y="0" width="60" height="22" rx="6" fill="#0C203E" stroke="#1D4ED8" stroke-width="0.6"/>
+    <text x="100" y="15" text-anchor="middle" class="font-sans" font-size="9.5" font-weight="600" fill="#93C5FD">FastAPI</text>
 
-    <rect x="132" y="0" width="64" height="22" rx="6" fill="#0C203E" stroke="#1D4ED8" stroke-width="0.6"/>
-    <text x="164" y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600" fill="#93C5FD">React 18</text>
+    <rect x="136" y="0" width="66" height="22" rx="6" fill="#0C203E" stroke="#1D4ED8" stroke-width="0.6"/>
+    <text x="169" y="15" text-anchor="middle" class="font-sans" font-size="9.5" font-weight="600" fill="#93C5FD">React 18</text>
 
-    <rect x="202" y="0" width="70" height="22" rx="6" fill="#0C203E" stroke="#1D4ED8" stroke-width="0.6"/>
-    <text x="237" y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600" fill="#93C5FD">Cytoscape</text>
+    <rect x="208" y="0" width="72" height="22" rx="6" fill="#0C203E" stroke="#1D4ED8" stroke-width="0.6"/>
+    <text x="244" y="15" text-anchor="middle" class="font-sans" font-size="9.5" font-weight="600" fill="#93C5FD">Cytoscape</text>
 
-    <rect x="278" y="0" width="60" height="22" rx="6" fill="#0C203E" stroke="#1D4ED8" stroke-width="0.6"/>
-    <text x="308" y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600" fill="#93C5FD">YARA-X</text>
+    <rect x="286" y="0" width="62" height="22" rx="6" fill="#0C203E" stroke="#1D4ED8" stroke-width="0.6"/>
+    <text x="317" y="15" text-anchor="middle" class="font-sans" font-size="9.5" font-weight="600" fill="#93C5FD">YARA-X</text>
 
-    <rect x="344" y="0" width="62" height="22" rx="6" fill="#0C203E" stroke="#1D4ED8" stroke-width="0.6"/>
-    <text x="375" y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600" fill="#93C5FD">AG Grid</text>
+    <rect x="354" y="0" width="64" height="22" rx="6" fill="#0C203E" stroke="#1D4ED8" stroke-width="0.6"/>
+    <text x="386" y="15" text-anchor="middle" class="font-sans" font-size="9.5" font-weight="600" fill="#93C5FD">AG Grid</text>
   </g>
 
   <!-- Bottom Link Bar -->
-  <g transform="translate(24, 252)">
+  <g transform="translate(24, 269)">
     <text x="0" y="0" font-family="'SFMono-Regular', Consolas, monospace" font-size="10" fill="#64748B">github.com/sanjeeth-solleti/WFT</text>
-    <text x="437" y="0" text-anchor="end" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#38BDF8">Explore Repository &#x2192;</text>
+    <text x="437" y="0" text-anchor="end" class="font-sans" font-size="11" font-weight="700" fill="#38BDF8">Explore Repository &#x2192;</text>
   </g>
 </svg>

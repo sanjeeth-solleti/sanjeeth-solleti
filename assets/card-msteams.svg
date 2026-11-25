@@ -1,96 +1,121 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 270" width="485" height="270" role="img" aria-label="MSTeams_Parser — Microsoft Teams DFIR Forensic Suite">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 285" width="485" height="285" role="img" aria-label="MSTeams_Parser — Microsoft Teams DFIR Forensic Suite">
   <defs>
     <linearGradient id="ms-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#110B22"/>
-      <stop offset="50%" stop-color="#181032"/>
-      <stop offset="100%" stop-color="#0A0614"/>
+      <stop offset="0%" stop-color="#0E081D"/>
+      <stop offset="50%" stop-color="#150D2B"/>
+      <stop offset="100%" stop-color="#090514"/>
     </linearGradient>
     <radialGradient id="ms-glow" cx="15%" cy="15%" r="65%">
-      <stop offset="0%" stop-color="#A855F7" stop-opacity="0.16"/>
+      <stop offset="0%" stop-color="#A855F7" stop-opacity="0.18"/>
       <stop offset="60%" stop-color="#6B21A8" stop-opacity="0.04"/>
-      <stop offset="100%" stop-color="#110B22" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0E081D" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="ms-border" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#C084FC" stop-opacity="0.5"/>
-      <stop offset="50%" stop-color="#7C3AED" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#7C3AED" stop-opacity="0.4"/>
       <stop offset="100%" stop-color="#1E293B" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="ms-title-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E9D5FF"/>
     </linearGradient>
   </defs>
 
   <style>
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
     .pulse-ms { animation: pms 2.4s ease-in-out infinite; }
     @keyframes pms { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
   </style>
 
-  <!-- Card Frame -->
-  <rect width="485" height="270" rx="14" fill="url(#ms-bg)"/>
-  <rect width="485" height="270" rx="14" fill="url(#ms-glow)"/>
-  <rect x="0.5" y="0.5" width="484" height="269" rx="14" fill="none" stroke="url(#ms-border)" stroke-width="1"/>
-  
-  <!-- Glowing Top Accent -->
+  <!-- Frame Background -->
+  <rect width="485" height="285" rx="14" fill="url(#ms-bg)"/>
+  <rect width="485" height="285" rx="14" fill="url(#ms-glow)"/>
+  <rect x="0.5" y="0.5" width="484" height="284" rx="14" fill="none" stroke="url(#ms-border)" stroke-width="1"/>
+
+  <!-- Top Specular Highlight Accent -->
   <line x1="16" y1="1" x2="469" y2="1" stroke="#A855F7" stroke-width="1.8" stroke-linecap="round"/>
 
-  <!-- Top Header Bar -->
+  <!-- Header Status Bar -->
   <g transform="translate(24, 20)">
     <circle class="pulse-ms" cx="4" cy="5" r="3.5" fill="#A855F7"/>
-    <text x="14" y="9" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#C084FC" letter-spacing="1.4">COLLABORATION DFIR SUITE</text>
+    <text x="14" y="9" class="font-sans" font-size="10" font-weight="700" fill="#C084FC" letter-spacing="1.4">COLLABORATION DFIR SUITE</text>
     
     <!-- Air-gapped badge -->
     <rect x="317" y="-3" width="120" height="20" rx="6" fill="#291142" stroke="#7C3AED" stroke-width="0.8"/>
-    <text x="377" y="11" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#E9D5FF">AIR-GAPPED 127.0.0.1</text>
+    <text x="377" y="11" text-anchor="middle" class="font-sans" font-size="9" font-weight="700" fill="#E9D5FF">AIR-GAPPED 127.0.0.1</text>
   </g>
 
   <!-- Title & Subtitle -->
-  <text x="24" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="21" font-weight="800" fill="#FFFFFF">MSTeams_Parser</text>
-  <text x="24" y="85" font-family="system-ui, sans-serif" font-size="12" font-weight="500" fill="#94A3B8">Standalone Microsoft Teams DFIR Forensic Suite</text>
-  
-  <!-- Sleek Separator -->
-  <line x1="24" y1="98" x2="461" y2="98" stroke="#25163D" stroke-width="0.8"/>
+  <text x="24" y="66" class="font-sans" font-size="20" font-weight="800" fill="url(#ms-title-grad)">MSTeams_Parser</text>
+  <text x="24" y="85" class="font-sans" font-size="11.5" font-weight="500" fill="#94A3B8">Standalone Microsoft Teams DFIR Forensic Suite</text>
 
-  <!-- Core Forensic Highlights -->
-  <g font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#E2E8F0" transform="translate(24, 118)">
+  <!-- Telemetry Pipeline Preview Capsule -->
+  <g transform="translate(24, 98)">
+    <rect width="437" height="22" rx="6" fill="#201138" stroke="#4C1D95" stroke-width="0.75"/>
+    <text x="10" y="15" class="font-sans" font-size="9" font-weight="700" fill="#C084FC">PIPELINE:</text>
+    <text x="64" y="15" class="font-sans" font-size="9" fill="#94A3B8">
+      IndexedDB/LevelDB <tspan fill="#C084FC">&#x2192;</tspan> Base64 Decode <tspan fill="#C084FC">&#x2192;</tspan> 8:orgid Resolve <tspan fill="#C084FC">&#x2192;</tspan> HTML Dossier
+    </text>
+  </g>
+
+  <!-- Core Highlights with Bespoke Micro-Icons -->
+  <g class="font-sans" font-size="11" fill="#E2E8F0" transform="translate(24, 138)">
+    <!-- Point 1: Multi-Source Package Box -->
     <g transform="translate(0, 0)">
-      <circle cx="4" cy="-4" r="2.5" fill="#C084FC"/>
-      <text x="14" y="0"><tspan font-weight="700" fill="#FFFFFF">Multi-Source Ingestion:</tspan> <tspan fill="#CBD5E1">Decodes New &amp; Classic IndexedDB &amp; LevelDB</tspan></text>
+      <rect x="0" y="-9" width="16" height="16" rx="4" fill="#281144" stroke="#7C3AED" stroke-width="0.6"/>
+      <path d="M4 -5 L8 -7 L12 -5 L8 -3 Z" fill="none" stroke="#C084FC" stroke-width="1"/>
+      <path d="M4 -5 V1 L8 3 V-3 M12 -5 V1 L8 3" fill="none" stroke="#C084FC" stroke-width="1"/>
+      <text x="24" y="3"><tspan font-weight="700" fill="#FFFFFF">Multi-Source Ingestion:</tspan> <tspan fill="#CBD5E1">Decodes New &amp; Classic IndexedDB &amp; LevelDB</tspan></text>
     </g>
-    <g transform="translate(0, 20)">
-      <circle cx="4" cy="-4" r="2.5" fill="#C084FC"/>
-      <text x="14" y="0"><tspan font-weight="700" fill="#FFFFFF">Deep Normalization:</tspan> <tspan fill="#CBD5E1">Base64 Adaptive Cards, call logs &amp; meeting events</tspan></text>
+    <!-- Point 2: Normalization Code/Doc Icon -->
+    <g transform="translate(0, 21)">
+      <rect x="0" y="-9" width="16" height="16" rx="4" fill="#281144" stroke="#7C3AED" stroke-width="0.6"/>
+      <path d="M4 -6 H10 L12 -4 V4 H4 Z" fill="none" stroke="#C084FC" stroke-width="1"/>
+      <line x1="6" y1="-2" x2="10" y2="-2" stroke="#C084FC" stroke-width="0.8"/>
+      <line x1="6" y1="1" x2="10" y2="1" stroke="#C084FC" stroke-width="0.8"/>
+      <text x="24" y="3"><tspan font-weight="700" fill="#FFFFFF">Deep Normalization:</tspan> <tspan fill="#CBD5E1">Base64 Adaptive Cards, call logs &amp; meeting events</tspan></text>
     </g>
-    <g transform="translate(0, 40)">
-      <circle cx="4" cy="-4" r="2.5" fill="#C084FC"/>
-      <text x="14" y="0"><tspan font-weight="700" fill="#FFFFFF">Identity Correlator:</tspan> <tspan fill="#CBD5E1">Resolves 8:orgid GUIDs to employee records</tspan></text>
+    <!-- Point 3: Identity User Icon -->
+    <g transform="translate(0, 42)">
+      <rect x="0" y="-9" width="16" height="16" rx="4" fill="#281144" stroke="#7C3AED" stroke-width="0.6"/>
+      <circle cx="8" cy="-4" r="2.2" fill="none" stroke="#C084FC" stroke-width="1"/>
+      <path d="M4 3 C4 0.5 6 0 8 0 C10 0 12 0.5 12 3" fill="none" stroke="#C084FC" stroke-width="1"/>
+      <text x="24" y="3"><tspan font-weight="700" fill="#FFFFFF">Identity Correlator:</tspan> <tspan fill="#CBD5E1">Resolves 8:orgid GUIDs to corporate records</tspan></text>
     </g>
-    <g transform="translate(0, 60)">
-      <circle cx="4" cy="-4" r="2.5" fill="#C084FC"/>
-      <text x="14" y="0"><tspan font-weight="700" fill="#FFFFFF">Forensic Media Carver:</tspan> <tspan fill="#CBD5E1">Magic-byte image recovery &amp; noise suppression</tspan></text>
+    <!-- Point 4: Media Carver Photo Icon -->
+    <g transform="translate(0, 63)">
+      <rect x="0" y="-9" width="16" height="16" rx="4" fill="#281144" stroke="#7C3AED" stroke-width="0.6"/>
+      <rect x="3" y="-5" width="10" height="8" rx="1" fill="none" stroke="#C084FC" stroke-width="1"/>
+      <circle cx="6" cy="-2.5" r="0.8" fill="#C084FC"/>
+      <path d="M4 2 L7 -1 L9 1 L11 -1 L13 2" fill="none" stroke="#C084FC" stroke-width="0.9"/>
+      <text x="24" y="3"><tspan font-weight="700" fill="#FFFFFF">Forensic Media Carver:</tspan> <tspan fill="#CBD5E1">Magic-byte image recovery &amp; noise suppression</tspan></text>
     </g>
   </g>
 
   <!-- Divider before pills -->
-  <line x1="24" y1="198" x2="461" y2="198" stroke="#25163D" stroke-width="0.8"/>
+  <line x1="24" y1="216" x2="461" y2="216" stroke="#25163D" stroke-width="0.8"/>
 
-  <!-- Modern Tech Stack Pills -->
-  <g transform="translate(24, 208)">
-    <rect x="0" y="0" width="62" height="22" rx="6" fill="#24103C" stroke="#7C3AED" stroke-width="0.6"/>
-    <text x="31" y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600" fill="#E9D5FF">LevelDB</text>
+  <!-- Tech Stack Chips -->
+  <g transform="translate(24, 226)">
+    <rect x="0" y="0" width="64" height="22" rx="6" fill="#24103C" stroke="#7C3AED" stroke-width="0.6"/>
+    <text x="32" y="15" text-anchor="middle" class="font-sans" font-size="9.5" font-weight="600" fill="#E9D5FF">LevelDB</text>
 
-    <rect x="68" y="0" width="72" height="22" rx="6" fill="#24103C" stroke="#7C3AED" stroke-width="0.6"/>
-    <text x="104" y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600" fill="#E9D5FF">IndexedDB</text>
+    <rect x="70" y="0" width="74" height="22" rx="6" fill="#24103C" stroke="#7C3AED" stroke-width="0.6"/>
+    <text x="107" y="15" text-anchor="middle" class="font-sans" font-size="9.5" font-weight="600" fill="#E9D5FF">IndexedDB</text>
 
-    <rect x="146" y="0" width="84" height="22" rx="6" fill="#24103C" stroke="#7C3AED" stroke-width="0.6"/>
-    <text x="188" y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600" fill="#E9D5FF">dfindexeddb</text>
+    <rect x="150" y="0" width="86" height="22" rx="6" fill="#24103C" stroke="#7C3AED" stroke-width="0.6"/>
+    <text x="193" y="15" text-anchor="middle" class="font-sans" font-size="9.5" font-weight="600" fill="#E9D5FF">dfindexeddb</text>
 
-    <rect x="236" y="0" width="68" height="22" rx="6" fill="#24103C" stroke="#7C3AED" stroke-width="0.6"/>
-    <text x="270" y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600" fill="#E9D5FF">cramjam</text>
+    <rect x="242" y="0" width="70" height="22" rx="6" fill="#24103C" stroke="#7C3AED" stroke-width="0.6"/>
+    <text x="277" y="15" text-anchor="middle" class="font-sans" font-size="9.5" font-weight="600" fill="#E9D5FF">cramjam</text>
 
-    <rect x="310" y="0" width="86" height="22" rx="6" fill="#24103C" stroke="#7C3AED" stroke-width="0.6"/>
-    <text x="353" y="15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600" fill="#E9D5FF">HTML Viewer</text>
+    <rect x="318" y="0" width="88" height="22" rx="6" fill="#24103C" stroke="#7C3AED" stroke-width="0.6"/>
+    <text x="362" y="15" text-anchor="middle" class="font-sans" font-size="9.5" font-weight="600" fill="#E9D5FF">HTML Viewer</text>
   </g>
 
   <!-- Bottom Link Bar -->
-  <g transform="translate(24, 252)">
+  <g transform="translate(24, 269)">
     <text x="0" y="0" font-family="'SFMono-Regular', Consolas, monospace" font-size="10" fill="#64748B">github.com/sanjeeth-solleti/MSTeams_Parser</text>
-    <text x="437" y="0" text-anchor="end" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#C084FC">Explore Repository &#x2192;</text>
+    <text x="437" y="0" text-anchor="end" class="font-sans" font-size="11" font-weight="700" fill="#C084FC">Explore Repository &#x2192;</text>
   </g>
 </svg>

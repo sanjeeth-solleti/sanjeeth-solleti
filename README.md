@@ -111,12 +111,12 @@ A standalone DFIR suite engineered for parsing, reconstructing, and analyzing Mi
 </td></tr>
 <tr><td><b>Core Disciplines</b></td><td>
 
-![Windows Forensics](https://img.shields.io/badge/Windows_Forensics-1F6F35?style=flat-square&labelColor=1F6F35)
-![Endpoint Triage](https://img.shields.io/badge/Endpoint_Triage-1F6F35?style=flat-square&labelColor=1F6F35)
-![Incident Response](https://img.shields.io/badge/Incident_Response-1F6F35?style=flat-square&labelColor=1F6F35)
-![Artifact Parser Dev](https://img.shields.io/badge/Artifact_Parser_Dev-1F6F35?style=flat-square&labelColor=1F6F35)
-![Threat Hunting](https://img.shields.io/badge/Threat_Hunting-1F6F35?style=flat-square&labelColor=1F6F35)
-![Timeline Reconstruction](https://img.shields.io/badge/Timeline_Reconstruction-1F6F35?style=flat-square&labelColor=1F6F35)
+![Windows Forensics](https://img.shields.io/badge/Windows_Forensics-161B22?style=flat-square&labelColor=161B22&color=0284C7)
+![Endpoint Triage](https://img.shields.io/badge/Endpoint_Triage-161B22?style=flat-square&labelColor=161B22&color=0284C7)
+![Incident Response](https://img.shields.io/badge/Incident_Response-161B22?style=flat-square&labelColor=161B22&color=38BDF8)
+![Artifact Parser Dev](https://img.shields.io/badge/Artifact_Parser_Dev-161B22?style=flat-square&labelColor=161B22&color=7C3AED)
+![Threat Hunting](https://img.shields.io/badge/Threat_Hunting-161B22?style=flat-square&labelColor=161B22&color=A855F7)
+![Timeline Reconstruction](https://img.shields.io/badge/Timeline_Reconstruction-161B22?style=flat-square&labelColor=161B22&color=10B981)
 
 </td></tr>
 <tr><td><b>Code &amp; Stack</b></td><td>
