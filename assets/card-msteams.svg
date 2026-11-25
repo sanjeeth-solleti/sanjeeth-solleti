@@ -1,54 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 280" width="960" height="280" role="img" aria-label="MSTeams_Parser — Microsoft Teams Forensic Suite">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" width="480" height="170" role="img" aria-label="MSTeams_Parser — Microsoft Teams Forensic Suite">
+  <style>
+    .pulse { animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity:1 } 50% { opacity:.2 } }
+  </style>
   <defs>
-    <linearGradient id="msbg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0B0F14"/>
-      <stop offset="60%" stop-color="#0D1117"/>
-      <stop offset="100%" stop-color="#191528"/>
-    </linearGradient>
-    <linearGradient id="msaccent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#A371F7"/>
-      <stop offset="100%" stop-color="#6E40C9"/>
-    </linearGradient>
-    <clipPath id="msround"><rect width="960" height="280" rx="12"/></clipPath>
+    <pattern id="msscan" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="1" fill="#FFFFFF" opacity="0.035"/>
+    </pattern>
+    <clipPath id="cms"><path d="M12 0.5 H458 L479.5 22 V158 Q479.5 169.5 468 169.5 H12 Q0.5 169.5 0.5 158 V12 Q0.5 0.5 12 0.5 Z"/></clipPath>
   </defs>
-
-  <g clip-path="url(#msround)">
-    <rect width="960" height="280" fill="url(#msbg)"/>
-
-    <!-- Subtle accent border -->
-    <rect width="960" height="280" fill="none" stroke="#30363D" stroke-width="1.5" rx="12"/>
-    <rect x="0" y="0" width="6" height="280" fill="url(#msaccent)"/>
-
-    <!-- Header badge -->
-    <rect x="40" y="26" width="200" height="22" rx="4" fill="#6E40C9" fill-opacity="0.2" stroke="#A371F7" stroke-width="1"/>
-    <text x="50" y="41" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="700" fill="#D2A8FF" letter-spacing="1.2">APPLICATION FORENSICS</text>
-
-    <!-- Status -->
-    <text x="890" y="41" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7EE787">● 100% OFFLINE / ISOLATED</text>
-
-    <!-- Project Title -->
-    <text x="40" y="80" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="25" font-weight="700" fill="#F0F6FC">MSTeams_Parser — Microsoft Teams Forensic Suite</text>
-    <text x="40" y="104" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#8B949E">Deep extraction, message normalization, contact resolution, and media carving for Microsoft Teams artifacts.</text>
-
-    <!-- 4 Core Pillars Grid -->
-    <!-- Box 1 -->
-    <rect x="40" y="126" width="425" height="58" rx="6" fill="#161B22" stroke="#21262D" stroke-width="1"/>
-    <text x="55" y="148" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#D2A8FF">💾 IndexedDB &amp; LevelDB Deep Ingestion</text>
-    <text x="55" y="168" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8B949E">Ingests New Teams (v2) and Classic Teams (v1) stores with multi-source fallback.</text>
-
-    <!-- Box 2 -->
-    <rect x="495" y="126" width="425" height="58" rx="6" fill="#161B22" stroke="#21262D" stroke-width="1"/>
-    <text x="510" y="148" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#58A6FF">🧩 Adaptive Cards &amp; Message Events</text>
-    <text x="510" y="168" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8B949E">Decodes Base64 JSON Adaptive Cards, call durations, meeting logs, deleted messages.</text>
-
-    <!-- Box 3 -->
-    <rect x="40" y="194" width="425" height="58" rx="6" fill="#161B22" stroke="#21262D" stroke-width="1"/>
-    <text x="55" y="216" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#3FB950">👤 Contact &amp; Identity Resolution</text>
-    <text x="55" y="236" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8B949E">Maps obfuscated GUIDs to human names, emails, roles, and enterprise directory info.</text>
-
-    <!-- Box 4 -->
-    <rect x="495" y="194" width="425" height="58" rx="6" fill="#161B22" stroke="#21262D" stroke-width="1"/>
-    <text x="510" y="216" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#FFA657">📊 Evidence Hand-off &amp; Reports</text>
-    <text x="510" y="236" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8B949E">Standalone HTML chat viewer, Excel CSV summaries, media carving, dual UTC/IST.</text>
+  <g clip-path="url(#cms)">
+    <rect width="480" height="170" fill="#0A1020"/>
+    <rect width="480" height="170" fill="url(#msscan)"/>
   </g>
+  <path d="M12 0.5 H458 L479.5 22 V158 Q479.5 169.5 468 169.5 H12 Q0.5 169.5 0.5 158 V12 Q0.5 0.5 12 0.5 Z" fill="none" stroke="#1A2740"/>
+  <path d="M458 0.5 L479.5 22" stroke="#A371F7" stroke-width="2"/>
+
+  <circle class="pulse" cx="28" cy="33" r="4" fill="#A371F7"/>
+  <text x="42" y="37" font-family="'Cascadia Code', 'JetBrains Mono', Consolas, monospace" font-size="10.5" letter-spacing="2.2" fill="#A371F7">COLLABORATION · DFIR</text>
+  <text x="444" y="37" text-anchor="end" font-family="'Cascadia Code', Consolas, monospace" font-size="10.5" fill="#5A6A88">02</text>
+
+  <text x="28" y="74" font-family="'Segoe UI', -apple-system, sans-serif" font-size="22" font-weight="700" fill="#EAF4FF">MSTeams_Parser</text>
+  <text x="28" y="98" font-family="'Segoe UI', -apple-system, sans-serif" font-size="13" fill="#C3CEE0">LevelDB &amp; IndexedDB parser, Base64 Adaptive Cards,</text>
+  <text x="28" y="117" font-family="'Segoe UI', -apple-system, sans-serif" font-size="13" fill="#8495B2">calls/meetings, GUID resolution &amp; offline media carving.</text>
+
+  <rect x="28" y="130" width="424" height="1" fill="#1A2740"/>
+  <text x="28" y="146" font-family="'Cascadia Code', Consolas, monospace" font-size="11" fill="#8495B2">github.com/sanjeeth-solleti/MSTeams_Parser</text>
+  <text x="452" y="146" text-anchor="end" font-family="'Cascadia Code', Consolas, monospace" font-size="12" fill="#A371F7">&#x2192;</text>
 </svg>

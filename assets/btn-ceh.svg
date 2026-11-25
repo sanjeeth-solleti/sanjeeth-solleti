@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 44" width="220" height="44" role="img" aria-label="CEH CERTIFIED">
+  <path d="M8 0.5 H208 L219.5 12 V36 Q219.5 43.5 212 43.5 H8 Q0.5 43.5 0.5 36 V8 Q0.5 0.5 8 0.5 Z" fill="#0A1020" stroke="#1A2740"/>
+  <path d="M208 0.5 L219.5 12" stroke="#A371F7" stroke-width="2"/>
+  <rect x="18" y="18" width="7" height="7" fill="#A371F7" transform="rotate(45 21.5 21.5)"/>
+  <text x="36" y="27" font-family="'Cascadia Code', 'JetBrains Mono', ui-monospace, Consolas, monospace" font-size="11.5" font-weight="700" letter-spacing="2.2" fill="#EAF4FF">CEH CERTIFIED</text>
+  <text x="202" y="27" text-anchor="end" font-family="'Cascadia Code', 'JetBrains Mono', ui-monospace, Consolas, monospace" font-size="11" fill="#A371F7">&#x2192;</text>
+</svg>
