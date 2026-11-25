@@ -1,130 +1,142 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 380" width="1000" height="380" role="img" aria-label="Evidence map: RAW forensics intake flows through WFT and MSTeams_Parser into super-timelines and case reports.">
-  <style>
-    .flow { animation: flow 1.6s linear infinite; }
-    .pulse { animation: pulse 2s ease-in-out infinite; }
-    @keyframes flow { to { stroke-dashoffset: -32; } }
-    @keyframes pulse { 0%,100% { opacity:1 } 50% { opacity:.3 } }
-  </style>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300" role="img" aria-label="DFIR Dual-Engine Architecture: WFT Platform and MSTeams_Parser Evidence Pipeline">
   <defs>
-    <pattern id="mapscan" width="4" height="4" patternUnits="userSpaceOnUse">
-      <rect width="4" height="1" fill="#FFFFFF" opacity="0.025"/>
-    </pattern>
-    <clipPath id="mframe"><rect width="1000" height="380" rx="14"/></clipPath>
+    <linearGradient id="mapbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070C18"/>
+      <stop offset="100%" stop-color="#050810"/>
+    </linearGradient>
   </defs>
 
-  <g clip-path="url(#mframe)">
-    <rect width="1000" height="380" fill="#05080F"/>
-    <rect width="1000" height="380" fill="url(#mapscan)"/>
+  <rect width="1000" height="300" rx="14" fill="url(#mapbg)"/>
+  <rect x="0.5" y="0.5" width="999" height="299" rx="14" fill="none" stroke="#1E293B" stroke-width="1"/>
+
+  <!-- Architecture Header -->
+  <text x="36" y="32" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#38BDF8" letter-spacing="1.5">DFIR DUAL-ENGINE FORENSIC ARCHITECTURE</text>
+  <text x="964" y="32" text-anchor="end" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#64748B">Deterministic Intake &#x2022; Dirty Hive Recovery &#x2022; Multi-Source Evidence Synthesis</text>
+  <line x1="30" y1="44" x2="970" y2="44" stroke="#1E293B" stroke-width="1"/>
+
+  <!-- ==================== TRACK 1: WFT (Host / Endpoint) ==================== -->
+  <g transform="translate(36, 60)">
+    <!-- Label -->
+    <rect x="0" y="0" width="190" height="20" rx="4" fill="#0C1D38" stroke="#1D4ED8" stroke-width="1"/>
+    <text x="95" y="14" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="#93C5FD" letter-spacing="1">TRACK 1: HOST &amp; ENDPOINT FORENSICS</text>
+
+    <!-- Stage 1.1: Evidence Intake -->
+    <g transform="translate(0, 30)">
+      <rect width="140" height="60" rx="8" fill="#0A1428" stroke="#1E3A8A" stroke-width="1"/>
+      <text x="70" y="24" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">1. Evidence Intake</text>
+      <text x="70" y="42" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#94A3B8">E01 / RAW / VHDX</text>
+      <text x="70" y="53" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748B">Native Dissect VFS</text>
+    </g>
+
+    <!-- Bus Arrow 1 -->
+    <path d="M140 60 H165" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <polygon points="168,60 163,57 163,63" fill="#38BDF8"/>
+
+    <!-- Stage 1.2: Dirty Registry Replay -->
+    <g transform="translate(170, 30)">
+      <rect width="150" height="60" rx="8" fill="#0A1428" stroke="#1E3A8A" stroke-width="1"/>
+      <text x="75" y="24" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">2. Registry Integrity</text>
+      <text x="75" y="42" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#94A3B8">RLA .LOG1/.LOG2</text>
+      <text x="75" y="53" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748B">Transaction Replay</text>
+    </g>
+
+    <!-- Bus Arrow 2 -->
+    <path d="M320 60 H345" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <polygon points="348,60 343,57 343,63" fill="#38BDF8"/>
+
+    <!-- Stage 1.3: Deep Parsers & Hunting -->
+    <g transform="translate(350, 30)">
+      <rect width="150" height="60" rx="8" fill="#0A1428" stroke="#1E3A8A" stroke-width="1"/>
+      <text x="75" y="24" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">3. Toolchain &amp; Triage</text>
+      <text x="75" y="42" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#94A3B8">EZ Tools + Browser WAL</text>
+      <text x="75" y="53" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748B">YARA-X + RapidOCR</text>
+    </g>
+
+    <!-- Bus Arrow 3 -->
+    <path d="M500 60 H525" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <polygon points="528,60 523,57 523,63" fill="#38BDF8"/>
+
+    <!-- Stage 1.4: WFT Core -->
+    <g transform="translate(530, 30)">
+      <rect width="140" height="60" rx="8" fill="#0F284E" stroke="#2563EB" stroke-width="1.4"/>
+      <text x="70" y="24" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="800" fill="#38BDF8">4. WFT Platform</text>
+      <text x="70" y="42" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#FFFFFF">DuckDB Engine</text>
+      <text x="70" y="53" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#93C5FD">Zero-Copy Super-Timeline</text>
+    </g>
+
+    <!-- Connector to Output -->
+    <path d="M670 60 H710" stroke="#38BDF8" stroke-width="1.5"/>
+    <polygon points="712,60 707,57 707,63" fill="#38BDF8"/>
   </g>
-  <rect x="0.5" y="0.5" width="999" height="379" rx="14" fill="none" stroke="#1A2740"/>
 
-  <!-- Header line -->
-  <text x="500" y="34" text-anchor="middle" font-family="'Cascadia Code', 'JetBrains Mono', Consolas, monospace" font-size="11" letter-spacing="4" fill="#5A6A88">FORENSIC EVIDENCE &amp; ENGINE ARCHITECTURE</text>
-  <text x="140" y="34" text-anchor="middle" font-family="'Cascadia Code', 'JetBrains Mono', Consolas, monospace" font-size="10" letter-spacing="2.5" fill="#8495B2">EVIDENCE SOURCES</text>
-  <text x="860" y="34" text-anchor="middle" font-family="'Cascadia Code', 'JetBrains Mono', Consolas, monospace" font-size="10" letter-spacing="2.5" fill="#8495B2">CORRELATED PRODUCTS</text>
+  <!-- ==================== TRACK 2: MSTEAMS (Collaboration / Cloud) ==================== -->
+  <g transform="translate(36, 172)">
+    <!-- Label -->
+    <rect x="0" y="0" width="210" height="20" rx="4" fill="#1C1035" stroke="#7C3AED" stroke-width="1"/>
+    <text x="105" y="14" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="#C4B5FD" letter-spacing="1">TRACK 2: COLLABORATION FORENSICS</text>
 
-  <!-- Left: Evidence Sources (5 boxes) -->
-  <!-- Box 1 -->
-  <rect x="30" y="60" width="220" height="46" rx="6" fill="#0A1020" stroke="#1A2740"/>
-  <circle class="pulse" cx="46" cy="83" r="3.5" fill="#1FA8FF"/>
-  <text x="58" y="79" font-family="'Cascadia Code', Consolas, monospace" font-size="11" font-weight="700" fill="#EAF4FF">E01 / RAW / VHDX</text>
-  <text x="58" y="94" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#8495B2">Native dissect.target VFS</text>
+    <!-- Stage 2.1: Store Ingestion -->
+    <g transform="translate(0, 30)">
+      <rect width="140" height="60" rx="8" fill="#140C24" stroke="#4C1D95" stroke-width="1"/>
+      <text x="70" y="24" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">1. Teams Intake</text>
+      <text x="70" y="42" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#94A3B8">IndexedDB &amp; LevelDB</text>
+      <text x="70" y="53" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748B">New &amp; Classic Teams</text>
+    </g>
 
-  <!-- Box 2 -->
-  <rect x="30" y="118" width="220" height="46" rx="6" fill="#0A1020" stroke="#1A2740"/>
-  <circle class="pulse" cx="46" cy="141" r="3.5" fill="#1FA8FF"/>
-  <text x="58" y="137" font-family="'Cascadia Code', Consolas, monospace" font-size="11" font-weight="700" fill="#EAF4FF">NTFS $MFT / $J / Log</text>
-  <text x="58" y="152" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#8495B2">MFTECmd deep file records</text>
+    <!-- Bus Arrow 1 -->
+    <path d="M140 60 H165" stroke="#A855F7" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <polygon points="168,60 163,57 163,63" fill="#A855F7"/>
 
-  <!-- Box 3 -->
-  <rect x="30" y="176" width="220" height="46" rx="6" fill="#0A1020" stroke="#1A2740"/>
-  <circle class="pulse" cx="46" cy="199" r="3.5" fill="#1FA8FF"/>
-  <text x="58" y="195" font-family="'Cascadia Code', Consolas, monospace" font-size="11" font-weight="700" fill="#EAF4FF">Dirty Registry Logs</text>
-  <text x="58" y="210" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#8495B2">RLA .LOG1/.LOG2 transaction replay</text>
+    <!-- Stage 2.2: Payload Normalization -->
+    <g transform="translate(170, 30)">
+      <rect width="150" height="60" rx="8" fill="#140C24" stroke="#4C1D95" stroke-width="1"/>
+      <text x="75" y="24" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">2. Normalization</text>
+      <text x="75" y="42" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#94A3B8">Adaptive Cards Base64</text>
+      <text x="75" y="53" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748B">Call Logs &amp; Events</text>
+    </g>
 
-  <!-- Box 4 -->
-  <rect x="30" y="234" width="220" height="46" rx="6" fill="#0A1020" stroke="#1A2740"/>
-  <circle class="pulse" cx="46" cy="257" r="3.5" fill="#A371F7"/>
-  <text x="58" y="253" font-family="'Cascadia Code', Consolas, monospace" font-size="11" font-weight="700" fill="#EAF4FF">Teams LevelDB / IdxDB</text>
-  <text x="58" y="268" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#8495B2">dfindexeddb + cramjam parser</text>
+    <!-- Bus Arrow 2 -->
+    <path d="M320 60 H345" stroke="#A855F7" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <polygon points="348,60 343,57 343,63" fill="#A855F7"/>
 
-  <!-- Box 5 -->
-  <rect x="30" y="292" width="220" height="46" rx="6" fill="#0A1020" stroke="#1A2740"/>
-  <circle class="pulse" cx="46" cy="315" r="3.5" fill="#3FB950"/>
-  <text x="58" y="311" font-family="'Cascadia Code', Consolas, monospace" font-size="11" font-weight="700" fill="#EAF4FF">Browser &amp; Cloud Sync</text>
-  <text x="58" y="326" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#8495B2">Chromium WAL &amp; OneDrive DB</text>
+    <!-- Stage 2.3: Directory & Carving -->
+    <g transform="translate(350, 30)">
+      <rect width="150" height="60" rx="8" fill="#140C24" stroke="#4C1D95" stroke-width="1"/>
+      <text x="75" y="24" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">3. Correlation &amp; Carve</text>
+      <text x="75" y="42" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#94A3B8">GUID &#x2192; Directory Name</text>
+      <text x="75" y="53" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748B">Magic Bytes Media Carve</text>
+    </g>
 
-  <!-- Connecting Flow Lines (Left to Center) -->
-  <path d="M250 83 C330 83, 330 150, 410 150" fill="none" stroke="#1A2740" stroke-width="1.5"/>
-  <path class="flow" style="animation-delay:-0.0s" d="M250 83 C330 83, 330 150, 410 150" fill="none" stroke="#1FA8FF" stroke-width="1.5" stroke-dasharray="3 13" stroke-linecap="round"/>
+    <!-- Bus Arrow 3 -->
+    <path d="M500 60 H525" stroke="#A855F7" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <polygon points="528,60 523,57 523,63" fill="#A855F7"/>
 
-  <path d="M250 141 C330 141, 330 150, 410 150" fill="none" stroke="#1A2740" stroke-width="1.5"/>
-  <path class="flow" style="animation-delay:-0.3s" d="M250 141 C330 141, 330 150, 410 150" fill="none" stroke="#1FA8FF" stroke-width="1.5" stroke-dasharray="3 13" stroke-linecap="round"/>
+    <!-- Stage 2.4: MSTeams Engine -->
+    <g transform="translate(530, 30)">
+      <rect width="140" height="60" rx="8" fill="#2E1254" stroke="#7C3AED" stroke-width="1.4"/>
+      <text x="70" y="24" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="800" fill="#C084FC">4. MSTeams Parser</text>
+      <text x="70" y="42" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#FFFFFF">Air-Gapped Suite</text>
+      <text x="70" y="53" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E9D5FF">Standalone Extraction</text>
+    </g>
 
-  <path d="M250 199 C330 199, 330 160, 410 160" fill="none" stroke="#1A2740" stroke-width="1.5"/>
-  <path class="flow" style="animation-delay:-0.6s" d="M250 199 C330 199, 330 160, 410 160" fill="none" stroke="#1FA8FF" stroke-width="1.5" stroke-dasharray="3 13" stroke-linecap="round"/>
+    <!-- Connector to Output -->
+    <path d="M670 60 H710" stroke="#A855F7" stroke-width="1.5"/>
+    <polygon points="712,60 707,57 707,63" fill="#A855F7"/>
+  </g>
 
-  <path d="M250 257 C330 257, 330 290, 410 290" fill="none" stroke="#1A2740" stroke-width="1.5"/>
-  <path class="flow" style="animation-delay:-0.9s" d="M250 257 C330 257, 330 290, 410 290" fill="none" stroke="#A371F7" stroke-width="1.5" stroke-dasharray="3 13" stroke-linecap="round"/>
+  <!-- ==================== SYNTHESIS OUTPUT NODE (Right) ==================== -->
+  <g transform="translate(750, 88)">
+    <rect width="214" height="174" rx="10" fill="#0C152B" stroke="#1E293B" stroke-width="1.2"/>
+    <rect width="214" height="28" rx="10" fill="#0F1E3E"/>
+    <rect y="24" width="214" height="4" fill="#0F1E3E"/>
+    <text x="107" y="19" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="700" fill="#FFFFFF" letter-spacing="1">DEFENSIBLE DFIR OUTPUTS</text>
 
-  <path d="M250 315 C330 315, 330 180, 410 180" fill="none" stroke="#1A2740" stroke-width="1.5"/>
-  <path class="flow" style="animation-delay:-1.2s" d="M250 315 C330 315, 330 180, 410 180" fill="none" stroke="#3FB950" stroke-width="1.5" stroke-dasharray="3 13" stroke-linecap="round"/>
-
-  <!-- Center: Forensic Engines (2 Primary Engines) -->
-  <!-- Center 1: WFT Platform (Main Engine) -->
-  <rect x="410" y="80" width="180" height="135" rx="8" fill="#071A30" stroke="#0E3A66" stroke-width="1.5"/>
-  <rect x="410" y="80" width="180" height="4" rx="2" fill="#1FA8FF"/>
-  <text x="500" y="105" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="#EAF4FF">WFT Platform</text>
-  <text x="500" y="122" text-anchor="middle" font-family="'Cascadia Code', Consolas, monospace" font-size="9" fill="#1FA8FF">ENTERPRISE WORKBENCH</text>
-  <rect x="424" y="132" width="152" height="1" fill="#0E3A66"/>
-  <text x="430" y="148" font-family="'Cascadia Code', Consolas, monospace" font-size="9" fill="#8495B2">&#x25AA; DuckDB Columnar</text>
-  <text x="430" y="163" font-family="'Cascadia Code', Consolas, monospace" font-size="9" fill="#8495B2">&#x25AA; RLA Registry Replay</text>
-  <text x="430" y="178" font-family="'Cascadia Code', Consolas, monospace" font-size="9" fill="#8495B2">&#x25AA; EZ Tools &amp; YARA-X</text>
-  <text x="430" y="193" font-family="'Cascadia Code', Consolas, monospace" font-size="9" fill="#8495B2">&#x25AA; RapidOCR Carving</text>
-
-  <!-- Center 2: MSTeams_Parser -->
-  <rect x="410" y="240" width="180" height="100" rx="8" fill="#140C24" stroke="#3D2068" stroke-width="1.5"/>
-  <rect x="410" y="240" width="180" height="4" rx="2" fill="#A371F7"/>
-  <text x="500" y="265" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#EAF4FF">MSTeams_Parser</text>
-  <text x="500" y="280" text-anchor="middle" font-family="'Cascadia Code', Consolas, monospace" font-size="9" fill="#A371F7">COLLABORATION DFIR</text>
-  <rect x="424" y="288" width="152" height="1" fill="#3D2068"/>
-  <text x="430" y="304" font-family="'Cascadia Code', Consolas, monospace" font-size="9" fill="#8495B2">&#x25AA; LevelDB &amp; Adaptive Cards</text>
-  <text x="430" y="319" font-family="'Cascadia Code', Consolas, monospace" font-size="9" fill="#8495B2">&#x25AA; Contact GUID &amp; Magic Carve</text>
-
-  <!-- Connecting Flow Lines (Center to Right) -->
-  <path d="M590 120 C670 120, 670 83, 750 83" fill="none" stroke="#1A2740" stroke-width="1.5"/>
-  <path class="flow" style="animation-delay:-0.2s" d="M590 120 C670 120, 670 83, 750 83" fill="none" stroke="#1FA8FF" stroke-width="1.5" stroke-dasharray="3 13" stroke-linecap="round"/>
-
-  <path d="M590 145 C670 145, 670 141, 750 141" fill="none" stroke="#1A2740" stroke-width="1.5"/>
-  <path class="flow" style="animation-delay:-0.5s" d="M590 145 C670 145, 670 141, 750 141" fill="none" stroke="#1FA8FF" stroke-width="1.5" stroke-dasharray="3 13" stroke-linecap="round"/>
-
-  <path d="M590 280 C670 280, 670 215, 750 215" fill="none" stroke="#1A2740" stroke-width="1.5"/>
-  <path class="flow" style="animation-delay:-0.8s" d="M590 280 C670 280, 670 215, 750 215" fill="none" stroke="#A371F7" stroke-width="1.5" stroke-dasharray="3 13" stroke-linecap="round"/>
-
-  <path d="M590 180 C670 180, 670 290, 750 290" fill="none" stroke="#1A2740" stroke-width="1.5"/>
-  <path class="flow" style="animation-delay:-1.1s" d="M590 180 C670 180, 670 290, 750 290" fill="none" stroke="#3FB950" stroke-width="1.5" stroke-dasharray="3 13" stroke-linecap="round"/>
-
-  <!-- Right: Correlated Products (4 boxes) -->
-  <!-- Box 1 -->
-  <rect x="750" y="60" width="220" height="46" rx="6" fill="#0A1020" stroke="#1A2740"/>
-  <text x="765" y="79" font-family="'Cascadia Code', Consolas, monospace" font-size="11" font-weight="700" fill="#EAF4FF">Master Super-Timeline</text>
-  <text x="765" y="94" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#8495B2">Unpivoted UTC attack sequence</text>
-
-  <!-- Box 2 -->
-  <rect x="750" y="118" width="220" height="46" rx="6" fill="#0A1020" stroke="#1A2740"/>
-  <text x="765" y="137" font-family="'Cascadia Code', Consolas, monospace" font-size="11" font-weight="700" fill="#EAF4FF">Cytoscape Entity Graph</text>
-  <text x="765" y="152" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#8495B2">Executable, IP, hash correlation</text>
-
-  <!-- Box 3 -->
-  <rect x="750" y="192" width="220" height="46" rx="6" fill="#0A1020" stroke="#1A2740"/>
-  <text x="765" y="211" font-family="'Cascadia Code', Consolas, monospace" font-size="11" font-weight="700" fill="#EAF4FF">Teams Case Viewer</text>
-  <text x="765" y="226" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#8495B2">Offline chat, calls &amp; carved media</text>
-
-  <!-- Box 4 -->
-  <rect x="750" y="267" width="220" height="46" rx="6" fill="#0A1020" stroke="#1A2740"/>
-  <text x="765" y="286" font-family="'Cascadia Code', Consolas, monospace" font-size="11" font-weight="700" fill="#EAF4FF">Evidentiary Reports</text>
-  <text x="765" y="301" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#8495B2">Court-ready Excel CSVs &amp; HTML</text>
-
-  <!-- Bottom status line -->
-  <text x="500" y="360" text-anchor="middle" font-family="'Cascadia Code', Consolas, monospace" font-size="10" fill="#5A6A88">&#x25B6; DETERMINISTIC EXTRACTION &#x25B6; READ-ONLY VFS &#x25B6; REPRODUCIBLE TIMELINES</text>
+    <g font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#CBD5E1" transform="translate(14, 46)">
+      <text x="0" y="0"><tspan fill="#38BDF8">&#x2714;</tspan> Master UTC Super-Timeline</text>
+      <text x="0" y="26"><tspan fill="#38BDF8">&#x2714;</tspan> Cytoscape Entity Graph</text>
+      <text x="0" y="52"><tspan fill="#A855F7">&#x2714;</tspan> Offline HTML Chat Viewer</text>
+      <text x="0" y="78"><tspan fill="#A855F7">&#x2714;</tspan> Court-Ready Evidence CSVs</text>
+      <text x="0" y="104"><tspan fill="#34D399">&#x2714;</tspan> Cryptographic Audit Hashes</text>
+    </g>
+  </g>
 </svg>

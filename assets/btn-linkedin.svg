@@ -1,7 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 44" width="220" height="44" role="img" aria-label="LINKEDIN">
-  <path d="M8 0.5 H208 L219.5 12 V36 Q219.5 43.5 212 43.5 H8 Q0.5 43.5 0.5 36 V8 Q0.5 0.5 8 0.5 Z" fill="#0A1020" stroke="#1A2740"/>
-  <path d="M208 0.5 L219.5 12" stroke="#1FA8FF" stroke-width="2"/>
-  <rect x="18" y="18" width="7" height="7" fill="#1FA8FF" transform="rotate(45 21.5 21.5)"/>
-  <text x="36" y="27" font-family="'Cascadia Code', 'JetBrains Mono', ui-monospace, Consolas, monospace" font-size="11.5" font-weight="700" letter-spacing="2.2" fill="#EAF4FF">LINKEDIN</text>
-  <text x="202" y="27" text-anchor="end" font-family="'Cascadia Code', 'JetBrains Mono', ui-monospace, Consolas, monospace" font-size="11" fill="#1FA8FF">&#x2192;</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 44" width="215" height="44" role="img" aria-label="LinkedIn Profile">
+  <rect x="0.5" y="0.5" width="214" height="43" rx="10" fill="#0A1224" stroke="#1E293B" stroke-width="1"/>
+  <path d="M12 1 H203" stroke="#0A66C2" stroke-width="1.5" stroke-opacity="0.45"/>
+  <rect x="13" y="11" width="22" height="22" rx="4" fill="#0A66C2"/>
+  <text x="24" y="27" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="800" fill="#FFFFFF">in</text>
+  <text x="44" y="27" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#E2E8F0" letter-spacing="1">LINKEDIN</text>
+  <text x="198" y="27" text-anchor="end" font-family="sans-serif" font-size="13" font-weight="bold" fill="#38BDF8">&#x2197;</text>
 </svg>

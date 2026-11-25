@@ -1,46 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 84" width="1000" height="84" role="img" aria-label="WFT Enterprise Platform · 50+ Forensic Artifacts Parsed · DuckDB Columnar Core · CEH Certified">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 96" width="1000" height="96" role="img" aria-label="Forensic Telemetry: TCS DFIR Analyst, WFT Platform, MSTeams_Parser, DuckDB Columnar Core">
   <defs>
-    <pattern id="statscan" width="4" height="4" patternUnits="userSpaceOnUse">
-      <rect width="4" height="1" fill="#FFFFFF" opacity="0.025"/>
-    </pattern>
-    <clipPath id="sround"><rect width="1000" height="84" rx="12"/></clipPath>
+    <linearGradient id="sgrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080D1A"/>
+      <stop offset="100%" stop-color="#0B1326"/>
+    </linearGradient>
   </defs>
 
-  <g clip-path="url(#sround)">
-    <rect width="1000" height="84" fill="#0A1020"/>
-    <rect width="1000" height="84" fill="url(#statscan)"/>
+  <rect width="1000" height="96" rx="12" fill="url(#sgrad)"/>
+  <rect x="0.5" y="0.5" width="999" height="95" rx="12" fill="none" stroke="#1E293B" stroke-width="1"/>
+
+  <!-- Station 1: Organization & Role -->
+  <g transform="translate(125, 0)">
+    <text x="0" y="27" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#38BDF8" letter-spacing="1.2">ENTERPRISE DFIR</text>
+    <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">TCS</text>
+    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#94A3B8">Tata Consultancy Services</text>
   </g>
-  <rect x="0.5" y="0.5" width="999" height="83" rx="12" fill="none" stroke="#1A2740"/>
 
-  <g font-family="'Cascadia Code', 'JetBrains Mono', ui-monospace, Consolas, monospace">
-    <!-- Col 1: WFT Platform -->
-    <g transform="translate(125,0)">
-      <text x="0" y="39" text-anchor="middle" font-family="'Segoe UI', -apple-system, sans-serif" font-size="28" font-weight="800" fill="#1FA8FF">WFT</text>
-      <text x="0" y="62" text-anchor="middle" font-size="9.5" font-weight="600" fill="#8495B2" letter-spacing="2">ENTERPRISE DFIR SUITE</text>
-    </g>
+  <!-- Divider 1 -->
+  <line x1="250" y1="18" x2="250" y2="78" stroke="#1E293B" stroke-width="1"/>
+  <circle cx="250" cy="48" r="2.5" fill="#38BDF8"/>
 
-    <rect x="250" y="16" width="1" height="52" fill="#1A2740"/>
+  <!-- Station 2: WFT Platform -->
+  <g transform="translate(375, 0)">
+    <text x="0" y="27" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#34D399" letter-spacing="1.2">PRIMARY WORKSTATION</text>
+    <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">WFT</text>
+    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#94A3B8">Process + Examine DFIR</text>
+  </g>
 
-    <!-- Col 2: Artifacts -->
-    <g transform="translate(375,0)">
-      <text x="0" y="39" text-anchor="middle" font-family="'Segoe UI', -apple-system, sans-serif" font-size="28" font-weight="800" fill="#3FB950">50+</text>
-      <text x="0" y="62" text-anchor="middle" font-size="9.5" font-weight="600" fill="#8495B2" letter-spacing="2">ARTIFACTS PARSED</text>
-    </g>
+  <!-- Divider 2 -->
+  <line x1="500" y1="18" x2="500" y2="78" stroke="#1E293B" stroke-width="1"/>
+  <circle cx="500" cy="48" r="2.5" fill="#34D399"/>
 
-    <rect x="500" y="16" width="1" height="52" fill="#1A2740"/>
+  <!-- Station 3: MSTeams_Parser -->
+  <g transform="translate(625, 0)">
+    <text x="0" y="27" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#C084FC" letter-spacing="1.2">SPECIALIZED SUITE</text>
+    <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">MSTeams</text>
+    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#94A3B8">IndexedDB / LevelDB Suite</text>
+  </g>
 
-    <!-- Col 3: Engine -->
-    <g transform="translate(625,0)">
-      <text x="0" y="39" text-anchor="middle" font-family="'Segoe UI', -apple-system, sans-serif" font-size="26" font-weight="800" fill="#F2C94C">DuckDB</text>
-      <text x="0" y="62" text-anchor="middle" font-size="9.5" font-weight="600" fill="#8495B2" letter-spacing="2">COLUMNAR CORE</text>
-    </g>
+  <!-- Divider 3 -->
+  <line x1="750" y1="18" x2="750" y2="78" stroke="#1E293B" stroke-width="1"/>
+  <circle cx="750" cy="48" r="2.5" fill="#C084FC"/>
 
-    <rect x="750" y="16" width="1" height="52" fill="#1A2740"/>
-
-    <!-- Col 4: Certification -->
-    <g transform="translate(875,0)">
-      <text x="0" y="39" text-anchor="middle" font-family="'Segoe UI', -apple-system, sans-serif" font-size="28" font-weight="800" fill="#A371F7">CEH</text>
-      <text x="0" y="62" text-anchor="middle" font-size="9.5" font-weight="600" fill="#8495B2" letter-spacing="2">CERTIFIED ETHICAL HACKER</text>
-    </g>
+  <!-- Station 4: Engine Backbone -->
+  <g transform="translate(875, 0)">
+    <text x="0" y="27" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#FBBF24" letter-spacing="1.2">ANALYTICAL CORE</text>
+    <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">DuckDB</text>
+    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#94A3B8">Zero-Copy Columnar Engine</text>
   </g>
 </svg>

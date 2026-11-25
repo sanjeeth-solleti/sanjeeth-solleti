@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/stats.svg" alt="WFT Enterprise Suite · 50+ Artifact Parsers · DuckDB Columnar Core · CEH Certified" width="100%">
+  <img src="assets/stats.svg" alt="TCS DFIR Analyst · WFT Enterprise Platform · MSTeams_Parser Suite · DuckDB Columnar Core" width="100%">
 </p>
 
 <br>
@@ -33,10 +33,10 @@ analytical_stack:    Python 3.10+ · DuckDB Columnar Engine · FastAPI · React 
 
 <br>
 
-## ▍Evidence &amp; Engine Architecture
+## ▍DFIR Dual-Engine Architecture
 
 <p align="center">
-  <img src="assets/map.svg" alt="Forensic Evidence &amp; Engine Architecture: RAW evidence flows through WFT and MSTeams_Parser into super-timelines, entity graphs, and case reports." width="100%">
+  <img src="assets/map.svg" alt="DFIR Dual-Engine Architecture: WFT Platform and MSTeams_Parser evidence intake, dirty hive replay, and cross-source timeline correlation." width="100%">
 </p>
 
 <br>
@@ -46,10 +46,6 @@ analytical_stack:    Python 3.10+ · DuckDB Columnar Engine · FastAPI · React 
 <p align="center">
   <a href="https://github.com/sanjeeth-solleti/WFT"><img src="assets/card-wft.svg" alt="WFT — Windows Forensic Examination Platform" width="49%"></a>
   <a href="https://github.com/sanjeeth-solleti/MSTeams_Parser"><img src="assets/card-msteams.svg" alt="MSTeams_Parser — Microsoft Teams Forensic Suite" width="49%"></a>
-</p>
-<p align="center">
-  <a href="https://github.com/sanjeeth-solleti/WFT"><img src="assets/card-supertimeline.svg" alt="WFT Super-Timeline Core" width="49%"></a>
-  <a href="https://github.com/sanjeeth-solleti/WFT"><img src="assets/card-threathunt.svg" alt="YARA-X &amp; RapidOCR Threat Hunting" width="49%"></a>
 </p>
 
 <br>
@@ -83,31 +79,6 @@ A standalone DFIR suite engineered for parsing, reconstructing, and analyzing Mi
 - **Identity &amp; Contact Resolution:** Resolves internal GUIDs (`8:orgid:<guid>`) to real employee names, emails, job roles, and corporate directory records.
 - **Carving &amp; Telemetry Suppression:** Carves cached images and attachments, identifying file headers via magic bytes while automatically filtering UI telemetry, emojis, and noise (< 3.5 KB).
 - **Examiner Reporting:** Standalone HTML chat viewer, Excel-ready CSV summaries (UTF-8 BOM), ZIP media bundle, audit log, and dual UTC/IST timestamps.
-
-<br>
-
-## ▍Forensic Artifact Coverage Matrix
-
-A breakdown of critical Windows, messaging, and system artifacts parsed across my forensic tooling:
-
-| Category | Forensic Artifact | File / Source Location | Evidentiary Value |
-| :--- | :--- | :--- | :--- |
-| **Execution** | **Prefetch** | `C:\Windows\Prefetch\*.pf` | Execution proof, run count, volume serial, previous execution timestamps |
-| **Execution** | **Shimcache** | `SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache` | Executable presence, path verification, last modified time |
-| **Execution** | **Amcache** | `C:\Windows\appcompat\Programs\Amcache.hve` | SHA-1 program hashes, unassociated file entries, execution metadata |
-| **Execution** | **SRUM** | `C:\Windows\System32\sru\SRUDB.dat` | Network bytes sent/received per application, background energy usage |
-| **Execution** | **BAM / DAM** | `SYSTEM\CurrentControlSet\Services\bam` | Background Activity Moderator user execution timestamps |
-| **Execution** | **UserAssist** | `NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist` | ROT13 encoded GUI application execution counts and last launch dates |
-| **File System** | **NTFS $MFT** | `$MFT` (Root of volume) | File record attributes, $STANDARD_INFORMATION vs $FILE_NAME timestamp comparison (timestomp detection) |
-| **File System** | **USN Journal** | `$Extend\$UsnJrnl:$J` | Complete record of file creation, modification, deletion, and renaming |
-| **File System** | **ShellBags** | `USRCLASS.DAT` &amp; `NTUSER.DAT` | Folder browsing history, deleted directory verification, external drive reconnaissance |
-| **File System** | **LNK &amp; Jump Lists** | `Recent\`, `AutomaticDestinations\`, `CustomDestinations\` | Target file path, creation/modification times, volume serial, MAC address |
-| **System State** | **Registry Logs** | `*.LOG1`, `*.LOG2` transaction logs | Dirty hive recovery via RLA replay before static hive parsing |
-| **System State** | **Event Logs** | `C:\Windows\System32\winevt\Logs\*.evtx` | Security (4624/4625, 4688), Sysmon (1, 3, 7, 10, 11), PowerShell (4104) |
-| **Hardware** | **USB History** | `setupapi.dev.log`, `SYSTEM\USBSTOR`, `SOFTWARE\EMDMgmt` | First/last connection times, device serial numbers, volume labels |
-| **Messaging** | **Microsoft Teams** | `IndexedDB` &amp; `LevelDB` stores | Reconstructed chat messages, Base64 Adaptive Cards, calls, meetings, carved media |
-| **Browsers** | **Chromium &amp; Firefox** | `History`, `Downloads`, `places.sqlite` | SQLite + WAL recovery, full-text URL search, PRTime timestamp normalization |
-| **Network/Cloud**| **Cloud Sync** | OneDrive (`SyncEngineDatabase.db`), Google Drive | Synchronized file paths, cloud sync status, account identities |
 
 <br>
 
