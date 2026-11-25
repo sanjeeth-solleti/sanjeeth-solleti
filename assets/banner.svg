@@ -8,14 +8,14 @@
     </linearGradient>
 
     <!-- Radial Cyan Glow -->
-    <radialGradient id="nebula-cyan" cx="12%" cy="25%" r="60%">
+    <radialGradient id="nebula-cyan" cx="12%" cy="28%" r="65%">
       <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.18"/>
       <stop offset="50%" stop-color="#0284C7" stop-opacity="0.04"/>
       <stop offset="100%" stop-color="#040711" stop-opacity="0"/>
     </radialGradient>
 
-    <radialGradient id="nebula-right" cx="82%" cy="50%" r="55%">
-      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.14"/>
+    <radialGradient id="nebula-right" cx="84%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.16"/>
       <stop offset="60%" stop-color="#040711" stop-opacity="0"/>
     </radialGradient>
 
@@ -41,15 +41,21 @@
       <stop offset="100%" stop-color="#BAE6FD"/>
     </linearGradient>
 
-    <!-- DFIR Console Background -->
-    <linearGradient id="station-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#070E1C" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#050914" stop-opacity="0.98"/>
+    <!-- DFIR Theme Badge Beside Name -->
+    <linearGradient id="badge-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A1D36"/>
+      <stop offset="100%" stop-color="#071224"/>
+    </linearGradient>
+
+    <linearGradient id="badge-border" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#38BDF8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0.8"/>
     </linearGradient>
 
     <!-- Radar Sweep Trail Gradient -->
     <linearGradient id="sweep-trail" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.5"/>
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.45"/>
       <stop offset="100%" stop-color="#0284C7" stop-opacity="0"/>
     </linearGradient>
 
@@ -57,11 +63,6 @@
     <pattern id="dot-grid" width="22" height="22" patternUnits="userSpaceOnUse">
       <circle cx="2" cy="2" r="1.0" fill="#1E293B" fill-opacity="0.4"/>
     </pattern>
-
-    <!-- Shadow for Station Frame -->
-    <filter id="hud-shadow" x="-5%" y="-5%" width="115%" height="120%">
-      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.55"/>
-    </filter>
 
     <clipPath id="banner-clip"><rect width="1280" height="300" rx="16"/></clipPath>
   </defs>
@@ -101,201 +102,154 @@
         <text x="26" y="17" class="font-sans" font-size="10.5" font-weight="700" fill="#38BDF8" letter-spacing="1">TATA CONSULTANCY SERVICES <tspan fill="#475569" font-weight="400">|</tspan> <tspan fill="#94A3B8" font-weight="600">DFIR</tspan></text>
       </g>
 
-      <!-- Hero Name Row (Name + Inline DFIR Shield Badge Beside Name) -->
-      <g transform="translate(0, 76)">
-        <text x="0" y="0" class="font-sans" font-size="42" font-weight="800" fill="url(#name-grad)" letter-spacing="-0.5">Vasava Sanjeeth Solleti</text>
+      <!-- Hero Name Row + Prominent DFIR Theme Beside Name -->
+      <g transform="translate(0, 78)">
+        <text x="0" y="0" class="font-sans" font-size="44" font-weight="800" fill="url(#name-grad)" letter-spacing="-0.5">Vasava Sanjeeth Solleti</text>
         
-        <!-- DFIR Theme Badge Beside Name -->
-        <g transform="translate(506, -26)">
-          <rect width="118" height="28" rx="14" fill="#081A33" stroke="#00D2FF" stroke-width="1"/>
-          <!-- Live pulse dot -->
-          <circle cx="14" cy="14" r="3.5" fill="#00D2FF">
-            <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite"/>
+        <!-- ================= DFIR THEME BESIDE NAME ================= -->
+        <g transform="translate(516, -30)">
+          <!-- Glowing Badge Shell -->
+          <rect width="224" height="36" rx="18" fill="url(#badge-grad)" stroke="url(#badge-border)" stroke-width="1.2"/>
+          
+          <!-- Animated Border Specular Highlight Streak -->
+          <line x1="16" y1="1" x2="60" y2="1" stroke="#00D2FF" stroke-width="1.8" stroke-linecap="round">
+            <animate attributeName="x1" values="16;160;16" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="x2" values="60;208;60" dur="3s" repeatCount="indefinite"/>
+          </line>
+
+          <!-- Live Telemetry Radar Blip Dot -->
+          <circle cx="18" cy="18" r="4" fill="#00D2FF">
+            <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="14" cy="14" r="3.5" fill="none" stroke="#00D2FF" stroke-width="1">
-            <animate attributeName="r" values="3.5;10" dur="1.8s" repeatCount="indefinite"/>
+          <circle cx="18" cy="18" r="4" fill="none" stroke="#00D2FF" stroke-width="1">
+            <animate attributeName="r" values="4;12" dur="1.8s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="1;0" dur="1.8s" repeatCount="indefinite"/>
           </circle>
-          <!-- Cyber Shield -->
-          <path d="M30 8 L38 11 V16 C38 20 34 23 30 24 C26 23 22 20 22 16 V11 Z" fill="#0A2448" stroke="#38BDF8" stroke-width="1.1"/>
-          <path d="M26 15 L29 18 L34 12" fill="none" stroke="#38BDF8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="44" y="18" class="font-mono" font-size="10" font-weight="800" fill="#BAE6FD" letter-spacing="1">DFIR</text>
-          <text x="76" y="18" class="font-mono" font-size="8.5" font-weight="700" fill="#38BDF8">CORE</text>
+
+          <!-- Cyber Forensics Shield Icon -->
+          <g transform="translate(34, 9)">
+            <path d="M9 1 L17 4 V9 C17 14 13 17 9 18 C5 17 1 14 1 9 V4 Z" fill="#0A2244" stroke="#38BDF8" stroke-width="1.3"/>
+            <!-- Magnifying glass / forensic reticle inside shield -->
+            <path d="M5.5 8.5 L8 11 L13 6" fill="none" stroke="#00D2FF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+
+          <!-- DFIR Theme Typography -->
+          <text x="58" y="22" class="font-mono" font-size="11.5" font-weight="800" fill="#FFFFFF" letter-spacing="1">DFIR</text>
+          <text x="96" y="22" class="font-mono" font-size="9.5" font-weight="700" fill="#38BDF8" letter-spacing="1.2">SPECIALIST</text>
+
+          <!-- Status Indicator Pill -->
+          <rect x="174" y="9" width="40" height="18" rx="9" fill="#08203E" stroke="#0284C7" stroke-width="0.6"/>
+          <text x="194" y="21.5" text-anchor="middle" class="font-mono" font-size="7.5" font-weight="800" fill="#93C5FD">ACTIVE</text>
         </g>
       </g>
 
-      <!-- Role &amp; Specialization -->
-      <text x="0" y="108" class="font-sans" font-size="16.5" font-weight="700" fill="#F8FAFC">
+      <!-- Role & Specialization -->
+      <text x="0" y="112" class="font-sans" font-size="17" font-weight="700" fill="#F8FAFC">
         Digital Forensics &amp; Incident Response Specialist
       </text>
 
-      <text x="0" y="130" class="font-sans" font-size="13.5" font-weight="500" fill="#94A3B8">
+      <text x="0" y="136" class="font-sans" font-size="13.5" font-weight="500" fill="#94A3B8">
         Windows Endpoint Telemetry <tspan fill="#475569">&#x2022;</tspan> Cloud Collaboration Forensics <tspan fill="#475569">&#x2022;</tspan> High-Throughput Engines
       </text>
 
-      <text x="0" y="154" class="font-sans" font-size="12" fill="#64748B">
+      <text x="0" y="160" class="font-sans" font-size="12" fill="#64748B">
         Deterministic artifact reconstruction across raw disk VFS, dirty registry replay, &amp; IndexedDB stores.
       </text>
 
-      <!-- Credential &amp; Tech Chips Row -->
-      <g transform="translate(0, 174)">
+      <!-- Credential & Tech Chips Row -->
+      <g transform="translate(0, 180)">
         <g transform="translate(0, 0)">
-          <rect width="128" height="25" rx="12.5" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
-          <circle cx="12" cy="12.5" r="3" fill="#38BDF8"/>
-          <text x="22" y="16.5" class="font-mono" font-size="10" font-weight="700" fill="#BAE6FD">Hyderabad, IN</text>
+          <rect width="128" height="26" rx="13" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
+          <circle cx="12" cy="13" r="3" fill="#38BDF8"/>
+          <text x="22" y="17" class="font-mono" font-size="10" font-weight="700" fill="#BAE6FD">Hyderabad, IN</text>
         </g>
 
         <g transform="translate(136, 0)">
-          <rect width="138" height="25" rx="12.5" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
-          <circle cx="12" cy="12.5" r="3" fill="#38BDF8"/>
-          <text x="22" y="16.5" class="font-mono" font-size="10" font-weight="700" fill="#BAE6FD">CEH v12 Certified</text>
+          <rect width="138" height="26" rx="13" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
+          <circle cx="12" cy="13" r="3" fill="#38BDF8"/>
+          <text x="22" y="17" class="font-mono" font-size="10" font-weight="700" fill="#BAE6FD">CEH v12 Certified</text>
         </g>
 
         <g transform="translate(282, 0)">
-          <rect width="144" height="25" rx="12.5" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
-          <circle cx="12" cy="12.5" r="3" fill="#38BDF8"/>
-          <text x="22" y="16.5" class="font-mono" font-size="10" font-weight="700" fill="#BAE6FD">dissect VFS &amp; RLA</text>
+          <rect width="144" height="26" rx="13" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
+          <circle cx="12" cy="13" r="3" fill="#38BDF8"/>
+          <text x="22" y="17" class="font-mono" font-size="10" font-weight="700" fill="#BAE6FD">dissect VFS &amp; RLA</text>
         </g>
 
         <g transform="translate(434, 0)">
-          <rect width="122" height="25" rx="12.5" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
-          <circle cx="12" cy="12.5" r="3" fill="#38BDF8"/>
-          <text x="22" y="16.5" class="font-mono" font-size="10" font-weight="700" fill="#BAE6FD">DuckDB Core</text>
+          <rect width="122" height="26" rx="13" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
+          <circle cx="12" cy="13" r="3" fill="#38BDF8"/>
+          <text x="22" y="17" class="font-mono" font-size="10" font-weight="700" fill="#BAE6FD">DuckDB Core</text>
         </g>
       </g>
     </g>
 
-    <!-- ==================== RIGHT DFIR FORENSIC RADAR & CONSOLE ==================== -->
-    <g transform="translate(674, 26)">
-      <!-- Console Shell -->
-      <rect width="554" height="226" rx="12" fill="url(#station-bg)" stroke="#1E3A8A" stroke-width="1" filter="url(#hud-shadow)"/>
+    <!-- ==================== OPEN-AIR FLOATING FORENSIC RADAR & TELEMETRY (NO BOX/WINDOW) ==================== -->
+    <g transform="translate(860, 36)">
+      <!-- Radar Scope Circles (Borderless, Floating Seamlessly on Dark Nebula) -->
+      <circle cx="160" cy="100" r="90" fill="#061224" fill-opacity="0.4" stroke="#1E3A8A" stroke-width="0.8" stroke-dasharray="3 3"/>
+      <circle cx="160" cy="100" r="62" fill="none" stroke="#0284C7" stroke-width="0.8" stroke-opacity="0.5"/>
+      <circle cx="160" cy="100" r="32" fill="none" stroke="#38BDF8" stroke-width="0.8" stroke-opacity="0.4"/>
 
-      <!-- Console Titlebar -->
-      <rect width="554" height="32" rx="12" fill="#0A152A"/>
-      <rect y="22" width="554" height="10" fill="#0A152A"/>
-      <line x1="0" y1="32" x2="554" y2="32" stroke="#1E293B" stroke-width="0.8"/>
+      <!-- Crosshairs -->
+      <line x1="70" y1="100" x2="250" y2="100" stroke="#1E293B" stroke-width="0.8"/>
+      <line x1="160" y1="10" x2="160" y2="190" stroke="#1E293B" stroke-width="0.8"/>
 
-      <!-- Titlebar Controls -->
-      <circle cx="16" cy="16" r="3.5" fill="#334155"/>
-      <circle cx="28" cy="16" r="3.5" fill="#475569"/>
-      <circle cx="40" cy="16" r="3.5" fill="#38BDF8"/>
-
-      <text x="56" y="20" class="font-mono" font-size="10" font-weight="700" fill="#94A3B8" letter-spacing="1">DFIR-KERNEL // INCIDENT RESPONSE RADAR</text>
-
-      <!-- Active Status Badge -->
-      <g transform="translate(416, 7)">
-        <rect width="126" height="18" rx="9" fill="#081A33" stroke="#0284C7" stroke-width="0.7"/>
-        <circle cx="10" cy="9" r="3" fill="#38BDF8">
-          <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="10" cy="9" r="3" fill="none" stroke="#38BDF8" stroke-width="0.9">
-          <animate attributeName="r" values="3;8" dur="1.8s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="1;0" dur="1.8s" repeatCount="indefinite"/>
-        </circle>
-        <text x="20" y="12.5" class="font-mono" font-size="8.5" font-weight="700" fill="#38BDF8" letter-spacing="0.5">ACTIVE CASING</text>
+      <!-- ROTATING RADAR SWEEP BEAM -->
+      <g>
+        <line x1="160" y1="100" x2="160" y2="10" stroke="#00D2FF" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M160 100 L160 10 A90 90 0 0 1 224 36 Z" fill="url(#sweep-trail)" opacity="0.4"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 160 100" to="360 160 100" dur="4s" repeatCount="indefinite"/>
       </g>
 
-      <!-- ================= LEFT RADAR SCOPE ================= -->
-      <g transform="translate(10, 34)">
-        <!-- Radar Background Circle -->
-        <circle cx="98" cy="92" r="76" fill="#061020" stroke="#1E3A8A" stroke-width="0.8" stroke-dasharray="3 3"/>
-        <circle cx="98" cy="92" r="50" fill="none" stroke="#0284C7" stroke-width="0.8" stroke-opacity="0.6"/>
-        <circle cx="98" cy="92" r="24" fill="none" stroke="#38BDF8" stroke-width="0.8" stroke-opacity="0.5"/>
+      <!-- Center Radar Core -->
+      <circle cx="160" cy="100" r="4" fill="#00D2FF"/>
+      <circle cx="160" cy="100" r="4" fill="none" stroke="#00D2FF" stroke-width="1">
+        <animate attributeName="r" values="4;16" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/>
+      </circle>
 
-        <!-- Radar Axes -->
-        <line x1="22" y1="92" x2="174" y2="92" stroke="#1E293B" stroke-width="0.8"/>
-        <line x1="98" y1="16" x2="98" y2="168" stroke="#1E293B" stroke-width="0.8"/>
+      <!-- FORENSIC EVIDENCE BLIPS -->
+      <!-- Blip 1: E01 / VFS -->
+      <circle cx="210" cy="65" r="3" fill="#38BDF8">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="210" cy="65" r="3" fill="none" stroke="#38BDF8" stroke-width="0.8">
+        <animate attributeName="r" values="3;9" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="216" y="63" class="font-mono" font-size="8" font-weight="700" fill="#93C5FD">E01 VFS</text>
 
-        <!-- ROTATING RADAR SWEEP BEAM -->
-        <g>
-          <line x1="98" y1="92" x2="98" y2="16" stroke="#00D2FF" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M98 92 L98 16 A76 76 0 0 1 151 38 Z" fill="url(#sweep-trail)" opacity="0.35"/>
-          <animateTransform attributeName="transform" type="rotate" from="0 98 92" to="360 98 92" dur="4s" repeatCount="indefinite"/>
-        </g>
+      <!-- Blip 2: RLA Hive Replay -->
+      <circle cx="112" cy="132" r="3" fill="#38BDF8">
+        <animate attributeName="opacity" values="1;0.3;1" dur="2.4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="112" cy="132" r="3" fill="none" stroke="#38BDF8" stroke-width="0.8">
+        <animate attributeName="r" values="3;9" dur="2.4s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0" dur="2.4s" repeatCount="indefinite"/>
+      </circle>
+      <text x="76" y="146" class="font-mono" font-size="8" font-weight="700" fill="#93C5FD">RLA REPLAY</text>
 
-        <!-- FORENSIC EVIDENCE BLIPS -->
-        <!-- Blip 1: E01 / VFS -->
-        <circle cx="140" cy="62" r="3" fill="#38BDF8">
-          <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="140" cy="62" r="3" fill="none" stroke="#38BDF8" stroke-width="0.8">
-          <animate attributeName="r" values="3;9" dur="2s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/>
-        </circle>
-        <text x="146" y="60" class="font-mono" font-size="7.5" font-weight="700" fill="#93C5FD">E01 VFS</text>
+      <!-- Blip 3: LevelDB -->
+      <circle cx="204" cy="142" r="2.5" fill="#38BDF8">
+        <animate attributeName="opacity" values="0.4;1;0.4" dur="1.7s" repeatCount="indefinite"/>
+      </circle>
+      <text x="200" y="156" class="font-mono" font-size="8" font-weight="700" fill="#93C5FD">LEVELDB</text>
 
-        <!-- Blip 2: RLA Hive Replay -->
-        <circle cx="58" cy="120" r="3" fill="#38BDF8">
-          <animate attributeName="opacity" values="1;0.3;1" dur="2.4s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="58" cy="120" r="3" fill="none" stroke="#38BDF8" stroke-width="0.8">
-          <animate attributeName="r" values="3;9" dur="2.4s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="1;0" dur="2.4s" repeatCount="indefinite"/>
-        </circle>
-        <text x="32" y="134" class="font-mono" font-size="7.5" font-weight="700" fill="#93C5FD">RLA REPLAY</text>
+      <!-- Blip 4: DuckDB -->
+      <circle cx="125" cy="62" r="2.5" fill="#38BDF8">
+        <animate attributeName="opacity" values="1;0.2;1" dur="2.8s" repeatCount="indefinite"/>
+      </circle>
+      <text x="96" y="56" class="font-mono" font-size="8" font-weight="700" fill="#93C5FD">DUCKDB</text>
 
-        <!-- Blip 3: LevelDB -->
-        <circle cx="134" cy="128" r="2.5" fill="#38BDF8">
-          <animate attributeName="opacity" values="0.4;1;0.4" dur="1.7s" repeatCount="indefinite"/>
-        </circle>
-        <text x="130" y="142" class="font-mono" font-size="7.5" font-weight="700" fill="#93C5FD">LEVELDB</text>
-
-        <!-- Blip 4: DuckDB -->
-        <circle cx="68" cy="60" r="2.5" fill="#38BDF8">
-          <animate attributeName="opacity" values="1;0.2;1" dur="2.8s" repeatCount="indefinite"/>
-        </circle>
-        <text x="44" y="55" class="font-mono" font-size="7.5" font-weight="700" fill="#93C5FD">DUCKDB</text>
-
-        <!-- Center Radar Core -->
-        <circle cx="98" cy="92" r="3.5" fill="#00D2FF"/>
-        <circle cx="98" cy="92" r="3.5" fill="none" stroke="#00D2FF" stroke-width="1">
-          <animate attributeName="r" values="3.5;14" dur="2s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/>
-        </circle>
-      </g>
-
-      <!-- Scope Divider Line -->
-      <line x1="210" y1="42" x2="210" y2="214" stroke="#1E293B" stroke-width="0.8"/>
-
-      <!-- ================= RIGHT TELEMETRY INSPECTOR ================= -->
-      <g transform="translate(222, 42)">
-        <!-- Header -->
-        <text x="0" y="10" class="font-mono" font-size="8.5" font-weight="700" fill="#64748B" letter-spacing="1">EVIDENCE SIGNATURE STREAM</text>
-
-        <!-- Hex / Signature Box -->
-        <rect x="0" y="18" width="318" height="74" rx="6" fill="#071326" stroke="#0284C7" stroke-width="0.5"/>
-        
-        <text x="10" y="34" class="font-mono" font-size="9" fill="#94A3B8"><tspan fill="#38BDF8">0x0000</tspan>  4D 5A 90 00  <tspan fill="#BAE6FD">MZ / PE32+ Executable</tspan></text>
-        <text x="10" y="49" class="font-mono" font-size="9" fill="#94A3B8"><tspan fill="#38BDF8">0x0010</tspan>  45 76 74 78  <tspan fill="#BAE6FD">EVTX Event Log Hive</tspan></text>
-        <text x="10" y="64" class="font-mono" font-size="9" fill="#94A3B8"><tspan fill="#38BDF8">0x0020</tspan>  72 65 67 66  <tspan fill="#BAE6FD">REGF Dirty Trans Hive</tspan></text>
-        <text x="10" y="79" class="font-mono" font-size="9" fill="#94A3B8"><tspan fill="#38BDF8">0x0030</tspan>  53 51 4C 69  <tspan fill="#BAE6FD">SQLite Indexed Store</tspan></text>
-
-        <!-- Laser Scanline sweeping vertically across hex box -->
-        <line x1="2" y1="20" x2="316" y2="20" stroke="#00D2FF" stroke-width="1.2" opacity="0.65">
-          <animate attributeName="y1" values="20;88;20" dur="3s" repeatCount="indefinite"/>
-          <animate attributeName="y2" values="20;88;20" dur="3s" repeatCount="indefinite"/>
-        </line>
-
-        <!-- Dual Telemetry Pills -->
-        <g transform="translate(0, 102)">
-          <rect width="154" height="34" rx="6" fill="#08182E" stroke="#1D4ED8" stroke-width="0.7"/>
-          <text x="10" y="14" class="font-mono" font-size="8" font-weight="700" fill="#38BDF8">CHAIN OF CUSTODY</text>
-          <text x="10" y="27" class="font-mono" font-size="9" font-weight="700" fill="#E2E8F0">SHA-256 DEFENDED</text>
-        </g>
-
-        <g transform="translate(164, 102)">
-          <rect width="154" height="34" rx="6" fill="#08182E" stroke="#1D4ED8" stroke-width="0.7"/>
-          <text x="10" y="14" class="font-mono" font-size="8" font-weight="700" fill="#38BDF8">VFS WRITE-BLOCK</text>
-          <text x="10" y="27" class="font-mono" font-size="9" font-weight="700" fill="#E2E8F0">CONTAINER IMMUTABLE</text>
-        </g>
-
-        <!-- Status Casing Waveform -->
-        <g transform="translate(0, 148)">
-          <line x1="0" y1="0" x2="318" y2="0" stroke="#1E293B" stroke-width="0.75"/>
-          <text x="0" y="14" class="font-mono" font-size="8" font-weight="700" fill="#64748B">CASING: <tspan fill="#38BDF8">INCIDENT RESPONSE // TCS DFIR</tspan></text>
-          <!-- Animated Oscilloscope wave -->
-          <path d="M 230 11 L 244 11 L 248 6 L 252 16 L 256 5 L 260 15 L 264 11 L 314 11" fill="none" stroke="#00D2FF" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </g>
+      <!-- Floating Oscilloscope Signal Waveform with Animated Traveling Heartbeat -->
+      <g transform="translate(10, 198)">
+        <text x="0" y="3" class="font-mono" font-size="8" font-weight="700" fill="#475569">CASING: <tspan fill="#38BDF8">INCIDENT RESPONSE // TCS DFIR</tspan></text>
+        <path fill="none" stroke="#00D2FF" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <animate attributeName="d"
+            values="M 210 0 L 225 0 L 228 -6 L 232 6 L 236 -9 L 240 9 L 244 -4 L 248 4 L 252 0 L 305 0;M 210 0 L 240 0 L 243 -6 L 247 6 L 251 -9 L 255 9 L 259 -4 L 263 4 L 267 0 L 305 0;M 210 0 L 260 0 L 263 -6 L 267 6 L 271 -9 L 275 9 L 279 -4 L 283 4 L 287 0 L 305 0;M 210 0 L 225 0 L 228 -6 L 232 6 L 236 -9 L 240 9 L 244 -4 L 248 4 L 252 0 L 305 0"
+            dur="3.2s" repeatCount="indefinite"/>
+        </path>
       </g>
     </g>
 
