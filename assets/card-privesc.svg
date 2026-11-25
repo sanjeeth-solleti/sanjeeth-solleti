@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 280" width="960" height="280" role="img" aria-label="PrivEsc-Detector — Real-Time Linux Privilege Escalation Detector">
+  <defs>
+    <linearGradient id="pebg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B0F14"/>
+      <stop offset="60%" stop-color="#0D1117"/>
+      <stop offset="100%" stop-color="#241315"/>
+    </linearGradient>
+    <linearGradient id="peaccent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F85149"/>
+      <stop offset="100%" stop-color="#DA3633"/>
+    </linearGradient>
+    <clipPath id="peround"><rect width="960" height="280" rx="12"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#peround)">
+    <rect width="960" height="280" fill="url(#pebg)"/>
+
+    <!-- Subtle accent border -->
+    <rect width="960" height="280" fill="none" stroke="#30363D" stroke-width="1.5" rx="12"/>
+    <rect x="0" y="0" width="6" height="280" fill="url(#peaccent)"/>
+
+    <!-- Header badge -->
+    <rect x="40" y="26" width="220" height="22" rx="4" fill="#DA3633" fill-opacity="0.2" stroke="#F85149" stroke-width="1"/>
+    <text x="50" y="41" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="700" fill="#FF7B72" letter-spacing="1.2">KERNEL &amp; RUNTIME DEFENSE</text>
+
+    <!-- Status -->
+    <text x="890" y="41" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7EE787">● DEFENSIVE DETECTION</text>
+
+    <!-- Project Title -->
+    <text x="40" y="80" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="25" font-weight="700" fill="#F0F6FC">PrivEsc-Detector — Real-Time Linux PrivEsc Detector</text>
+    <text x="40" y="104" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#8B949E">Real-time eBPF &amp; BCC syscall monitoring with multi-signal rule correlation and zero-false-positive alerts.</text>
+
+    <!-- 4 Core Pillars Grid -->
+    <!-- Box 1 -->
+    <rect x="40" y="126" width="425" height="58" rx="6" fill="#161B22" stroke="#21262D" stroke-width="1"/>
+    <text x="55" y="148" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#FF7B72">⚙️ eBPF Kernel Tracepoints</text>
+    <text x="55" y="168" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8B949E">Hooks setuid, execve, openat, chmod, and capset directly in the Linux ring buffer.</text>
+
+    <!-- Box 2 -->
+    <rect x="495" y="126" width="425" height="58" rx="6" fill="#161B22" stroke="#21262D" stroke-width="1"/>
+    <text x="510" y="148" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#F0883E">🎯 10 Zero-FP Detection Rules</text>
+    <text x="510" y="168" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8B949E">Strict rule engine with built-in safe-process allowlists for system services.</text>
+
+    <!-- Box 3 -->
+    <rect x="40" y="194" width="425" height="58" rx="6" fill="#161B22" stroke="#21262D" stroke-width="1"/>
+    <text x="55" y="216" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#3FB950">⚡ Multi-Signal Correlation (RULE-10)</text>
+    <text x="55" y="236" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8B949E">Correlates 2+ escalation signals from the same PID to confirm attacks rapidly.</text>
+
+    <!-- Box 4 -->
+    <rect x="495" y="194" width="425" height="58" rx="6" fill="#161B22" stroke="#21262D" stroke-width="1"/>
+    <text x="510" y="216" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#58A6FF">🗃️ Rate Limiting &amp; Storage</text>
+    <text x="510" y="236" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8B949E">10-min deduplication window, rate limiting, and local SQLite audit logging.</text>
+  </g>
+</svg>
