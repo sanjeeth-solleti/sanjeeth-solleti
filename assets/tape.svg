@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="32" viewBox="0 0 1280 32" role="img" aria-label="Forensic Evidence Tape — Hash Verified — Immutable Evidence">
+  <defs>
+    <clipPath id="tape-clip"><rect width="1280" height="32" rx="4"/></clipPath>
+    <pattern id="tape-stripes" width="28" height="32" patternUnits="userSpaceOnUse">
+      <path d="M0 0h14l-14 32h-14z" fill="#0D1117" opacity="0.10"/>
+      <path d="M28 0h14l-14 32h-14z" fill="#0D1117" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <style>
+    .base { fill: #E3B341; }
+    .w { fill: #0D1117; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12.5px; font-weight: 800; letter-spacing: 0.18em; }
+    .roll { animation: roll 18s linear infinite; }
+    @keyframes roll { to { transform: translateX(380px); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <g clip-path="url(#tape-clip)">
+    <rect class="base" width="1280" height="32"/>
+    <rect width="1280" height="32" fill="url(#tape-stripes)"/>
+    
+    <g class="roll">
+      <text x="-380" y="21" class="w">EVIDENCE &#x2022; DO NOT ALTER &#x2022; CHAIN OF CUSTODY &#x2022; SHA-256 SOUND &#x2022; READ-ONLY INTAKE &#x2022; </text>
+      <text x="0" y="21" class="w">EVIDENCE &#x2022; DO NOT ALTER &#x2022; CHAIN OF CUSTODY &#x2022; SHA-256 SOUND &#x2022; READ-ONLY INTAKE &#x2022; </text>
+      <text x="380" y="21" class="w">EVIDENCE &#x2022; DO NOT ALTER &#x2022; CHAIN OF CUSTODY &#x2022; SHA-256 SOUND &#x2022; READ-ONLY INTAKE &#x2022; </text>
+      <text x="760" y="21" class="w">EVIDENCE &#x2022; DO NOT ALTER &#x2022; CHAIN OF CUSTODY &#x2022; SHA-256 SOUND &#x2022; READ-ONLY INTAKE &#x2022; </text>
+      <text x="1140" y="21" class="w">EVIDENCE &#x2022; DO NOT ALTER &#x2022; CHAIN OF CUSTODY &#x2022; SHA-256 SOUND &#x2022; READ-ONLY INTAKE &#x2022; </text>
+      <text x="1520" y="21" class="w">EVIDENCE &#x2022; DO NOT ALTER &#x2022; CHAIN OF CUSTODY &#x2022; SHA-256 SOUND &#x2022; READ-ONLY INTAKE &#x2022; </text>
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="380 0" dur="18s" repeatCount="indefinite"/>
+    </g>
+  </g>
+</svg>

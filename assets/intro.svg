@@ -31,6 +31,8 @@
     <filter id="sh-chip" x="-10%" y="-10%" width="120%" height="130%">
       <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
     </filter>
+
+    <clipPath id="intro-clip"><rect width="1280" height="260" rx="16"/></clipPath>
   </defs>
 
   <style>
@@ -40,63 +42,62 @@
     @keyframes pglow { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
   </style>
 
-  <rect width="1280" height="260" rx="16" fill="url(#bg-intro)"/>
-  <rect class="pulse-glow" width="1280" height="260" rx="16" fill="url(#gl-intro)"/>
-  <rect width="1280" height="260" rx="16" fill="url(#dt-intro)"/>
-  <rect x="0.5" y="0.5" width="1279" height="259" rx="16" fill="none" stroke="url(#intro-border)" stroke-width="1"/>
+  <g clip-path="url(#intro-clip)">
+    <rect width="1280" height="260" rx="16" fill="url(#bg-intro)"/>
+    <rect class="pulse-glow" width="1280" height="260" rx="16" fill="url(#gl-intro)"/>
+    <rect width="1280" height="260" rx="16" fill="url(#dt-intro)"/>
+    <rect x="0.5" y="0.5" width="1279" height="259" rx="16" fill="none" stroke="url(#intro-border)" stroke-width="1"/>
 
-  <!-- Specular top edge -->
-  <line x1="20" y1="1" x2="1260" y2="1" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Specular top edge -->
+    <line x1="20" y1="1" x2="1260" y2="1" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round"/>
 
-  <!-- LEFT HERO NARRATIVE -->
-  <g transform="translate(56, 42)">
-    <text x="0" y="16" class="font-mono" font-size="12" font-weight="700" fill="#38BDF8" letter-spacing="2">THE DFIR LAB</text>
-    <rect x="0" y="24" width="44" height="3" rx="1.5" fill="#38BDF8"/>
+    <!-- LEFT HERO NARRATIVE -->
+    <g transform="translate(56, 42)">
+      <text x="0" y="16" class="font-mono" font-size="12" font-weight="700" fill="#38BDF8" letter-spacing="2">THE DFIR LAB</text>
+      <rect x="0" y="24" width="44" height="3" rx="1.5" fill="#38BDF8"/>
 
-    <text x="0" y="78" class="font-sans" font-size="28" font-weight="800" fill="#F8FAFC" letter-spacing="-0.3">
-      Forensic suites are built for standard casework.
-    </text>
+      <text x="0" y="78" class="font-sans" font-size="28" font-weight="800" fill="#F8FAFC" letter-spacing="-0.3">
+        Forensic suites are built for standard casework.
+      </text>
 
-    <text x="0" y="118" class="font-sans" font-size="28" font-weight="800" fill="url(#hi-grad)" letter-spacing="-0.3">
-      These engines are engineered for the critical gaps.
-    </text>
+      <text x="0" y="118" class="font-sans" font-size="28" font-weight="800" fill="url(#hi-grad)" letter-spacing="-0.3">
+        These engines are engineered for the critical gaps.
+      </text>
 
-    <text x="0" y="156" class="font-sans" font-size="14.5" fill="#94A3B8">
-      Deterministic open-source tooling for dirty registry replay, LevelDB messaging, &amp; sub-millisecond super-timelines.
-    </text>
-  </g>
-
-  <!-- RIGHT TENET PILLARS (3 Glassmorphic Chips) -->
-  <g transform="translate(820, 24)">
-    <!-- Pillar 1: Read-Only VFS -->
-    <g transform="translate(0, 0)">
-      <rect width="404" height="60" rx="12" fill="#0A1830" stroke="#0284C7" stroke-width="0.75" filter="url(#sh-chip)"/>
-      <rect x="12" y="14" width="32" height="32" rx="8" fill="#0C2448" stroke="#38BDF8" stroke-width="0.8"/>
-      <!-- Lock / VFS icon -->
-      <path d="M24 24 H32 V36 H24 Z M26 24 V21 C26 19.5 27 18 28 18 C29 18 30 19.5 30 21 V24" fill="none" stroke="#38BDF8" stroke-width="1.3" stroke-linecap="round"/>
-      <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#38BDF8" letter-spacing="1">READ-ONLY VFS INTAKE</text>
-      <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Mounted immutable via dissect; disk containers never modified.</text>
+      <text x="0" y="156" class="font-sans" font-size="14.5" fill="#94A3B8">
+        Deterministic open-source tooling for dirty registry replay, LevelDB messaging, &amp; sub-millisecond super-timelines.
+      </text>
     </g>
 
-    <!-- Pillar 2: Dirty Log Replay -->
-    <g transform="translate(0, 72)">
-      <rect width="404" height="60" rx="12" fill="#141032" stroke="#6366F1" stroke-width="0.75" filter="url(#sh-chip)"/>
-      <rect x="12" y="14" width="32" height="32" rx="8" fill="#1E194D" stroke="#818CF8" stroke-width="0.8"/>
-      <!-- Circular commit arrows -->
-      <path d="M24 30 A5 5 0 1 1 32 30" fill="none" stroke="#818CF8" stroke-width="1.4"/>
-      <path d="M32 27 L32 30 L29 30" fill="none" stroke="#818CF8" stroke-width="1.4" stroke-linecap="round"/>
-      <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#818CF8" letter-spacing="1">DIRTY LOG REPLAY</text>
-      <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Mandatory automated RLA transaction commit before hive analysis.</text>
-    </g>
+    <!-- RIGHT TENET PILLARS (3 Glassmorphic Chips) -->
+    <g transform="translate(820, 24)">
+      <!-- Pillar 1: Read-Only VFS -->
+      <g transform="translate(0, 0)">
+        <rect width="404" height="60" rx="12" fill="#0A1830" stroke="#0284C7" stroke-width="0.75" filter="url(#sh-chip)"/>
+        <rect x="12" y="14" width="32" height="32" rx="8" fill="#0C2448" stroke="#38BDF8" stroke-width="0.8"/>
+        <path d="M24 24 H32 V36 H24 Z M26 24 V21 C26 19.5 27 18 28 18 C29 18 30 19.5 30 21 V24" fill="none" stroke="#38BDF8" stroke-width="1.3" stroke-linecap="round"/>
+        <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#38BDF8" letter-spacing="1">READ-ONLY VFS INTAKE</text>
+        <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Mounted immutable via dissect; disk containers never modified.</text>
+      </g>
 
-    <!-- Pillar 3: Columnar Speed -->
-    <g transform="translate(0, 144)">
-      <rect width="404" height="60" rx="12" fill="#071E19" stroke="#059669" stroke-width="0.75" filter="url(#sh-chip)"/>
-      <rect x="12" y="14" width="32" height="32" rx="8" fill="#0A3228" stroke="#34D399" stroke-width="0.8"/>
-      <!-- Lightning bolt icon -->
-      <path d="M29 20 L24 28 H30 L27 36 L33 26 H27 Z" fill="#34D399"/>
-      <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#34D399" letter-spacing="1">COLUMNAR SPEED</text>
-      <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Sub-millisecond analytical queries across 500K+ records via DuckDB.</text>
+      <!-- Pillar 2: Dirty Log Replay -->
+      <g transform="translate(0, 72)">
+        <rect width="404" height="60" rx="12" fill="#141032" stroke="#6366F1" stroke-width="0.75" filter="url(#sh-chip)"/>
+        <rect x="12" y="14" width="32" height="32" rx="8" fill="#1E194D" stroke="#818CF8" stroke-width="0.8"/>
+        <path d="M24 30 A5 5 0 1 1 32 30" fill="none" stroke="#818CF8" stroke-width="1.4"/>
+        <path d="M32 27 L32 30 L29 30" fill="none" stroke="#818CF8" stroke-width="1.4" stroke-linecap="round"/>
+        <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#818CF8" letter-spacing="1">DIRTY LOG REPLAY</text>
+        <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Mandatory automated RLA transaction commit before hive analysis.</text>
+      </g>
+
+      <!-- Pillar 3: Columnar Speed -->
+      <g transform="translate(0, 144)">
+        <rect width="404" height="60" rx="12" fill="#071E19" stroke="#059669" stroke-width="0.75" filter="url(#sh-chip)"/>
+        <rect x="12" y="14" width="32" height="32" rx="8" fill="#0A3228" stroke="#34D399" stroke-width="0.8"/>
+        <path d="M29 20 L24 28 H30 L27 36 L33 26 H27 Z" fill="#34D399"/>
+        <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#34D399" letter-spacing="1">COLUMNAR SPEED</text>
+        <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Sub-millisecond analytical queries across 500K+ records via DuckDB.</text>
+      </g>
     </g>
   </g>
 </svg>

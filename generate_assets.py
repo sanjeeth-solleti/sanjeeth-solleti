@@ -1,11 +1,11 @@
 """
 generate_assets.py
 Generates ultra-modern, publication-grade DFIR SVG assets for Sanjeeth Solleti's GitHub profile.
-Aesthetic inspired by Linear / Vercel / Raycast and https://github.com/akhil-dara:
+Aesthetic inspired by https://github.com/akhil-dara:
 - Project-centric design strictly featuring Sanjeeth's 2 authentic tools: WFT and MSTeams_Parser.
 - Side-by-side SVG cards (1280x640) with real embedded screenshots and concise DFIR explanations.
-- Attractive SVG keyframe animations: pulsing ambient glow, live radar ping, and animated time card telemetry.
-- Zero technology skills badge tables, zero retro-terminal tropes, zero text collisions.
+- Attractive SVG keyframe & SMIL animations: animated time cards / telemetry HUD, pulsing ambient glows, live radar pings, and rolling evidence tape divider.
+- Zero technology skills badge tables, zero retro-terminal tropes, zero text collisions, zero clipPath coordinate bugs.
 """
 
 import os
@@ -17,7 +17,7 @@ from PIL import Image
 ASSETS_DIR = r"C:\Users\SANJEETH\Desktop\sanjeeth-solleti\assets"
 os.makedirs(ASSETS_DIR, exist_ok=True)
 
-# Remove map.svg if it exists (architecture diagram is being removed per task)
+# Remove map.svg if it exists (architecture diagram is removed per task)
 map_path = os.path.join(ASSETS_DIR, "map.svg")
 if os.path.exists(map_path):
     try:
@@ -26,6 +26,15 @@ if os.path.exists(map_path):
     except Exception as e:
         print(f"[WARN] Could not delete map.svg: {e}")
 
+# Remove stats.svg if it exists
+stats_path = os.path.join(ASSETS_DIR, "stats.svg")
+if os.path.exists(stats_path):
+    try:
+        os.remove(stats_path)
+        print("[REMOVED] stats.svg deleted")
+    except Exception as e:
+        print(f"[WARN] Could not delete stats.svg: {e}")
+
 def validate_and_save(filename, svg_content):
     path = os.path.join(ASSETS_DIR, filename)
     clean_svg = svg_content.strip()
@@ -33,9 +42,8 @@ def validate_and_save(filename, svg_content):
         ET.fromstring(clean_svg)
     except ET.ParseError as e:
         print(f"ERROR validating {filename}: {e}")
-        # Print lines around the error for quick debugging
         lines = clean_svg.split("\n")
-        for i, line in enumerate(lines[:50]):
+        for i, line in enumerate(lines[:60]):
             print(f"{i+1:3d}: {line}")
         raise
     with open(path, "w", encoding="utf-8") as f:
@@ -69,9 +77,9 @@ b64_ms = base64.b64encode(buf_ms.getvalue()).decode("ascii")
 
 
 # ==============================================================================
-# 1. BANNER.SVG (1000 x 300) — Executive Modern DFIR Hero Banner
+# 1. BANNER.SVG (1280 x 360) — Executive Modern DFIR Hero Banner
 # ==============================================================================
-banner_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300" role="img" aria-label="Vasava Sanjeeth Solleti — Digital Forensics &amp; Incident Response Analyst at TCS">
+banner_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" width="1280" height="360" role="img" aria-label="Vasava Sanjeeth Solleti — Digital Forensics &amp; Incident Response Analyst at TCS">
   <defs>
     <linearGradient id="bg-canvas" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#050811"/>
@@ -80,21 +88,21 @@ banner_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" w
     </linearGradient>
 
     <radialGradient id="nebula-cyan" cx="12%" cy="15%" r="65%">
-      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.18"/>
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.20"/>
       <stop offset="45%" stop-color="#0284C7" stop-opacity="0.06"/>
       <stop offset="100%" stop-color="#050811" stop-opacity="0"/>
     </radialGradient>
 
     <radialGradient id="nebula-indigo" cx="88%" cy="85%" r="60%">
-      <stop offset="0%" stop-color="#6366F1" stop-opacity="0.18"/>
-      <stop offset="50%" stop-color="#7C3AED" stop-opacity="0.05"/>
+      <stop offset="0%" stop-color="#6366F1" stop-opacity="0.20"/>
+      <stop offset="50%" stop-color="#7C3AED" stop-opacity="0.06"/>
       <stop offset="100%" stop-color="#05070E" stop-opacity="0"/>
     </radialGradient>
 
     <linearGradient id="frame-border" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.45"/>
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.5"/>
       <stop offset="35%" stop-color="#1E293B" stop-opacity="0.6"/>
-      <stop offset="70%" stop-color="#6366F1" stop-opacity="0.3"/>
+      <stop offset="70%" stop-color="#6366F1" stop-opacity="0.35"/>
       <stop offset="100%" stop-color="#0F172A" stop-opacity="0.8"/>
     </linearGradient>
 
@@ -113,146 +121,154 @@ banner_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" w
     </linearGradient>
 
     <linearGradient id="widget-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0B1325" stop-opacity="0.85"/>
-      <stop offset="100%" stop-color="#080E1C" stop-opacity="0.92"/>
+      <stop offset="0%" stop-color="#0B1325" stop-opacity="0.88"/>
+      <stop offset="100%" stop-color="#080E1C" stop-opacity="0.95"/>
     </linearGradient>
 
     <linearGradient id="widget-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.4"/>
-      <stop offset="100%" stop-color="#1E3A8A" stop-opacity="0.25"/>
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#1E3A8A" stop-opacity="0.3"/>
     </linearGradient>
 
     <pattern id="dot-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="0.9" fill="#334155" fill-opacity="0.25"/>
+      <circle cx="2" cy="2" r="0.9" fill="#334155" fill-opacity="0.3"/>
     </pattern>
+
+    <clipPath id="banner-clip"><rect width="1280" height="360" rx="18"/></clipPath>
   </defs>
 
   <style>
     .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
-    .pulse-glow { animation: pglow 2.4s ease-in-out infinite; }
-    @keyframes pglow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.45; transform: scale(0.9); } }
+    .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .pulse-glow { animation: pglow 2.5s ease-in-out infinite; }
+    @keyframes pglow { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
   </style>
 
-  <rect width="1000" height="300" rx="16" fill="url(#bg-canvas)"/>
-  <rect width="1000" height="300" rx="16" fill="url(#nebula-cyan)"/>
-  <rect width="1000" height="300" rx="16" fill="url(#nebula-indigo)"/>
-  <rect width="1000" height="300" rx="16" fill="url(#dot-grid)"/>
-  <rect x="0.5" y="0.5" width="999" height="299" rx="16" fill="none" stroke="url(#frame-border)" stroke-width="1"/>
+  <g clip-path="url(#banner-clip)">
+    <rect width="1280" height="360" rx="18" fill="url(#bg-canvas)"/>
+    <rect width="1280" height="360" rx="18" fill="url(#nebula-cyan)"/>
+    <rect width="1280" height="360" rx="18" fill="url(#nebula-indigo)"/>
+    <rect width="1280" height="360" rx="18" fill="url(#dot-grid)"/>
+    <rect x="0.5" y="0.5" width="1279" height="359" rx="18" fill="none" stroke="url(#frame-border)" stroke-width="1"/>
 
-  <line x1="20" y1="1" x2="980" y2="1" stroke="url(#top-specular)" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="24" y1="1" x2="1256" y2="1" stroke="url(#top-specular)" stroke-width="2" stroke-linecap="round"/>
 
-  <!-- TOP TELEMETRY BAR -->
-  <g transform="translate(36, 18)">
-    <rect x="0" y="0" width="300" height="24" rx="12" fill="#0C1B33" stroke="#1D4ED8" stroke-width="0.75" stroke-opacity="0.8"/>
-    <circle class="pulse-glow" cx="12" cy="12" r="3.5" fill="#10B981"/>
-    <text x="24" y="16" class="font-sans" font-size="10" font-weight="700" fill="#38BDF8" letter-spacing="1">TATA CONSULTANCY SERVICES <tspan fill="#64748B" font-weight="400">|</tspan> <tspan fill="#94A3B8" font-weight="600">DFIR OPERATIONS</tspan></text>
+    <!-- TOP TELEMETRY BAR -->
+    <g transform="translate(48, 24)">
+      <rect x="0" y="0" width="320" height="26" rx="13" fill="#0C1B33" stroke="#1D4ED8" stroke-width="0.8"/>
+      <circle class="pulse-glow" cx="14" cy="13" r="3.5" fill="#10B981">
+        <animate attributeName="opacity" values="1;0.35;1" dur="2.4s" repeatCount="indefinite"/>
+      </circle>
+      <text x="26" y="17" class="font-sans" font-size="10.5" font-weight="700" fill="#38BDF8" letter-spacing="1">TATA CONSULTANCY SERVICES <tspan fill="#64748B" font-weight="400">|</tspan> <tspan fill="#94A3B8" font-weight="600">DFIR OPERATIONS</tspan></text>
 
-    <g transform="translate(628, 0)">
-      <rect x="0" y="0" width="300" height="24" rx="12" fill="#0C1B33" stroke="#1D4ED8" stroke-width="0.75" stroke-opacity="0.8"/>
-      <circle cx="12" cy="12" r="3.5" fill="#38BDF8"/>
-      <text x="24" y="16" class="font-sans" font-size="9.5" font-weight="700" fill="#BAE6FD" letter-spacing="0.8">DEFENSIBLE CHAIN-OF-CUSTODY <tspan fill="#64748B" font-weight="400">|</tspan> <tspan fill="#94A3B8" font-weight="600">SHA-256</tspan></text>
-    </g>
-  </g>
-
-  <line x1="36" y1="52" x2="964" y2="52" stroke="#1E293B" stroke-width="0.8" stroke-opacity="0.7"/>
-
-  <!-- LEFT HERO CONTENT -->
-  <g transform="translate(36, 72)">
-    <text x="0" y="14" class="font-sans" font-size="10.5" font-weight="700" fill="#38BDF8" letter-spacing="1.6">ENTERPRISE DIGITAL FORENSICS &amp; INCIDENT RESPONSE</text>
-
-    <text x="0" y="52" class="font-sans" font-size="34" font-weight="800" fill="url(#name-grad)" letter-spacing="-0.5">Vasava Sanjeeth Solleti</text>
-
-    <text x="0" y="78" class="font-sans" font-size="13.5" font-weight="600" fill="#E2E8F0">
-      DFIR Analyst @ TCS <tspan fill="#475569" font-weight="400">|</tspan> Windows Forensics &amp; High-Throughput Engine Architect
-    </text>
-
-    <text x="0" y="101" class="font-sans" font-size="11.5" fill="#94A3B8">
-      Reconstructing complex attack chronologies across raw disk images, dirty hives, &amp; cloud collaboration stores.
-    </text>
-
-    <g transform="translate(0, 124)">
-      <!-- Pill 1: WFT Platform -->
-      <g transform="translate(0, 0)">
-        <rect width="130" height="26" rx="8" fill="#0A1C36" stroke="#0284C7" stroke-width="0.8"/>
-        <circle cx="12" cy="13" r="3" fill="#38BDF8"/>
-        <text x="22" y="17" class="font-sans" font-size="10" font-weight="700" fill="#BAE6FD">WFT Workstation</text>
-      </g>
-
-      <!-- Pill 2: MSTeams_Parser -->
-      <g transform="translate(138, 0)">
-        <rect width="132" height="26" rx="8" fill="#180F30" stroke="#7C3AED" stroke-width="0.8"/>
-        <circle cx="12" cy="13" r="3" fill="#C084FC"/>
-        <text x="22" y="17" class="font-sans" font-size="10" font-weight="700" fill="#E9D5FF">MSTeams_Parser</text>
-      </g>
-
-      <!-- Pill 3: CEH Certified -->
-      <g transform="translate(278, 0)">
-        <rect width="116" height="26" rx="8" fill="#08201A" stroke="#059669" stroke-width="0.8"/>
-        <circle cx="12" cy="13" r="3" fill="#34D399"/>
-        <text x="22" y="17" class="font-sans" font-size="10" font-weight="700" fill="#A7F3D0">CEH Certified</text>
-      </g>
-
-      <!-- Pill 4: DuckDB Core -->
-      <g transform="translate(402, 0)">
-        <rect width="116" height="26" rx="8" fill="#241705" stroke="#D97706" stroke-width="0.8"/>
-        <circle cx="12" cy="13" r="3" fill="#FBBF24"/>
-        <text x="22" y="17" class="font-sans" font-size="10" font-weight="700" fill="#FDE68A">DuckDB Core</text>
+      <g transform="translate(864, 0)">
+        <rect x="0" y="0" width="320" height="26" rx="13" fill="#0C1B33" stroke="#1D4ED8" stroke-width="0.8"/>
+        <circle cx="14" cy="13" r="3.5" fill="#38BDF8"/>
+        <text x="26" y="17" class="font-sans" font-size="10" font-weight="700" fill="#BAE6FD" letter-spacing="0.8">DEFENSIBLE CHAIN-OF-CUSTODY <tspan fill="#64748B" font-weight="400">|</tspan> <tspan fill="#94A3B8" font-weight="600">SHA-256</tspan></text>
       </g>
     </g>
-  </g>
 
-  <!-- RIGHT GLASS TERMINAL WIDGET -->
-  <g transform="translate(620, 68)">
-    <rect width="344" height="174" rx="12" fill="url(#widget-bg)" stroke="url(#widget-stroke)" stroke-width="1"/>
-    
-    <rect width="344" height="30" rx="12" fill="#0F1B33" fill-opacity="0.9"/>
-    <rect y="26" width="344" height="4" fill="#0F1B33" fill-opacity="0.9"/>
+    <line x1="48" y1="64" x2="1232" y2="64" stroke="#1E293B" stroke-width="0.8" stroke-opacity="0.8"/>
 
-    <circle cx="16" cy="15" r="3.5" fill="#EF4444" fill-opacity="0.8"/>
-    <circle cx="28" cy="15" r="3.5" fill="#F59E0B" fill-opacity="0.8"/>
-    <circle cx="40" cy="15" r="3.5" fill="#10B981" fill-opacity="0.8"/>
+    <!-- LEFT HERO CONTENT -->
+    <g transform="translate(48, 86)">
+      <text x="0" y="18" class="font-mono" font-size="12" font-weight="700" fill="#38BDF8" letter-spacing="2">DIGITAL FORENSICS &amp; INCIDENT RESPONSE ANALYST</text>
 
-    <text x="56" y="19" class="font-sans" font-size="10" font-weight="700" fill="#BAE6FD" letter-spacing="1.2">SPECIALIZED INVESTIGATIVE SCOPE</text>
+      <text x="0" y="66" class="font-sans" font-size="44" font-weight="800" fill="url(#name-grad)" letter-spacing="-0.5">Vasava Sanjeeth Solleti</text>
 
-    <g transform="translate(16, 48)" class="font-sans" font-size="11">
-      <g transform="translate(0, 0)">
-        <rect x="0" y="-8" width="22" height="20" rx="5" fill="#0A1F3B" stroke="#1D4ED8" stroke-width="0.6"/>
-        <path d="M4 2 H18 M4 6 H18" stroke="#38BDF8" stroke-width="1.2" stroke-linecap="round"/>
-        <circle cx="15" cy="0" r="1" fill="#38BDF8"/>
-        <circle cx="15" cy="4" r="1" fill="#38BDF8"/>
-        <text x="30" y="6" fill="#F1F5F9" font-weight="600">Native VFS Ingestion <tspan fill="#94A3B8" font-size="10" font-weight="400">(E01, RAW, VHDX, VMDK)</tspan></text>
-      </g>
+      <text x="0" y="100" class="font-sans" font-size="17" font-weight="600" fill="#E2E8F0">
+        DFIR Analyst @ TCS <tspan fill="#475569" font-weight="400">|</tspan> Windows Endpoint &amp; Collaboration Forensics Engine Architect
+      </text>
 
-      <g transform="translate(0, 27)">
-        <rect x="0" y="-8" width="22" height="20" rx="5" fill="#0A1F3B" stroke="#1D4ED8" stroke-width="0.6"/>
-        <path d="M5 -1 C5 -3 17 -3 17 -1 C17 1 5 1 5 -1 Z M5 2 C5 4 17 4 17 2 M5 5 C5 7 17 7 17 5" fill="none" stroke="#38BDF8" stroke-width="1.2"/>
-        <text x="30" y="6" fill="#F1F5F9" font-weight="600">Dirty Registry Replay <tspan fill="#94A3B8" font-size="10" font-weight="400">(Automated RLA Commit)</tspan></text>
-      </g>
+      <text x="0" y="128" class="font-sans" font-size="13.5" fill="#94A3B8">
+        Reconstructing attack chronologies across raw disk images, dirty hives, &amp; IndexedDB stores.
+      </text>
 
-      <g transform="translate(0, 54)">
-        <rect x="0" y="-8" width="22" height="20" rx="5" fill="#0A1F3B" stroke="#1D4ED8" stroke-width="0.6"/>
-        <path d="M12 -4 L8 2 H13 L10 8 L15 1 H11 Z" fill="#38BDF8"/>
-        <text x="30" y="6" fill="#F1F5F9" font-weight="600">Sub-Ms Super-Timelines <tspan fill="#94A3B8" font-size="10" font-weight="400">(DuckDB Engine)</tspan></text>
-      </g>
+      <!-- Badges Row -->
+      <g transform="translate(0, 154)">
+        <!-- Pill 1: WFT Platform -->
+        <g transform="translate(0, 0)">
+          <rect width="144" height="28" rx="14" fill="#0A1C36" stroke="#0284C7" stroke-width="0.8"/>
+          <circle cx="14" cy="14" r="3.5" fill="#38BDF8"/>
+          <text x="26" y="18" class="font-mono" font-size="11" font-weight="700" fill="#BAE6FD">WFT Platform</text>
+        </g>
 
-      <g transform="translate(0, 81)">
-        <rect x="0" y="-8" width="22" height="20" rx="5" fill="#1C0F33" stroke="#7C3AED" stroke-width="0.6"/>
-        <path d="M5 -1 H17 V6 H11 L7 9 V6 H5 Z" fill="none" stroke="#C084FC" stroke-width="1.2"/>
-        <text x="30" y="6" fill="#F1F5F9" font-weight="600">Collab Forensics <tspan fill="#C084FC" font-size="10" font-weight="400">(Teams Level/IndexedDB)</tspan></text>
+        <!-- Pill 2: MSTeams_Parser -->
+        <g transform="translate(154, 0)">
+          <rect width="154" height="28" rx="14" fill="#180F30" stroke="#7C3AED" stroke-width="0.8"/>
+          <circle cx="14" cy="14" r="3.5" fill="#C084FC"/>
+          <text x="26" y="18" class="font-mono" font-size="11" font-weight="700" fill="#E9D5FF">MSTeams_Parser</text>
+        </g>
+
+        <!-- Pill 3: CEH Certified -->
+        <g transform="translate(318, 0)">
+          <rect width="138" height="28" rx="14" fill="#08201A" stroke="#059669" stroke-width="0.8"/>
+          <circle cx="14" cy="14" r="3.5" fill="#34D399"/>
+          <text x="26" y="18" class="font-mono" font-size="11" font-weight="700" fill="#A7F3D0">CEH Certified</text>
+        </g>
+
+        <!-- Pill 4: DuckDB Core -->
+        <g transform="translate(466, 0)">
+          <rect width="136" height="28" rx="14" fill="#241705" stroke="#D97706" stroke-width="0.8"/>
+          <circle cx="14" cy="14" r="3.5" fill="#FBBF24"/>
+          <text x="26" y="18" class="font-mono" font-size="11" font-weight="700" fill="#FDE68A">DuckDB Core</text>
+        </g>
       </g>
     </g>
-  </g>
 
-  <!-- BOTTOM TELEMETRY FOOTER -->
-  <line x1="36" y1="262" x2="964" y2="262" stroke="#1E293B" stroke-width="0.8" stroke-opacity="0.7"/>
-  <g transform="translate(36, 280)">
-    <circle class="pulse-glow" cx="4" cy="-3" r="3" fill="#00D2FF"/>
-    <text x="16" y="0" class="font-sans" font-size="10.5" font-weight="500" fill="#94A3B8">
-      ACTIVE RESEARCH: <tspan fill="#E2E8F0">Dirty Registry Replay</tspan> &#x2022; <tspan fill="#E2E8F0">IndexedDB Messaging Stores</tspan> &#x2022; <tspan fill="#E2E8F0">Multi-Timestamp Attack Chronologies</tspan>
-    </text>
-    <text x="928" y="0" text-anchor="end" class="font-sans" font-size="10.5" font-weight="600" fill="#94A3B8">
-      HYDERABAD, INDIA
-    </text>
+    <!-- RIGHT GLASS WIDGET -->
+    <g transform="translate(800, 84)">
+      <rect width="432" height="212" rx="14" fill="url(#widget-bg)" stroke="url(#widget-stroke)" stroke-width="1"/>
+      
+      <rect width="432" height="34" rx="14" fill="#0F1B33" fill-opacity="0.95"/>
+      <rect y="28" width="432" height="6" fill="#0F1B33" fill-opacity="0.95"/>
+
+      <circle cx="18" cy="17" r="4" fill="#EF4444" fill-opacity="0.85"/>
+      <circle cx="32" cy="17" r="4" fill="#F59E0B" fill-opacity="0.85"/>
+      <circle cx="46" cy="17" r="4" fill="#10B981" fill-opacity="0.85"/>
+
+      <text x="64" y="21" class="font-mono" font-size="10.5" font-weight="700" fill="#BAE6FD" letter-spacing="1.2">SPECIALIZED FORENSIC SCOPE</text>
+
+      <g transform="translate(18, 54)" class="font-sans" font-size="12">
+        <g transform="translate(0, 0)">
+          <rect x="0" y="-8" width="24" height="22" rx="6" fill="#0A1F3B" stroke="#1D4ED8" stroke-width="0.6"/>
+          <path d="M5 3 H19 M5 7 H19" stroke="#38BDF8" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="16" cy="0" r="1.2" fill="#38BDF8"/>
+          <circle cx="16" cy="4" r="1.2" fill="#38BDF8"/>
+          <text x="34" y="7" fill="#F1F5F9" font-weight="600">Native VFS Ingestion <tspan fill="#94A3B8" font-size="11" font-weight="400">(E01, RAW, VHDX, VMDK)</tspan></text>
+        </g>
+
+        <g transform="translate(0, 34)">
+          <rect x="0" y="-8" width="24" height="22" rx="6" fill="#0A1F3B" stroke="#1D4ED8" stroke-width="0.6"/>
+          <path d="M5 -1 C5 -3 19 -3 19 -1 C19 1 5 1 5 -1 Z M5 3 C5 5 19 5 19 3 M5 7 C5 9 19 9 19 7" fill="none" stroke="#38BDF8" stroke-width="1.3"/>
+          <text x="34" y="7" fill="#F1F5F9" font-weight="600">Dirty Registry Replay <tspan fill="#94A3B8" font-size="11" font-weight="400">(Automated RLA Commit)</tspan></text>
+        </g>
+
+        <g transform="translate(0, 68)">
+          <rect x="0" y="-8" width="24" height="22" rx="6" fill="#0A1F3B" stroke="#1D4ED8" stroke-width="0.6"/>
+          <path d="M14 -4 L9 3 H15 L11 10 L17 2 H12 Z" fill="#38BDF8"/>
+          <text x="34" y="7" fill="#F1F5F9" font-weight="600">Sub-Ms Super-Timelines <tspan fill="#94A3B8" font-size="11" font-weight="400">(DuckDB Engine)</tspan></text>
+        </g>
+
+        <g transform="translate(0, 102)">
+          <rect x="0" y="-8" width="24" height="22" rx="6" fill="#1C0F33" stroke="#7C3AED" stroke-width="0.6"/>
+          <path d="M5 -1 H19 V7 H12 L8 10 V7 H5 Z" fill="none" stroke="#C084FC" stroke-width="1.3"/>
+          <text x="34" y="7" fill="#F1F5F9" font-weight="600">Collaboration Forensics <tspan fill="#C084FC" font-size="11" font-weight="400">(Teams LevelDB / IndexedDB)</tspan></text>
+        </g>
+      </g>
+    </g>
+
+    <!-- BOTTOM TELEMETRY FOOTER -->
+    <line x1="48" y1="318" x2="1232" y2="318" stroke="#1E293B" stroke-width="0.8" stroke-opacity="0.8"/>
+    <g transform="translate(48, 340)">
+      <circle class="pulse-glow" cx="4" cy="-3" r="3.5" fill="#00D2FF"/>
+      <text x="18" y="0" class="font-sans" font-size="11.5" font-weight="500" fill="#94A3B8">
+        ACTIVE RESEARCH: <tspan fill="#E2E8F0">Dirty Registry Replay</tspan> &#x2022; <tspan fill="#E2E8F0">IndexedDB Messaging Stores</tspan> &#x2022; <tspan fill="#E2E8F0">Multi-Timestamp Attack Chronologies</tspan>
+      </text>
+      <text x="1184" y="0" text-anchor="end" class="font-mono" font-size="11" font-weight="600" fill="#94A3B8">
+        HYDERABAD, INDIA
+      </text>
+    </g>
   </g>
 </svg>"""
 
@@ -396,6 +412,8 @@ intro_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 260" wi
     <filter id="sh-chip" x="-10%" y="-10%" width="120%" height="130%">
       <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
     </filter>
+
+    <clipPath id="intro-clip"><rect width="1280" height="260" rx="16"/></clipPath>
   </defs>
 
   <style>
@@ -405,63 +423,62 @@ intro_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 260" wi
     @keyframes pglow { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
   </style>
 
-  <rect width="1280" height="260" rx="16" fill="url(#bg-intro)"/>
-  <rect class="pulse-glow" width="1280" height="260" rx="16" fill="url(#gl-intro)"/>
-  <rect width="1280" height="260" rx="16" fill="url(#dt-intro)"/>
-  <rect x="0.5" y="0.5" width="1279" height="259" rx="16" fill="none" stroke="url(#intro-border)" stroke-width="1"/>
+  <g clip-path="url(#intro-clip)">
+    <rect width="1280" height="260" rx="16" fill="url(#bg-intro)"/>
+    <rect class="pulse-glow" width="1280" height="260" rx="16" fill="url(#gl-intro)"/>
+    <rect width="1280" height="260" rx="16" fill="url(#dt-intro)"/>
+    <rect x="0.5" y="0.5" width="1279" height="259" rx="16" fill="none" stroke="url(#intro-border)" stroke-width="1"/>
 
-  <!-- Specular top edge -->
-  <line x1="20" y1="1" x2="1260" y2="1" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Specular top edge -->
+    <line x1="20" y1="1" x2="1260" y2="1" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round"/>
 
-  <!-- LEFT HERO NARRATIVE -->
-  <g transform="translate(56, 42)">
-    <text x="0" y="16" class="font-mono" font-size="12" font-weight="700" fill="#38BDF8" letter-spacing="2">THE DFIR LAB</text>
-    <rect x="0" y="24" width="44" height="3" rx="1.5" fill="#38BDF8"/>
+    <!-- LEFT HERO NARRATIVE -->
+    <g transform="translate(56, 42)">
+      <text x="0" y="16" class="font-mono" font-size="12" font-weight="700" fill="#38BDF8" letter-spacing="2">THE DFIR LAB</text>
+      <rect x="0" y="24" width="44" height="3" rx="1.5" fill="#38BDF8"/>
 
-    <text x="0" y="78" class="font-sans" font-size="28" font-weight="800" fill="#F8FAFC" letter-spacing="-0.3">
-      Forensic suites are built for standard casework.
-    </text>
+      <text x="0" y="78" class="font-sans" font-size="28" font-weight="800" fill="#F8FAFC" letter-spacing="-0.3">
+        Forensic suites are built for standard casework.
+      </text>
 
-    <text x="0" y="118" class="font-sans" font-size="28" font-weight="800" fill="url(#hi-grad)" letter-spacing="-0.3">
-      These engines are engineered for the critical gaps.
-    </text>
+      <text x="0" y="118" class="font-sans" font-size="28" font-weight="800" fill="url(#hi-grad)" letter-spacing="-0.3">
+        These engines are engineered for the critical gaps.
+      </text>
 
-    <text x="0" y="156" class="font-sans" font-size="14.5" fill="#94A3B8">
-      Deterministic open-source tooling for dirty registry replay, LevelDB messaging, &amp; sub-millisecond super-timelines.
-    </text>
-  </g>
-
-  <!-- RIGHT TENET PILLARS (3 Glassmorphic Chips) -->
-  <g transform="translate(820, 24)">
-    <!-- Pillar 1: Read-Only VFS -->
-    <g transform="translate(0, 0)">
-      <rect width="404" height="60" rx="12" fill="#0A1830" stroke="#0284C7" stroke-width="0.75" filter="url(#sh-chip)"/>
-      <rect x="12" y="14" width="32" height="32" rx="8" fill="#0C2448" stroke="#38BDF8" stroke-width="0.8"/>
-      <!-- Lock / VFS icon -->
-      <path d="M24 24 H32 V36 H24 Z M26 24 V21 C26 19.5 27 18 28 18 C29 18 30 19.5 30 21 V24" fill="none" stroke="#38BDF8" stroke-width="1.3" stroke-linecap="round"/>
-      <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#38BDF8" letter-spacing="1">READ-ONLY VFS INTAKE</text>
-      <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Mounted immutable via dissect; disk containers never modified.</text>
+      <text x="0" y="156" class="font-sans" font-size="14.5" fill="#94A3B8">
+        Deterministic open-source tooling for dirty registry replay, LevelDB messaging, &amp; sub-millisecond super-timelines.
+      </text>
     </g>
 
-    <!-- Pillar 2: Dirty Log Replay -->
-    <g transform="translate(0, 72)">
-      <rect width="404" height="60" rx="12" fill="#141032" stroke="#6366F1" stroke-width="0.75" filter="url(#sh-chip)"/>
-      <rect x="12" y="14" width="32" height="32" rx="8" fill="#1E194D" stroke="#818CF8" stroke-width="0.8"/>
-      <!-- Circular commit arrows -->
-      <path d="M24 30 A5 5 0 1 1 32 30" fill="none" stroke="#818CF8" stroke-width="1.4"/>
-      <path d="M32 27 L32 30 L29 30" fill="none" stroke="#818CF8" stroke-width="1.4" stroke-linecap="round"/>
-      <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#818CF8" letter-spacing="1">DIRTY LOG REPLAY</text>
-      <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Mandatory automated RLA transaction commit before hive analysis.</text>
-    </g>
+    <!-- RIGHT TENET PILLARS (3 Glassmorphic Chips) -->
+    <g transform="translate(820, 24)">
+      <!-- Pillar 1: Read-Only VFS -->
+      <g transform="translate(0, 0)">
+        <rect width="404" height="60" rx="12" fill="#0A1830" stroke="#0284C7" stroke-width="0.75" filter="url(#sh-chip)"/>
+        <rect x="12" y="14" width="32" height="32" rx="8" fill="#0C2448" stroke="#38BDF8" stroke-width="0.8"/>
+        <path d="M24 24 H32 V36 H24 Z M26 24 V21 C26 19.5 27 18 28 18 C29 18 30 19.5 30 21 V24" fill="none" stroke="#38BDF8" stroke-width="1.3" stroke-linecap="round"/>
+        <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#38BDF8" letter-spacing="1">READ-ONLY VFS INTAKE</text>
+        <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Mounted immutable via dissect; disk containers never modified.</text>
+      </g>
 
-    <!-- Pillar 3: Columnar Speed -->
-    <g transform="translate(0, 144)">
-      <rect width="404" height="60" rx="12" fill="#071E19" stroke="#059669" stroke-width="0.75" filter="url(#sh-chip)"/>
-      <rect x="12" y="14" width="32" height="32" rx="8" fill="#0A3228" stroke="#34D399" stroke-width="0.8"/>
-      <!-- Lightning bolt icon -->
-      <path d="M29 20 L24 28 H30 L27 36 L33 26 H27 Z" fill="#34D399"/>
-      <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#34D399" letter-spacing="1">COLUMNAR SPEED</text>
-      <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Sub-millisecond analytical queries across 500K+ records via DuckDB.</text>
+      <!-- Pillar 2: Dirty Log Replay -->
+      <g transform="translate(0, 72)">
+        <rect width="404" height="60" rx="12" fill="#141032" stroke="#6366F1" stroke-width="0.75" filter="url(#sh-chip)"/>
+        <rect x="12" y="14" width="32" height="32" rx="8" fill="#1E194D" stroke="#818CF8" stroke-width="0.8"/>
+        <path d="M24 30 A5 5 0 1 1 32 30" fill="none" stroke="#818CF8" stroke-width="1.4"/>
+        <path d="M32 27 L32 30 L29 30" fill="none" stroke="#818CF8" stroke-width="1.4" stroke-linecap="round"/>
+        <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#818CF8" letter-spacing="1">DIRTY LOG REPLAY</text>
+        <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Mandatory automated RLA transaction commit before hive analysis.</text>
+      </g>
+
+      <!-- Pillar 3: Columnar Speed -->
+      <g transform="translate(0, 144)">
+        <rect width="404" height="60" rx="12" fill="#071E19" stroke="#059669" stroke-width="0.75" filter="url(#sh-chip)"/>
+        <rect x="12" y="14" width="32" height="32" rx="8" fill="#0A3228" stroke="#34D399" stroke-width="0.8"/>
+        <path d="M29 20 L24 28 H30 L27 36 L33 26 H27 Z" fill="#34D399"/>
+        <text x="56" y="29" class="font-mono" font-size="11.5" font-weight="700" fill="#34D399" letter-spacing="1">COLUMNAR SPEED</text>
+        <text x="56" y="46" class="font-sans" font-size="12" fill="#94A3B8">Sub-millisecond analytical queries across 500K+ records via DuckDB.</text>
+      </g>
     </g>
   </g>
 </svg>"""
@@ -488,7 +505,7 @@ card_wft_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
 
     <!-- Border Stroke -->
     <linearGradient id="border-wft" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.5"/>
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.55"/>
       <stop offset="45%" stop-color="#1E3A8A" stop-opacity="0.4"/>
       <stop offset="100%" stop-color="#1E293B" stop-opacity="0.4"/>
     </linearGradient>
@@ -502,7 +519,7 @@ card_wft_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
 
     <!-- Dot Grid Pattern -->
     <pattern id="dt-wft" width="22" height="22" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.1" fill="#1E293B" fill-opacity="0.4"/>
+      <circle cx="2" cy="2" r="1.1" fill="#1E293B" fill-opacity="0.45"/>
     </pattern>
 
     <!-- Drop Shadow for Window Frame -->
@@ -510,9 +527,12 @@ card_wft_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
       <feDropShadow dx="0" dy="16" stdDeviation="22" flood-color="#000000" flood-opacity="0.75"/>
     </filter>
 
-    <!-- Screenshot Viewport Clip -->
-    <clipPath id="clip-wft-vp">
-      <rect x="548" y="94" width="684" height="434" rx="2"/>
+    <!-- Card Outer Clip -->
+    <clipPath id="cc-wft"><rect width="1280" height="640" rx="20"/></clipPath>
+
+    <!-- Screenshot Viewport Clip (Exact Global Coordinates Matching Image) -->
+    <clipPath id="wc-wft">
+      <rect x="548" y="108" width="692" height="434" rx="2"/>
     </clipPath>
   </defs>
 
@@ -523,179 +543,166 @@ card_wft_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
     /* Animations */
     .pulse-ambient {{ animation: pamb 6s ease-in-out infinite; }}
     .live-dot {{ animation: ldot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }}
-    .radar-ring {{ animation: rring 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite; transform-origin: 24px 26px; }}
-    .timeline-cursor {{ animation: tcur 4s ease-in-out infinite alternate; }}
+    .radar-ring {{ animation: rring 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite; transform-origin: 88px 288px; }}
     
     @keyframes pamb {{ 0%, 100% {{ opacity: 0.65; }} 50% {{ opacity: 1; }} }}
     @keyframes ldot {{ 0%, 100% {{ opacity: 1; }} 50% {{ opacity: 0.35; }} }}
-    @keyframes rring {{ 0% {{ r: 3; opacity: 1; }} 100% {{ r: 15; opacity: 0; }} }}
-    @keyframes tcur {{ 0% {{ transform: translateX(0); }} 100% {{ transform: translateX(380px); }} }}
+    @keyframes rring {{ 0% {{ r: 3; opacity: 1; }} 100% {{ r: 16; opacity: 0; }} }}
     
     @media (prefers-reduced-motion: reduce) {{ * {{ animation: none !important; }} }}
   </style>
 
-  <!-- Canvas Surface -->
-  <rect width="1280" height="640" rx="16" fill="url(#bg-wft)"/>
-  <rect class="pulse-ambient" width="1280" height="640" rx="16" fill="url(#gl-wft)"/>
-  <rect width="1280" height="640" rx="16" fill="url(#dt-wft)"/>
-  <rect x="0.5" y="0.5" width="1279" height="639" rx="16" fill="none" stroke="url(#border-wft)" stroke-width="1"/>
+  <g clip-path="url(#cc-wft)">
+    <!-- Canvas Surface -->
+    <rect width="1280" height="640" rx="20" fill="url(#bg-wft)"/>
+    <rect class="pulse-ambient" width="1280" height="640" rx="20" fill="url(#gl-wft)"/>
+    <rect width="1280" height="640" rx="20" fill="url(#dt-wft)"/>
+    <rect x="0.5" y="0.5" width="1279" height="639" rx="20" fill="none" stroke="url(#border-wft)" stroke-width="1"/>
 
-  <!-- Top Specular Highlight Line -->
-  <line x1="20" y1="1" x2="1260" y2="1" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+    <!-- Top Specular Highlight Line -->
+    <line x1="20" y1="1" x2="1260" y2="1" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
 
-  <!-- ==================== LEFT SIDE: DETAILED SPECIFICATIONS ==================== -->
-  <g transform="translate(48, 42)">
-    <!-- Category & Index Tag -->
-    <text x="0" y="16" class="font-mono" font-size="11.5" font-weight="700" fill="#38BDF8" letter-spacing="2">TOOL 01 / 02 &#x2022; ENTERPRISE WINDOWS FORENSICS</text>
-    <rect x="0" y="24" width="46" height="3" rx="1.5" fill="#38BDF8"/>
+    <!-- ==================== LEFT COLUMN: DFIR SPECIFICATIONS ==================== -->
+    <g>
+      <!-- Category & Index Tag -->
+      <text x="64" y="66" class="font-mono" font-size="12" font-weight="700" fill="#38BDF8" letter-spacing="2">TOOL 01 / 02 &#x2022; ENTERPRISE WINDOWS FORENSICS</text>
+      <rect x="64" y="78" width="44" height="3" rx="1.5" fill="#38BDF8"/>
 
-    <!-- Tech Chips Row -->
-    <g transform="translate(0, 36)">
-      <g transform="translate(0, 0)">
-        <rect width="124" height="24" rx="7" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
-        <text x="62" y="16" text-anchor="middle" class="font-mono" font-size="10" font-weight="700" fill="#93C5FD">DuckDB Core</text>
+      <!-- Tech Chips Row -->
+      <g transform="translate(64, 98)">
+        <rect x="0" y="0" width="136" height="26" rx="13" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
+        <text x="68" y="17" text-anchor="middle" class="font-mono" font-size="10.5" font-weight="700" fill="#93C5FD">dissect.target VFS</text>
+
+        <rect x="144" y="0" width="112" height="26" rx="13" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
+        <text x="200" y="17" text-anchor="middle" class="font-mono" font-size="10.5" font-weight="700" fill="#93C5FD">DuckDB Core</text>
+
+        <rect x="264" y="0" width="128" height="26" rx="13" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
+        <text x="328" y="17" text-anchor="middle" class="font-mono" font-size="10.5" font-weight="700" fill="#93C5FD">RLA Log Commit</text>
+
+        <rect x="400" y="0" width="76" height="26" rx="13" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
+        <text x="438" y="17" text-anchor="middle" class="font-mono" font-size="10.5" font-weight="700" fill="#93C5FD">YARA-X</text>
       </g>
-      <g transform="translate(132, 0)">
-        <rect width="138" height="24" rx="7" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
-        <text x="69" y="16" text-anchor="middle" class="font-mono" font-size="10" font-weight="700" fill="#93C5FD">dissect.target VFS</text>
+
+      <!-- Main Title & Tagline -->
+      <text x="62" y="176" class="font-sans" font-size="52" font-weight="800" fill="url(#wft-title)" letter-spacing="-0.5">WFT</text>
+      <text x="64" y="210" class="font-sans" font-size="19" font-weight="700" fill="#E2E8F0">Windows Forensic Examination Platform</text>
+      <text x="64" y="234" class="font-sans" font-size="14.5" fill="#94A3B8">Raw container intake to sub-millisecond super-timelines.</text>
+
+      <!-- ANIMATED TIME CARD / TELEMETRY HUD WIDGET -->
+      <g>
+        <rect x="64" y="256" width="450" height="64" rx="10" fill="#08172E" stroke="#1D4ED8" stroke-width="0.8"/>
+        <!-- Radar Status Indicator -->
+        <circle class="live-dot" cx="88" cy="288" r="4.5" fill="#10B981">
+          <animate attributeName="opacity" values="1;0.35;1" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="radar-ring" cx="88" cy="288" r="4.5" fill="none" stroke="#10B981" stroke-width="1.2">
+          <animate attributeName="r" values="3;16" dur="2.4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0" dur="2.4s" repeatCount="indefinite"/>
+        </circle>
+        
+        <text x="108" y="281" class="font-mono" font-size="11" font-weight="700" fill="#38BDF8" letter-spacing="1">TIME CARD &amp; SUPER-TIMELINE HUD</text>
+        <text x="108" y="300" class="font-sans" font-size="12" fill="#F1F5F9">UTC &#177;00:00 &#x2022; <tspan font-weight="700" fill="#34D399">524,198 Records</tspan> Parsed in 0.72s</text>
+
+        <!-- Animated Sweeping Timeline Bar -->
+        <line x1="64" y1="319" x2="160" y2="319" stroke="#38BDF8" stroke-width="1.6">
+          <animate attributeName="x1" values="64;414;64" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="x2" values="160;514;160" dur="4s" repeatCount="indefinite"/>
+        </line>
       </g>
-      <g transform="translate(278, 0)">
-        <rect width="116" height="24" rx="7" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
-        <text x="58" y="16" text-anchor="middle" class="font-mono" font-size="10" font-weight="700" fill="#93C5FD">RLA Log Commit</text>
+
+      <!-- 4 Core Forensic Feature Points -->
+      <g>
+        <!-- Point 1: DuckDB Columnar Core -->
+        <g transform="translate(64, 342)">
+          <rect width="22" height="22" rx="6" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
+          <path d="M6 11 L10 15 L16 7" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="34" y="12" class="font-sans" font-size="15.5" font-weight="700" fill="#FFFFFF">Zero-Copy DuckDB Columnar Core</text>
+          <text x="34" y="29" class="font-sans" font-size="13" fill="#94A3B8">Sub-ms SQL queries across 500,000+ events with unpivoted filters</text>
+        </g>
+
+        <!-- Point 2: Dirty Registry Replay -->
+        <g transform="translate(64, 398)">
+          <rect width="22" height="22" rx="6" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
+          <path d="M6 11 L10 15 L16 7" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="34" y="12" class="font-sans" font-size="15.5" font-weight="700" fill="#FFFFFF">Mandatory Dirty Registry Replay</text>
+          <text x="34" y="29" class="font-sans" font-size="13" fill="#94A3B8">Automated RLA commit for volatile .LOG1/.LOG2 logs before hive analysis</text>
+        </g>
+
+        <!-- Point 3: Direct VFS Intake -->
+        <g transform="translate(64, 454)">
+          <rect width="22" height="22" rx="6" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
+          <path d="M6 11 L10 15 L16 7" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="34" y="12" class="font-sans" font-size="15.5" font-weight="700" fill="#FFFFFF">Native VFS Multi-Format Intake</text>
+          <text x="34" y="29" class="font-sans" font-size="13" fill="#94A3B8">Direct read-only mounting of .E01, .RAW, .VHDX, and .VMDK containers</text>
+        </g>
+
+        <!-- Point 4: Threat Hunting & OCR -->
+        <g transform="translate(64, 510)">
+          <rect width="22" height="22" rx="6" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
+          <path d="M6 11 L10 15 L16 7" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="34" y="12" class="font-sans" font-size="15.5" font-weight="700" fill="#FFFFFF">Threat Hunting &amp; RapidOCR Triage</text>
+          <text x="34" y="29" class="font-sans" font-size="13" fill="#94A3B8">Compiled Rust YARA-X rules + OCR text extraction from carved images</text>
+        </g>
+      </g>
+
+      <!-- Footer Stats Metrics Bar -->
+      <g transform="translate(64, 584)">
+        <text class="font-mono" font-size="12" fill="#8B949E">
+          29-stage ingest  &#x2022;  500K+ rows/sec  &#x2022;  dissect VFS  &#x2022;  Cytoscape graph
+        </text>
       </g>
     </g>
 
-    <!-- Main Title & Headline -->
-    <text x="0" y="98" class="font-sans" font-size="44" font-weight="800" fill="url(#wft-title)" letter-spacing="-0.5">WFT</text>
-    <text x="0" y="124" class="font-sans" font-size="16" font-weight="600" fill="#CBD5E1">Windows Forensic Examination Platform</text>
-    <text x="0" y="144" class="font-sans" font-size="12" fill="#94A3B8">Enterprise "Process + Examine" workstation ingesting raw containers to sub-ms timelines.</text>
+    <!-- ==================== RIGHT COLUMN: REAL APPLICATION WINDOW ==================== -->
+    <g>
+      <!-- Window Outer Shell with Drop Shadow -->
+      <rect x="548" y="70" width="692" height="504" rx="12" fill="#0A1122" stroke="#1E3A8A" stroke-width="1.2" filter="url(#sh-wbox)"/>
 
-    <!-- Animated Time Card / Live Telemetry HUD Widget -->
-    <g transform="translate(0, 162)">
-      <rect width="470" height="66" rx="10" fill="#08172E" stroke="#1D4ED8" stroke-width="0.8"/>
-      <!-- Radar Status Indicator -->
-      <circle class="live-dot" cx="24" cy="26" r="4.5" fill="#10B981">
-        <animate attributeName="opacity" values="1;0.35;1" dur="2s" repeatCount="indefinite"/>
-      </circle>
-      <circle class="radar-ring" cx="24" cy="26" r="4.5" fill="none" stroke="#10B981" stroke-width="1.2">
-        <animate attributeName="r" values="3;15" dur="2.4s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="1;0" dur="2.4s" repeatCount="indefinite"/>
-      </circle>
-      
-      <text x="44" y="24" class="font-mono" font-size="10.5" font-weight="700" fill="#38BDF8" letter-spacing="1">SUPER-TIMELINE ENGINE: 500,000+ RECORDS</text>
-      <text x="44" y="42" class="font-sans" font-size="11" fill="#E2E8F0">Zero-Copy In-Process Columnar &#x2022; Sub-0.8ms Query Latency</text>
-      <text x="44" y="56" class="font-mono" font-size="9.5" fill="#94A3B8">CORRELATION DELTA: UTC &#177;00:00 &#x2022; Sub-Second Artifact Sync</text>
-    </g>
+      <!-- Mac-Style Titlebar -->
+      <rect x="548" y="70" width="692" height="38" rx="12" fill="#0D182E"/>
+      <rect x="548" y="96" width="692" height="12" fill="#0D182E"/>
 
-    <!-- 4 Core Forensic Feature Points -->
-    <g transform="translate(0, 246)">
-      <!-- Point 1: DuckDB Columnar Core -->
-      <g transform="translate(0, 0)">
-        <rect width="24" height="24" rx="6" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
-        <!-- Lightning bolt -->
-        <path d="M14 4 L9 13 H15 L12 21 L18 11 H13 Z" fill="#38BDF8"/>
-        <text x="36" y="13" class="font-sans" font-size="13.5" font-weight="700" fill="#FFFFFF">Zero-Copy DuckDB Columnar Core</text>
-        <text x="36" y="28" class="font-sans" font-size="11.5" fill="#94A3B8">Sub-ms super-timeline across 500,000+ events with unpivoted filtering.</text>
-      </g>
+      <!-- Window Dots -->
+      <circle cx="568" cy="89" r="4.5" fill="#EF4444" fill-opacity="0.9"/>
+      <circle cx="583" cy="89" r="4.5" fill="#F59E0B" fill-opacity="0.9"/>
+      <circle cx="598" cy="89" r="4.5" fill="#10B981" fill-opacity="0.9"/>
 
-      <!-- Point 2: Dirty Registry Replay -->
-      <g transform="translate(0, 48)">
-        <rect width="24" height="24" rx="6" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
-        <!-- Replay arrows -->
-        <path d="M7 12 A5 5 0 1 1 17 12" fill="none" stroke="#38BDF8" stroke-width="1.4"/>
-        <path d="M17 9 L17 12 L14 12" fill="none" stroke="#38BDF8" stroke-width="1.4" stroke-linecap="round"/>
-        <text x="36" y="13" class="font-sans" font-size="13.5" font-weight="700" fill="#FFFFFF">Mandatory Dirty Registry Replay</text>
-        <text x="36" y="28" class="font-sans" font-size="11.5" fill="#94A3B8">Automated RLA commit for volatile .LOG1/.LOG2 logs before hive analysis.</text>
-      </g>
-
-      <!-- Point 3: Direct VFS Intake -->
-      <g transform="translate(0, 96)">
-        <rect width="24" height="24" rx="6" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
-        <!-- Disk drive icon -->
-        <path d="M5 8 H19 V16 H5 Z" fill="none" stroke="#38BDF8" stroke-width="1.2"/>
-        <line x1="5" y1="12" x2="19" y2="12" stroke="#38BDF8" stroke-width="0.8"/>
-        <circle cx="16" cy="14" r="1" fill="#38BDF8"/>
-        <text x="36" y="13" class="font-sans" font-size="13.5" font-weight="700" fill="#FFFFFF">Native VFS Multi-Format Intake</text>
-        <text x="36" y="28" class="font-sans" font-size="11.5" fill="#94A3B8">Direct mounting of .E01, .RAW, .VHDX, and .VMDK containers via dissect.</text>
-      </g>
-
-      <!-- Point 4: Threat Hunting & OCR -->
-      <g transform="translate(0, 144)">
-        <rect width="24" height="24" rx="6" fill="#0A2244" stroke="#0284C7" stroke-width="0.8"/>
-        <!-- Crosshair icon -->
-        <circle cx="12" cy="12" r="6" fill="none" stroke="#38BDF8" stroke-width="1.2"/>
-        <line x1="12" y1="3" x2="12" y2="21" stroke="#38BDF8" stroke-width="0.8"/>
-        <line x1="3" y1="12" x2="21" y2="12" stroke="#38BDF8" stroke-width="0.8"/>
-        <text x="36" y="13" class="font-sans" font-size="13.5" font-weight="700" fill="#FFFFFF">Threat Hunting &amp; RapidOCR Triage</text>
-        <text x="36" y="28" class="font-sans" font-size="11.5" fill="#94A3B8">Compiled Rust YARA-X rules + OCR text extraction from carved images.</text>
-      </g>
-    </g>
-
-    <!-- Pipeline Schematic Flow -->
-    <g transform="translate(0, 470)">
-      <text x="0" y="0" class="font-mono" font-size="10" fill="#64748B">
-        dissect VFS <tspan fill="#38BDF8">&#x2192;</tspan> RLA Dirty Replay <tspan fill="#38BDF8">&#x2192;</tspan> DuckDB Columnar <tspan fill="#38BDF8">&#x2192;</tspan> Cytoscape Graph
+      <!-- Centered Window Title -->
+      <text x="894" y="93" text-anchor="middle" class="font-sans" font-size="11.5" font-weight="600" fill="#94A3B8">
+        WFT — Windows Forensic Examination Platform
       </text>
-    </g>
 
-    <!-- Footer Repo CTA Link -->
-    <g transform="translate(0, 502)">
-      <text x="0" y="0" class="font-mono" font-size="11" fill="#64748B">github.com/sanjeeth-solleti/WFT</text>
-      <text x="470" y="0" text-anchor="end" class="font-sans" font-size="12" font-weight="700" fill="#38BDF8">Explore WFT Repository &#x2192;</text>
-    </g>
-  </g>
+      <!-- Right Live Session Indicator -->
+      <g transform="translate(1106, 79)">
+        <rect width="124" height="20" rx="10" fill="#064E3B" stroke="#059669" stroke-width="0.8"/>
+        <circle class="live-dot" cx="12" cy="10" r="3" fill="#34D399"/>
+        <text x="22" y="13.5" class="font-mono" font-size="9" font-weight="700" fill="#A7F3D0">LIVE DUCKDB CORE</text>
+      </g>
 
-  <!-- ==================== RIGHT SIDE: REAL APPLICATION WINDOW ==================== -->
-  <g transform="translate(546, 42)">
-    <!-- Window Outer Shell with Drop Shadow -->
-    <rect width="688" height="552" rx="12" fill="#0A1122" stroke="#1E3A8A" stroke-width="1.2" filter="url(#sh-wbox)"/>
+      <!-- Viewport with REAL Embedded Screenshot (Exact Matching Bounds) -->
+      <image href="data:image/jpeg;base64,{b64_wft}" xlink:href="data:image/jpeg;base64,{b64_wft}" x="548" y="108" width="692" height="434" preserveAspectRatio="xMidYMin slice" clip-path="url(#wc-wft)"/>
+      <rect x="548" y="108" width="692" height="434" fill="none" stroke="#1E293B" stroke-width="0.5"/>
 
-    <!-- Mac-Style Titlebar -->
-    <rect width="688" height="38" rx="12" fill="#0D182E"/>
-    <rect y="30" width="688" height="8" fill="#0D182E"/>
+      <!-- Floating Bottom Telemetry Glass HUD (Over Screenshot) -->
+      <g transform="translate(560, 488)">
+        <rect width="668" height="42" rx="8" fill="#071328" fill-opacity="0.94" stroke="#0284C7" stroke-width="0.8"/>
+        <circle class="live-dot" cx="16" cy="21" r="3.5" fill="#34D399"/>
+        <text x="28" y="24" class="font-mono" font-size="10" font-weight="700" fill="#A7F3D0">CONTAINER: Windows10_Forensic.E01 <tspan fill="#64748B">[VFS MOUNTED &#x2022; READ ONLY]</tspan></text>
+        <text x="654" y="24" text-anchor="end" class="font-mono" font-size="9.5" font-weight="600" fill="#BAE6FD">524,198 ARTIFACTS PARSED (0.72s) &#x2022; SHA-256 VERIFIED</text>
+      </g>
 
-    <!-- Window Dots -->
-    <circle cx="20" cy="19" r="4.5" fill="#EF4444" fill-opacity="0.9"/>
-    <circle cx="35" cy="19" r="4.5" fill="#F59E0B" fill-opacity="0.9"/>
-    <circle cx="50" cy="19" r="4.5" fill="#10B981" fill-opacity="0.9"/>
+      <!-- Window Bottom Status Bar -->
+      <g transform="translate(548, 542)">
+        <line x1="0" y1="0" x2="692" y2="0" stroke="#1E293B" stroke-width="0.8"/>
+        <rect y="0" width="692" height="32" rx="0" fill="#08101E"/>
+        <rect y="20" width="692" height="12" rx="12" fill="#08101E"/>
 
-    <!-- Centered Window Title -->
-    <text x="344" y="23" text-anchor="middle" class="font-sans" font-size="11" font-weight="600" fill="#94A3B8">
-      WFT — Windows Forensic Examination Platform
-    </text>
-
-    <!-- Right Live Session Indicator -->
-    <g transform="translate(534, 9)">
-      <rect width="138" height="20" rx="10" fill="#064E3B" stroke="#059669" stroke-width="0.8"/>
-      <circle class="live-dot" cx="12" cy="10" r="3" fill="#34D399"/>
-      <text x="22" y="13.5" class="font-mono" font-size="9" font-weight="700" fill="#A7F3D0">LIVE DUCKDB CORE</text>
-    </g>
-
-    <!-- Viewport with REAL Embedded Screenshot -->
-    <g transform="translate(2, 38)">
-      <image href="data:image/jpeg;base64,{b64_wft}" xlink:href="data:image/jpeg;base64,{b64_wft}" x="0" y="0" width="684" height="476" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-wft-vp)"/>
-      <rect x="0" y="0" width="684" height="476" fill="none" stroke="#1E293B" stroke-width="0.5"/>
-    </g>
-
-    <!-- Floating Bottom Telemetry Glass HUD (Over Screenshot) -->
-    <g transform="translate(14, 456)">
-      <rect width="660" height="42" rx="8" fill="#071328" fill-opacity="0.92" stroke="#0284C7" stroke-width="0.8"/>
-      <circle class="live-dot" cx="16" cy="21" r="3.5" fill="#34D399"/>
-      <text x="28" y="24" class="font-mono" font-size="10" font-weight="700" fill="#A7F3D0">CONTAINER: Windows10_Forensic.E01 <tspan fill="#64748B">[VFS MOUNTED &#x2022; READ ONLY]</tspan></text>
-      <text x="646" y="24" text-anchor="end" class="font-mono" font-size="9.5" font-weight="600" fill="#BAE6FD">524,198 ARTIFACTS PARSED (0.72s) &#x2022; SHA-256 VERIFIED</text>
-    </g>
-
-    <!-- Window Bottom Status Bar -->
-    <g transform="translate(0, 518)">
-      <line x1="0" y1="0" x2="688" y2="0" stroke="#1E293B" stroke-width="0.8"/>
-      <rect y="0" width="688" height="34" rx="0" fill="#08101E"/>
-      <rect y="22" width="688" height="12" rx="12" fill="#08101E"/>
-
-      <g transform="translate(16, 21)" class="font-mono" font-size="9.5" fill="#64748B">
-        <text x="0" y="0"><tspan fill="#10B981">&#x25CF;</tspan> VFS: ACTIVE</text>
-        <text x="120" y="0"><tspan fill="#38BDF8">&#x25CF;</tspan> AG GRID: VIRTUALIZED</text>
-        <text x="280" y="0"><tspan fill="#818CF8">&#x25CF;</tspan> CYTOSCAPE: GRAPH READY</text>
-        <text x="480" y="0"><tspan fill="#F59E0B">&#x25CF;</tspan> ENGINE: DUCKDB v1.0</text>
+        <g transform="translate(16, 20)" class="font-mono" font-size="9.5" fill="#64748B">
+          <text x="0" y="0"><tspan fill="#10B981">&#x25CF;</tspan> VFS: ACTIVE</text>
+          <text x="120" y="0"><tspan fill="#38BDF8">&#x25CF;</tspan> AG GRID: VIRTUALIZED</text>
+          <text x="280" y="0"><tspan fill="#818CF8">&#x25CF;</tspan> CYTOSCAPE: READY</text>
+          <text x="480" y="0"><tspan fill="#F59E0B">&#x25CF;</tspan> ENGINE: DUCKDB v1.0</text>
+        </g>
       </g>
     </g>
   </g>
@@ -723,7 +730,7 @@ card_msteams_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http
 
     <!-- Border Stroke -->
     <linearGradient id="border-ms" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#C084FC" stop-opacity="0.5"/>
+      <stop offset="0%" stop-color="#C084FC" stop-opacity="0.55"/>
       <stop offset="45%" stop-color="#7C3AED" stop-opacity="0.4"/>
       <stop offset="100%" stop-color="#1E293B" stop-opacity="0.4"/>
     </linearGradient>
@@ -745,9 +752,12 @@ card_msteams_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http
       <feDropShadow dx="0" dy="16" stdDeviation="22" flood-color="#000000" flood-opacity="0.75"/>
     </filter>
 
-    <!-- Screenshot Viewport Clip -->
-    <clipPath id="clip-ms-vp">
-      <rect x="548" y="94" width="684" height="434" rx="2"/>
+    <!-- Card Outer Clip -->
+    <clipPath id="cc-ms"><rect width="1280" height="640" rx="20"/></clipPath>
+
+    <!-- Screenshot Viewport Clip (Exact Global Coordinates Matching Image) -->
+    <clipPath id="wc-ms">
+      <rect x="548" y="108" width="692" height="434" rx="2"/>
     </clipPath>
   </defs>
 
@@ -758,186 +768,207 @@ card_msteams_svg = f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http
     /* Animations */
     .pulse-ambient {{ animation: pamb 6s ease-in-out infinite; }}
     .live-dot-purple {{ animation: ldotp 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }}
-    .radar-ring-purple {{ animation: rringp 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite; transform-origin: 24px 26px; }}
+    .radar-ring-purple {{ animation: rringp 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite; transform-origin: 88px 288px; }}
     
     @keyframes pamb {{ 0%, 100% {{ opacity: 0.65; }} 50% {{ opacity: 1; }} }}
     @keyframes ldotp {{ 0%, 100% {{ opacity: 1; }} 50% {{ opacity: 0.35; }} }}
-    @keyframes rringp {{ 0% {{ r: 3; opacity: 1; }} 100% {{ r: 15; opacity: 0; }} }}
+    @keyframes rringp {{ 0% {{ r: 3; opacity: 1; }} 100% {{ r: 16; opacity: 0; }} }}
     
     @media (prefers-reduced-motion: reduce) {{ * {{ animation: none !important; }} }}
   </style>
 
-  <!-- Canvas Surface -->
-  <rect width="1280" height="640" rx="16" fill="url(#bg-ms)"/>
-  <rect class="pulse-ambient" width="1280" height="640" rx="16" fill="url(#gl-ms)"/>
-  <rect width="1280" height="640" rx="16" fill="url(#dt-ms)"/>
-  <rect x="0.5" y="0.5" width="1279" height="639" rx="16" fill="none" stroke="url(#border-ms)" stroke-width="1"/>
+  <g clip-path="url(#cc-ms)">
+    <!-- Canvas Surface -->
+    <rect width="1280" height="640" rx="20" fill="url(#bg-ms)"/>
+    <rect class="pulse-ambient" width="1280" height="640" rx="20" fill="url(#gl-ms)"/>
+    <rect width="1280" height="640" rx="20" fill="url(#dt-ms)"/>
+    <rect x="0.5" y="0.5" width="1279" height="639" rx="20" fill="none" stroke="url(#border-ms)" stroke-width="1"/>
 
-  <!-- Top Specular Highlight Line -->
-  <line x1="20" y1="1" x2="1260" y2="1" stroke="#A855F7" stroke-width="2" stroke-linecap="round"/>
+    <!-- Top Specular Highlight Line -->
+    <line x1="20" y1="1" x2="1260" y2="1" stroke="#A855F7" stroke-width="2" stroke-linecap="round"/>
 
-  <!-- ==================== LEFT SIDE: DETAILED SPECIFICATIONS ==================== -->
-  <g transform="translate(48, 42)">
-    <!-- Category & Index Tag -->
-    <text x="0" y="16" class="font-mono" font-size="11.5" font-weight="700" fill="#C084FC" letter-spacing="2">TOOL 02 / 02 &#x2022; COLLABORATION DFIR SUITE</text>
-    <rect x="0" y="24" width="46" height="3" rx="1.5" fill="#C084FC"/>
+    <!-- ==================== LEFT COLUMN: DFIR SPECIFICATIONS ==================== -->
+    <g>
+      <!-- Category & Index Tag -->
+      <text x="64" y="66" class="font-mono" font-size="12" font-weight="700" fill="#C084FC" letter-spacing="2">TOOL 02 / 02 &#x2022; COLLABORATION DFIR SUITE</text>
+      <rect x="64" y="78" width="44" height="3" rx="1.5" fill="#C084FC"/>
 
-    <!-- Tech Chips Row -->
-    <g transform="translate(0, 36)">
-      <g transform="translate(0, 0)">
-        <rect width="138" height="24" rx="7" fill="#24103C" stroke="#7C3AED" stroke-width="0.8"/>
-        <text x="69" y="16" text-anchor="middle" class="font-mono" font-size="10" font-weight="700" fill="#E9D5FF">LevelDB / IndexedDB</text>
+      <!-- Tech Chips Row -->
+      <g transform="translate(64, 98)">
+        <rect x="0" y="0" width="144" height="26" rx="13" fill="#24103C" stroke="#7C3AED" stroke-width="0.8"/>
+        <text x="72" y="17" text-anchor="middle" class="font-mono" font-size="10.5" font-weight="700" fill="#E9D5FF">LevelDB / IndexedDB</text>
+
+        <rect x="152" y="0" width="104" height="26" rx="13" fill="#24103C" stroke="#7C3AED" stroke-width="0.8"/>
+        <text x="204" y="17" text-anchor="middle" class="font-mono" font-size="10.5" font-weight="700" fill="#E9D5FF">dfindexeddb</text>
+
+        <rect x="264" y="0" width="90" height="26" rx="13" fill="#24103C" stroke="#7C3AED" stroke-width="0.8"/>
+        <text x="309" y="17" text-anchor="middle" class="font-mono" font-size="10.5" font-weight="700" fill="#E9D5FF">cramjam</text>
+
+        <rect x="362" y="0" width="100" height="26" rx="13" fill="#24103C" stroke="#7C3AED" stroke-width="0.8"/>
+        <text x="412" y="17" text-anchor="middle" class="font-mono" font-size="10.5" font-weight="700" fill="#E9D5FF">Air-Gapped</text>
       </g>
-      <g transform="translate(146, 0)">
-        <rect width="98" height="24" rx="7" fill="#24103C" stroke="#7C3AED" stroke-width="0.8"/>
-        <text x="49" y="16" text-anchor="middle" class="font-mono" font-size="10" font-weight="700" fill="#E9D5FF">dfindexeddb</text>
+
+      <!-- Main Title & Tagline -->
+      <text x="62" y="176" class="font-sans" font-size="52" font-weight="800" fill="url(#ms-title)" letter-spacing="-0.5">MSTeams_Parser</text>
+      <text x="64" y="210" class="font-sans" font-size="19" font-weight="700" fill="#E9D5FF">Microsoft Teams Forensic Analysis Suite</text>
+      <text x="64" y="234" class="font-sans" font-size="14.5" fill="#94A3B8">Reconstruct enterprise Teams chats, calls, meetings, &amp; media.</text>
+
+      <!-- ANIMATED TIME CARD / TELEMETRY HUD WIDGET -->
+      <g>
+        <rect x="64" y="256" width="450" height="64" rx="10" fill="#1A0D30" stroke="#7C3AED" stroke-width="0.8"/>
+        <!-- Radar Status Indicator -->
+        <circle class="live-dot-purple" cx="88" cy="288" r="4.5" fill="#C084FC">
+          <animate attributeName="opacity" values="1;0.35;1" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="radar-ring-purple" cx="88" cy="288" r="4.5" fill="none" stroke="#C084FC" stroke-width="1.2">
+          <animate attributeName="r" values="3;16" dur="2.4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0" dur="2.4s" repeatCount="indefinite"/>
+        </circle>
+        
+        <text x="108" y="281" class="font-mono" font-size="11" font-weight="700" fill="#C084FC" letter-spacing="1">AIR-GAPPED TIME CARD &amp; FORENSIC DAEMON</text>
+        <text x="108" y="300" class="font-sans" font-size="12" fill="#F3E8FF">Strict 127.0.0.1 &#x2022; <tspan font-weight="700" fill="#C084FC">Dual UTC &amp; IST (+05:30)</tspan> Timestamps</text>
+
+        <!-- Animated Sweeping Timeline Bar -->
+        <line x1="64" y1="319" x2="160" y2="319" stroke="#C084FC" stroke-width="1.6">
+          <animate attributeName="x1" values="64;414;64" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="x2" values="160;514;160" dur="4s" repeatCount="indefinite"/>
+        </line>
       </g>
-      <g transform="translate(252, 0)">
-        <rect width="84" height="24" rx="7" fill="#24103C" stroke="#7C3AED" stroke-width="0.8"/>
-        <text x="42" y="16" text-anchor="middle" class="font-mono" font-size="10" font-weight="700" fill="#E9D5FF">cramjam</text>
+
+      <!-- 4 Core Forensic Feature Points -->
+      <g>
+        <!-- Point 1: Multi-Source Ingestion -->
+        <g transform="translate(64, 342)">
+          <rect width="22" height="22" rx="6" fill="#281144" stroke="#7C3AED" stroke-width="0.8"/>
+          <path d="M6 11 L10 15 L16 7" fill="none" stroke="#C084FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="34" y="12" class="font-sans" font-size="15.5" font-weight="700" fill="#FFFFFF">Multi-Source LevelDB &amp; IndexedDB Intake</text>
+          <text x="34" y="29" class="font-sans" font-size="13" fill="#94A3B8">Ingests New Teams (%LOCALAPPDATA% EBWebView) &amp; Classic stores</text>
+        </g>
+
+        <!-- Point 2: Adaptive Card Normalization -->
+        <g transform="translate(64, 398)">
+          <rect width="22" height="22" rx="6" fill="#281144" stroke="#7C3AED" stroke-width="0.8"/>
+          <path d="M6 11 L10 15 L16 7" fill="none" stroke="#C084FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="34" y="12" class="font-sans" font-size="15.5" font-weight="700" fill="#FFFFFF">Adaptive Card &amp; Event Normalization</text>
+          <text x="34" y="29" class="font-sans" font-size="13" fill="#94A3B8">Unpacks Base64 JSON cards, call durations, meeting logs, &amp; roles</text>
+        </g>
+
+        <!-- Point 3: Identity Resolution -->
+        <g transform="translate(64, 454)">
+          <rect width="22" height="22" rx="6" fill="#281144" stroke="#7C3AED" stroke-width="0.8"/>
+          <path d="M6 11 L10 15 L16 7" fill="none" stroke="#C084FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="34" y="12" class="font-sans" font-size="15.5" font-weight="700" fill="#FFFFFF">Identity &amp; Internal GUID Resolution</text>
+          <text x="34" y="29" class="font-sans" font-size="13" fill="#94A3B8">Resolves internal 8:orgid GUIDs to corporate employees &amp; emails</text>
+        </g>
+
+        <!-- Point 4: Media Carver -->
+        <g transform="translate(64, 510)">
+          <rect width="22" height="22" rx="6" fill="#281144" stroke="#7C3AED" stroke-width="0.8"/>
+          <path d="M6 11 L10 15 L16 7" fill="none" stroke="#C084FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="34" y="12" class="font-sans" font-size="15.5" font-weight="700" fill="#FFFFFF">Magic-Byte Media &amp; Attachment Carver</text>
+          <text x="34" y="29" class="font-sans" font-size="13" fill="#94A3B8">Carves cached images while filtering UI telemetry noise (&lt; 3.5 KB)</text>
+        </g>
       </g>
-      <g transform="translate(344, 0)">
-        <rect width="112" height="24" rx="7" fill="#24103C" stroke="#7C3AED" stroke-width="0.8"/>
-        <text x="56" y="16" text-anchor="middle" class="font-mono" font-size="10" font-weight="700" fill="#E9D5FF">Air-Gapped</text>
+
+      <!-- Footer Stats Metrics Bar -->
+      <g transform="translate(64, 584)">
+        <text class="font-mono" font-size="12" fill="#8B949E">
+          5-step pipeline  &#x2022;  magic-byte carver  &#x2022;  dual UTC/IST  &#x2022;  HTML dossier
+        </text>
       </g>
     </g>
 
-    <!-- Main Title & Headline -->
-    <text x="0" y="98" class="font-sans" font-size="44" font-weight="800" fill="url(#ms-title)" letter-spacing="-0.5">MSTeams_Parser</text>
-    <text x="0" y="124" class="font-sans" font-size="16" font-weight="600" fill="#E9D5FF">Microsoft Teams Forensic Analysis Suite</text>
-    <text x="0" y="144" class="font-sans" font-size="12" fill="#94A3B8">Reconstruct enterprise Teams chats, calls, meetings, &amp; media from LevelDB stores.</text>
+    <!-- ==================== RIGHT COLUMN: REAL APPLICATION WINDOW ==================== -->
+    <g>
+      <!-- Window Outer Shell with Drop Shadow -->
+      <rect x="548" y="70" width="692" height="504" rx="12" fill="#110820" stroke="#7C3AED" stroke-width="1.2" filter="url(#sh-msbox)"/>
 
-    <!-- Animated Time Card / Live Telemetry HUD Widget -->
-    <g transform="translate(0, 162)">
-      <rect width="470" height="66" rx="10" fill="#1A0D30" stroke="#7C3AED" stroke-width="0.8"/>
-      <!-- Radar Status Indicator -->
-      <circle class="live-dot-purple" cx="24" cy="26" r="4.5" fill="#C084FC">
-        <animate attributeName="opacity" values="1;0.35;1" dur="2s" repeatCount="indefinite"/>
-      </circle>
-      <circle class="radar-ring-purple" cx="24" cy="26" r="4.5" fill="none" stroke="#C084FC" stroke-width="1.2">
-        <animate attributeName="r" values="3;15" dur="2.4s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="1;0" dur="2.4s" repeatCount="indefinite"/>
-      </circle>
-      
-      <text x="44" y="24" class="font-mono" font-size="10.5" font-weight="700" fill="#C084FC" letter-spacing="1">AIR-GAPPED FORENSIC DAEMON: 127.0.0.1</text>
-      <text x="44" y="42" class="font-sans" font-size="11" fill="#F3E8FF">Strict Localhost Binding &#x2022; Zero External Data Transmission</text>
-      <text x="44" y="56" class="font-mono" font-size="9.5" fill="#D8B4FE">TIMESTAMPS: DUAL UTC &amp; IST (UTC+05:30) &#x2022; Millisecond Resolution</text>
-    </g>
+      <!-- Mac-Style Titlebar -->
+      <rect x="548" y="70" width="692" height="38" rx="12" fill="#180C30"/>
+      <rect x="548" y="96" width="692" height="12" fill="#180C30"/>
 
-    <!-- 4 Core Forensic Feature Points -->
-    <g transform="translate(0, 246)">
-      <!-- Point 1: Multi-Source Ingestion -->
-      <g transform="translate(0, 0)">
-        <rect width="24" height="24" rx="6" fill="#281144" stroke="#7C3AED" stroke-width="0.8"/>
-        <!-- Box icon -->
-        <path d="M6 8 L12 5 L18 8 L12 11 Z" fill="none" stroke="#C084FC" stroke-width="1.1"/>
-        <path d="M6 8 V16 L12 19 V11 M18 8 V16 L12 19" fill="none" stroke="#C084FC" stroke-width="1.1"/>
-        <text x="36" y="13" class="font-sans" font-size="13.5" font-weight="700" fill="#FFFFFF">Multi-Source LevelDB &amp; IndexedDB Intake</text>
-        <text x="36" y="28" class="font-sans" font-size="11.5" fill="#94A3B8">Ingests New Teams (%LOCALAPPDATA% EBWebView) &amp; Classic stores.</text>
-      </g>
+      <!-- Window Dots -->
+      <circle cx="568" cy="89" r="4.5" fill="#EF4444" fill-opacity="0.9"/>
+      <circle cx="583" cy="89" r="4.5" fill="#F59E0B" fill-opacity="0.9"/>
+      <circle cx="598" cy="89" r="4.5" fill="#10B981" fill-opacity="0.9"/>
 
-      <!-- Point 2: Adaptive Card Normalization -->
-      <g transform="translate(0, 48)">
-        <rect width="24" height="24" rx="6" fill="#281144" stroke="#7C3AED" stroke-width="0.8"/>
-        <!-- Code / card icon -->
-        <path d="M6 7 H14 L18 11 V17 H6 Z" fill="none" stroke="#C084FC" stroke-width="1.1"/>
-        <line x1="9" y1="11" x2="15" y2="11" stroke="#C084FC" stroke-width="0.8"/>
-        <line x1="9" y1="14" x2="13" y2="14" stroke="#C084FC" stroke-width="0.8"/>
-        <text x="36" y="13" class="font-sans" font-size="13.5" font-weight="700" fill="#FFFFFF">Adaptive Card &amp; Event Normalization</text>
-        <text x="36" y="28" class="font-sans" font-size="11.5" fill="#94A3B8">Unpacks Base64 JSON cards, call durations, meeting logs, &amp; role changes.</text>
-      </g>
-
-      <!-- Point 3: Identity Resolution -->
-      <g transform="translate(0, 96)">
-        <rect width="24" height="24" rx="6" fill="#281144" stroke="#7C3AED" stroke-width="0.8"/>
-        <!-- User icon -->
-        <circle cx="12" cy="9" r="3.2" fill="none" stroke="#C084FC" stroke-width="1.1"/>
-        <path d="M6 18 C6 14.5 9 14 12 14 C15 14 18 14.5 18 18" fill="none" stroke="#C084FC" stroke-width="1.1"/>
-        <text x="36" y="13" class="font-sans" font-size="13.5" font-weight="700" fill="#FFFFFF">Identity &amp; Internal GUID Resolution</text>
-        <text x="36" y="28" class="font-sans" font-size="11.5" fill="#94A3B8">Resolves internal 8:orgid GUIDs to corporate employees, emails, &amp; roles.</text>
-      </g>
-
-      <!-- Point 4: Media Carver -->
-      <g transform="translate(0, 144)">
-        <rect width="24" height="24" rx="6" fill="#281144" stroke="#7C3AED" stroke-width="0.8"/>
-        <!-- Media / photo icon -->
-        <rect x="5" y="6" width="14" height="12" rx="2" fill="none" stroke="#C084FC" stroke-width="1.1"/>
-        <circle cx="9" cy="10" r="1.2" fill="#C084FC"/>
-        <path d="M6 16 L10 12 L13 15 L15 13 L18 16" fill="none" stroke="#C084FC" stroke-width="1"/>
-        <text x="36" y="13" class="font-sans" font-size="13.5" font-weight="700" fill="#FFFFFF">Magic-Byte Media &amp; Attachment Carver</text>
-        <text x="36" y="28" class="font-sans" font-size="11.5" fill="#94A3B8">Carves cached images while filtering UI telemetry noise (&lt; 3.5 KB).</text>
-      </g>
-    </g>
-
-    <!-- Pipeline Schematic Flow -->
-    <g transform="translate(0, 470)">
-      <text x="0" y="0" class="font-mono" font-size="10" fill="#64748B">
-        IndexedDB/LevelDB <tspan fill="#C084FC">&#x2192;</tspan> Base64 Decode <tspan fill="#C084FC">&#x2192;</tspan> GUID Resolution <tspan fill="#C084FC">&#x2192;</tspan> HTML Dossier
+      <!-- Centered Window Title -->
+      <text x="894" y="93" text-anchor="middle" class="font-sans" font-size="11.5" font-weight="600" fill="#C084FC">
+        MSTeams_Parser — Desktop Forensic Viewer &amp; Dossier
       </text>
-    </g>
 
-    <!-- Footer Repo CTA Link -->
-    <g transform="translate(0, 502)">
-      <text x="0" y="0" class="font-mono" font-size="11" fill="#64748B">github.com/sanjeeth-solleti/MSTeams_Parser</text>
-      <text x="470" y="0" text-anchor="end" class="font-sans" font-size="12" font-weight="700" fill="#C084FC">Explore MSTeams_Parser Repository &#x2192;</text>
-    </g>
-  </g>
+      <!-- Right Live Session Indicator -->
+      <g transform="translate(1106, 79)">
+        <rect width="124" height="20" rx="10" fill="#2E1065" stroke="#7C3AED" stroke-width="0.8"/>
+        <circle class="live-dot-purple" cx="12" cy="10" r="3" fill="#C084FC"/>
+        <text x="22" y="13.5" class="font-mono" font-size="9" font-weight="700" fill="#E9D5FF">AIR-GAPPED 127.0.0.1</text>
+      </g>
 
-  <!-- ==================== RIGHT SIDE: REAL APPLICATION WINDOW ==================== -->
-  <g transform="translate(546, 42)">
-    <!-- Window Outer Shell with Drop Shadow -->
-    <rect width="688" height="552" rx="12" fill="#110820" stroke="#7C3AED" stroke-width="1.2" filter="url(#sh-msbox)"/>
+      <!-- Viewport with REAL Embedded Screenshot (Exact Matching Bounds) -->
+      <image href="data:image/jpeg;base64,{b64_ms}" xlink:href="data:image/jpeg;base64,{b64_ms}" x="548" y="108" width="692" height="434" preserveAspectRatio="xMidYMin slice" clip-path="url(#wc-ms)"/>
+      <rect x="548" y="108" width="692" height="434" fill="none" stroke="#25163D" stroke-width="0.5"/>
 
-    <!-- Mac-Style Titlebar -->
-    <rect width="688" height="38" rx="12" fill="#180C30"/>
-    <rect y="30" width="688" height="8" fill="#180C30"/>
+      <!-- Floating Bottom Telemetry Glass HUD (Over Screenshot) -->
+      <g transform="translate(560, 488)">
+        <rect width="668" height="42" rx="8" fill="#150A28" fill-opacity="0.94" stroke="#7C3AED" stroke-width="0.8"/>
+        <circle class="live-dot-purple" cx="16" cy="21" r="3.5" fill="#C084FC"/>
+        <text x="28" y="24" class="font-mono" font-size="10" font-weight="700" fill="#E9D5FF">TARGET: EBWebView\\WV2Profile_tfw\\IndexedDB <tspan fill="#64748B">[LevelDB / JSON]</tspan></text>
+        <text x="654" y="24" text-anchor="end" class="font-mono" font-size="9.5" font-weight="600" fill="#D8B4FE">HTML DOSSIER &#x2022; UTF-8 BOM CSVs &#x2022; ZIP MEDIA</text>
+      </g>
 
-    <!-- Window Dots -->
-    <circle cx="20" cy="19" r="4.5" fill="#EF4444" fill-opacity="0.9"/>
-    <circle cx="35" cy="19" r="4.5" fill="#F59E0B" fill-opacity="0.9"/>
-    <circle cx="50" cy="19" r="4.5" fill="#10B981" fill-opacity="0.9"/>
+      <!-- Window Bottom Status Bar -->
+      <g transform="translate(548, 542)">
+        <line x1="0" y1="0" x2="692" y2="0" stroke="#2A1646" stroke-width="0.8"/>
+        <rect y="0" width="692" height="32" rx="0" fill="#130824"/>
+        <rect y="20" width="692" height="12" rx="12" fill="#130824"/>
 
-    <!-- Centered Window Title -->
-    <text x="344" y="23" text-anchor="middle" class="font-sans" font-size="11" font-weight="600" fill="#C084FC">
-      MSTeams_Parser — Desktop Forensic Viewer &amp; Dossier
-    </text>
-
-    <!-- Right Live Session Indicator -->
-    <g transform="translate(534, 9)">
-      <rect width="138" height="20" rx="10" fill="#2E1065" stroke="#7C3AED" stroke-width="0.8"/>
-      <circle class="live-dot-purple" cx="12" cy="10" r="3" fill="#C084FC"/>
-      <text x="22" y="13.5" class="font-mono" font-size="9" font-weight="700" fill="#E9D5FF">AIR-GAPPED 127.0.0.1</text>
-    </g>
-
-    <!-- Viewport with REAL Embedded Screenshot -->
-    <g transform="translate(2, 38)">
-      <image href="data:image/jpeg;base64,{b64_ms}" xlink:href="data:image/jpeg;base64,{b64_ms}" x="0" y="0" width="684" height="476" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-ms-vp)"/>
-      <rect x="0" y="0" width="684" height="476" fill="none" stroke="#25163D" stroke-width="0.5"/>
-    </g>
-
-    <!-- Floating Bottom Telemetry Glass HUD (Over Screenshot) -->
-    <g transform="translate(14, 456)">
-      <rect width="660" height="42" rx="8" fill="#150A28" fill-opacity="0.94" stroke="#7C3AED" stroke-width="0.8"/>
-      <circle class="live-dot-purple" cx="16" cy="21" r="3.5" fill="#C084FC"/>
-      <text x="28" y="24" class="font-mono" font-size="10" font-weight="700" fill="#E9D5FF">TARGET: EBWebView\\WV2Profile_tfw\\IndexedDB <tspan fill="#64748B">[LevelDB / JSON]</tspan></text>
-      <text x="646" y="24" text-anchor="end" class="font-mono" font-size="9.5" font-weight="600" fill="#D8B4FE">HTML DOSSIER &#x2022; UTF-8 BOM CSVs &#x2022; ZIP MEDIA</text>
-    </g>
-
-    <!-- Window Bottom Status Bar -->
-    <g transform="translate(0, 518)">
-      <line x1="0" y1="0" x2="688" y2="0" stroke="#2A1646" stroke-width="0.8"/>
-      <rect y="0" width="688" height="34" rx="0" fill="#130824"/>
-      <rect y="22" width="688" height="12" rx="12" fill="#130824"/>
-
-      <g transform="translate(16, 21)" class="font-mono" font-size="9.5" fill="#64748B">
-        <text x="0" y="0"><tspan fill="#A855F7">&#x25CF;</tspan> PIPELINE: 5-STEP</text>
-        <text x="130" y="0"><tspan fill="#C084FC">&#x25CF;</tspan> CARVER: MAGIC-BYTE</text>
-        <text x="300" y="0"><tspan fill="#38BDF8">&#x25CF;</tspan> TIMESTAMPS: DUAL UTC/IST</text>
-        <text x="500" y="0"><tspan fill="#34D399">&#x25CF;</tspan> CONFIDENTIALITY: LOCALHOST</text>
+        <g transform="translate(16, 20)" class="font-mono" font-size="9.5" fill="#64748B">
+          <text x="0" y="0"><tspan fill="#A855F7">&#x25CF;</tspan> PIPELINE: 5-STEP</text>
+          <text x="130" y="0"><tspan fill="#C084FC">&#x25CF;</tspan> CARVER: MAGIC-BYTE</text>
+          <text x="300" y="0"><tspan fill="#38BDF8">&#x25CF;</tspan> TIMESTAMPS: DUAL UTC/IST</text>
+          <text x="500" y="0"><tspan fill="#34D399">&#x25CF;</tspan> CONFIDENTIALITY: LOCALHOST</text>
+        </g>
       </g>
     </g>
   </g>
 </svg>"""
+
+
+# ==============================================================================
+# 6. TAPE.SVG (1280 x 32) — Animated Forensic Evidence Tape Divider
+# ==============================================================================
+tape_svg = """<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="32" viewBox="0 0 1280 32" role="img" aria-label="Forensic Evidence Tape — Hash Verified — Immutable Evidence">
+  <defs>
+    <clipPath id="tape-clip"><rect width="1280" height="32" rx="4"/></clipPath>
+    <pattern id="tape-stripes" width="28" height="32" patternUnits="userSpaceOnUse">
+      <path d="M0 0h14l-14 32h-14z" fill="#0D1117" opacity="0.10"/>
+      <path d="M28 0h14l-14 32h-14z" fill="#0D1117" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <style>
+    .base { fill: #E3B341; }
+    .w { fill: #0D1117; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12.5px; font-weight: 800; letter-spacing: 0.18em; }
+    .roll { animation: roll 18s linear infinite; }
+    @keyframes roll { to { transform: translateX(380px); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <g clip-path="url(#tape-clip)">
+    <rect class="base" width="1280" height="32"/>
+    <rect width="1280" height="32" fill="url(#tape-stripes)"/>
+    
+    <g class="roll">
+      <text x="-380" y="21" class="w">EVIDENCE &#x2022; DO NOT ALTER &#x2022; CHAIN OF CUSTODY &#x2022; SHA-256 SOUND &#x2022; READ-ONLY INTAKE &#x2022; </text>
+      <text x="0" y="21" class="w">EVIDENCE &#x2022; DO NOT ALTER &#x2022; CHAIN OF CUSTODY &#x2022; SHA-256 SOUND &#x2022; READ-ONLY INTAKE &#x2022; </text>
+      <text x="380" y="21" class="w">EVIDENCE &#x2022; DO NOT ALTER &#x2022; CHAIN OF CUSTODY &#x2022; SHA-256 SOUND &#x2022; READ-ONLY INTAKE &#x2022; </text>
+      <text x="760" y="21" class="w">EVIDENCE &#x2022; DO NOT ALTER &#x2022; CHAIN OF CUSTODY &#x2022; SHA-256 SOUND &#x2022; READ-ONLY INTAKE &#x2022; </text>
+      <text x="1140" y="21" class="w">EVIDENCE &#x2022; DO NOT ALTER &#x2022; CHAIN OF CUSTODY &#x2022; SHA-256 SOUND &#x2022; READ-ONLY INTAKE &#x2022; </text>
+      <text x="1520" y="21" class="w">EVIDENCE &#x2022; DO NOT ALTER &#x2022; CHAIN OF CUSTODY &#x2022; SHA-256 SOUND &#x2022; READ-ONLY INTAKE &#x2022; </text>
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="380 0" dur="18s" repeatCount="indefinite"/>
+    </g>
+  </g>
+</svg>"""
+
 
 if __name__ == "__main__":
     validate_and_save("banner.svg", banner_svg)
@@ -948,4 +979,5 @@ if __name__ == "__main__":
     validate_and_save("intro.svg", intro_svg)
     validate_and_save("card-wft.svg", card_wft_svg)
     validate_and_save("card-msteams.svg", card_msteams_svg)
+    validate_and_save("tape.svg", tape_svg)
     print("\n[SUCCESS] All modern project assets generated & validated!")
