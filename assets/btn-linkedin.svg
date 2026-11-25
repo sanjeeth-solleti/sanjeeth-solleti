@@ -12,7 +12,6 @@
   <rect x="0.5" y="0.5" width="194" height="41" rx="10" fill="url(#li-bg)" stroke="url(#li-border)" stroke-width="1"/>
   <line x1="12" y1="1" x2="183" y2="1" stroke="#38BDF8" stroke-width="1.6" stroke-linecap="round"/>
 
-  <!-- LinkedIn Vector Icon -->
   <g transform="translate(14, 11)">
     <rect width="20" height="20" rx="4" fill="#0A66C2"/>
     <circle cx="6" cy="6" r="1.5" fill="#FFFFFF"/>
@@ -22,6 +21,5 @@
 
   <text x="44" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#F1F5F9" letter-spacing="1">LINKEDIN</text>
   
-  <!-- Sleek Vector Arrow -->
   <path d="M174 24 L179 19 M179 19 H175 M179 19 V23" stroke="#38BDF8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>

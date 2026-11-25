@@ -12,7 +12,6 @@
   <rect x="0.5" y="0.5" width="194" height="41" rx="10" fill="url(#em-bg)" stroke="url(#em-border)" stroke-width="1"/>
   <line x1="12" y1="1" x2="183" y2="1" stroke="#34D399" stroke-width="1.6" stroke-linecap="round"/>
 
-  <!-- Email Vector Icon -->
   <g transform="translate(14, 11)">
     <rect width="20" height="20" rx="4" fill="#065F46"/>
     <path d="M3.5 5.5 H16.5 V14.5 H3.5 Z" fill="none" stroke="#6EE7B7" stroke-width="1.3"/>

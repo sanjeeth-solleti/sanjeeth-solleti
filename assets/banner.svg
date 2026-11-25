@@ -1,27 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300" role="img" aria-label="Vasava Sanjeeth Solleti — Digital Forensics &amp; Incident Response Analyst at TCS">
   <defs>
-    <!-- Background Canvas -->
     <linearGradient id="bg-canvas" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#050811"/>
       <stop offset="40%" stop-color="#090E1D"/>
       <stop offset="100%" stop-color="#05070E"/>
     </linearGradient>
 
-    <!-- Top Left Cyan Nebula Glow -->
     <radialGradient id="nebula-cyan" cx="12%" cy="15%" r="65%">
       <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.18"/>
       <stop offset="45%" stop-color="#0284C7" stop-opacity="0.06"/>
       <stop offset="100%" stop-color="#050811" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Bottom Right Indigo Glow -->
     <radialGradient id="nebula-indigo" cx="88%" cy="85%" r="60%">
       <stop offset="0%" stop-color="#6366F1" stop-opacity="0.18"/>
       <stop offset="50%" stop-color="#7C3AED" stop-opacity="0.05"/>
       <stop offset="100%" stop-color="#05070E" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Outer Frame Stroke -->
     <linearGradient id="frame-border" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.45"/>
       <stop offset="35%" stop-color="#1E293B" stop-opacity="0.6"/>
@@ -29,7 +25,6 @@
       <stop offset="100%" stop-color="#0F172A" stop-opacity="0.8"/>
     </linearGradient>
 
-    <!-- Top Specular Highlight Line -->
     <linearGradient id="top-specular" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#00D2FF" stop-opacity="0"/>
       <stop offset="15%" stop-color="#00D2FF" stop-opacity="0.9"/>
@@ -38,14 +33,12 @@
       <stop offset="100%" stop-color="#A855F7" stop-opacity="0"/>
     </linearGradient>
 
-    <!-- Luminous Name Gradient -->
     <linearGradient id="name-grad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#FFFFFF"/>
       <stop offset="60%" stop-color="#F0F9FF"/>
       <stop offset="100%" stop-color="#BAE6FD"/>
     </linearGradient>
 
-    <!-- Glass Widget Gradient -->
     <linearGradient id="widget-bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0B1325" stop-opacity="0.85"/>
       <stop offset="100%" stop-color="#080E1C" stop-opacity="0.92"/>
@@ -56,7 +49,6 @@
       <stop offset="100%" stop-color="#1E3A8A" stop-opacity="0.25"/>
     </linearGradient>
 
-    <!-- Subtle Tech Dot Grid -->
     <pattern id="dot-grid" width="24" height="24" patternUnits="userSpaceOnUse">
       <circle cx="2" cy="2" r="0.9" fill="#334155" fill-opacity="0.25"/>
     </pattern>
@@ -68,24 +60,20 @@
     @keyframes pglow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.45; transform: scale(0.9); } }
   </style>
 
-  <!-- Canvas Surface -->
   <rect width="1000" height="300" rx="16" fill="url(#bg-canvas)"/>
   <rect width="1000" height="300" rx="16" fill="url(#nebula-cyan)"/>
   <rect width="1000" height="300" rx="16" fill="url(#nebula-indigo)"/>
   <rect width="1000" height="300" rx="16" fill="url(#dot-grid)"/>
   <rect x="0.5" y="0.5" width="999" height="299" rx="16" fill="none" stroke="url(#frame-border)" stroke-width="1"/>
 
-  <!-- Top Edge Glow Line -->
   <line x1="20" y1="1" x2="980" y2="1" stroke="url(#top-specular)" stroke-width="1.8" stroke-linecap="round"/>
 
-  <!-- ==================== TOP TELEMETRY BAR ==================== -->
+  <!-- TOP TELEMETRY BAR -->
   <g transform="translate(36, 18)">
-    <!-- TCS Operations Capsule (Left) -->
     <rect x="0" y="0" width="300" height="24" rx="12" fill="#0C1B33" stroke="#1D4ED8" stroke-width="0.75" stroke-opacity="0.8"/>
     <circle class="pulse-glow" cx="12" cy="12" r="3.5" fill="#10B981"/>
     <text x="24" y="16" class="font-sans" font-size="10" font-weight="700" fill="#38BDF8" letter-spacing="1">TATA CONSULTANCY SERVICES <tspan fill="#64748B" font-weight="400">|</tspan> <tspan fill="#94A3B8" font-weight="600">DFIR OPERATIONS</tspan></text>
 
-    <!-- Cryptographic Soundness Pill (Right) - Symmetrical, Zero overlap -->
     <g transform="translate(628, 0)">
       <rect x="0" y="0" width="300" height="24" rx="12" fill="#0C1B33" stroke="#1D4ED8" stroke-width="0.75" stroke-opacity="0.8"/>
       <circle cx="12" cy="12" r="3.5" fill="#38BDF8"/>
@@ -93,28 +81,22 @@
     </g>
   </g>
 
-  <!-- Horizontal Divider Line -->
   <line x1="36" y1="52" x2="964" y2="52" stroke="#1E293B" stroke-width="0.8" stroke-opacity="0.7"/>
 
-  <!-- ==================== LEFT HERO CONTENT ==================== -->
+  <!-- LEFT HERO CONTENT -->
   <g transform="translate(36, 72)">
-    <!-- Eyebrow -->
     <text x="0" y="14" class="font-sans" font-size="10.5" font-weight="700" fill="#38BDF8" letter-spacing="1.6">ENTERPRISE DIGITAL FORENSICS &amp; INCIDENT RESPONSE</text>
 
-    <!-- Name Headline -->
     <text x="0" y="52" class="font-sans" font-size="34" font-weight="800" fill="url(#name-grad)" letter-spacing="-0.5">Vasava Sanjeeth Solleti</text>
 
-    <!-- Role / Specialty -->
     <text x="0" y="78" class="font-sans" font-size="13.5" font-weight="600" fill="#E2E8F0">
       DFIR Analyst @ TCS <tspan fill="#475569" font-weight="400">|</tspan> Windows Forensics &amp; High-Throughput Engine Architect
     </text>
 
-    <!-- Narrative -->
     <text x="0" y="101" class="font-sans" font-size="11.5" fill="#94A3B8">
       Reconstructing complex attack chronologies across raw disk images, dirty hives, &amp; cloud collaboration stores.
     </text>
 
-    <!-- Modern Feature Capability Pills (Cleanly spaced within 490px, leaving 130px margin before widget) -->
     <g transform="translate(0, 124)">
       <!-- Pill 1: WFT Platform -->
       <g transform="translate(0, 0)">
@@ -137,7 +119,7 @@
         <text x="22" y="17" class="font-sans" font-size="10" font-weight="700" fill="#A7F3D0">CEH Certified</text>
       </g>
 
-      <!-- Pill 4: Columnar Core -->
+      <!-- Pill 4: DuckDB Core -->
       <g transform="translate(402, 0)">
         <rect width="116" height="26" rx="8" fill="#241705" stroke="#D97706" stroke-width="0.8"/>
         <circle cx="12" cy="13" r="3" fill="#FBBF24"/>
@@ -146,25 +128,20 @@
     </g>
   </g>
 
-  <!-- ==================== RIGHT GLASS TERMINAL WIDGET ==================== -->
+  <!-- RIGHT GLASS TERMINAL WIDGET -->
   <g transform="translate(620, 68)">
-    <!-- Container -->
     <rect width="344" height="174" rx="12" fill="url(#widget-bg)" stroke="url(#widget-stroke)" stroke-width="1"/>
     
-    <!-- Header Bar -->
     <rect width="344" height="30" rx="12" fill="#0F1B33" fill-opacity="0.9"/>
     <rect y="26" width="344" height="4" fill="#0F1B33" fill-opacity="0.9"/>
 
-    <!-- Mac/Linux Terminal Dots -->
     <circle cx="16" cy="15" r="3.5" fill="#EF4444" fill-opacity="0.8"/>
     <circle cx="28" cy="15" r="3.5" fill="#F59E0B" fill-opacity="0.8"/>
     <circle cx="40" cy="15" r="3.5" fill="#10B981" fill-opacity="0.8"/>
 
     <text x="56" y="19" class="font-sans" font-size="10" font-weight="700" fill="#BAE6FD" letter-spacing="1.2">SPECIALIZED INVESTIGATIVE SCOPE</text>
 
-    <!-- Scope Rows with Vector Icons -->
     <g transform="translate(16, 48)" class="font-sans" font-size="11">
-      <!-- Row 1: Hard Drive / VFS -->
       <g transform="translate(0, 0)">
         <rect x="0" y="-8" width="22" height="20" rx="5" fill="#0A1F3B" stroke="#1D4ED8" stroke-width="0.6"/>
         <path d="M4 2 H18 M4 6 H18" stroke="#38BDF8" stroke-width="1.2" stroke-linecap="round"/>
@@ -173,21 +150,18 @@
         <text x="30" y="6" fill="#F1F5F9" font-weight="600">Native VFS Ingestion <tspan fill="#94A3B8" font-size="10" font-weight="400">(E01, RAW, VHDX, VMDK)</tspan></text>
       </g>
 
-      <!-- Row 2: Registry / Transaction Log -->
       <g transform="translate(0, 27)">
         <rect x="0" y="-8" width="22" height="20" rx="5" fill="#0A1F3B" stroke="#1D4ED8" stroke-width="0.6"/>
         <path d="M5 -1 C5 -3 17 -3 17 -1 C17 1 5 1 5 -1 Z M5 2 C5 4 17 4 17 2 M5 5 C5 7 17 7 17 5" fill="none" stroke="#38BDF8" stroke-width="1.2"/>
         <text x="30" y="6" fill="#F1F5F9" font-weight="600">Dirty Registry Replay <tspan fill="#94A3B8" font-size="10" font-weight="400">(Automated RLA Commit)</tspan></text>
       </g>
 
-      <!-- Row 3: Lightning Columnar Core -->
       <g transform="translate(0, 54)">
         <rect x="0" y="-8" width="22" height="20" rx="5" fill="#0A1F3B" stroke="#1D4ED8" stroke-width="0.6"/>
         <path d="M12 -4 L8 2 H13 L10 8 L15 1 H11 Z" fill="#38BDF8"/>
         <text x="30" y="6" fill="#F1F5F9" font-weight="600">Sub-Ms Super-Timelines <tspan fill="#94A3B8" font-size="10" font-weight="400">(DuckDB Engine)</tspan></text>
       </g>
 
-      <!-- Row 4: Teams / Collab -->
       <g transform="translate(0, 81)">
         <rect x="0" y="-8" width="22" height="20" rx="5" fill="#1C0F33" stroke="#7C3AED" stroke-width="0.6"/>
         <path d="M5 -1 H17 V6 H11 L7 9 V6 H5 Z" fill="none" stroke="#C084FC" stroke-width="1.2"/>
@@ -196,7 +170,7 @@
     </g>
   </g>
 
-  <!-- ==================== BOTTOM TELEMETRY FOOTER ==================== -->
+  <!-- BOTTOM TELEMETRY FOOTER -->
   <line x1="36" y1="262" x2="964" y2="262" stroke="#1E293B" stroke-width="0.8" stroke-opacity="0.7"/>
   <g transform="translate(36, 280)">
     <circle class="pulse-glow" cx="4" cy="-3" r="3" fill="#00D2FF"/>
