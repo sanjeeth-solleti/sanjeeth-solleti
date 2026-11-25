@@ -41,7 +41,7 @@ analytical_stack:    Python 3.10+ · DuckDB Columnar Engine · FastAPI · React 
 
 <br>
 
-## ▍Flagship DFIR Workstations &amp; Tooling
+## ▍Flagship DFIR Workstations & Tooling
 
 <p align="center">
   <a href="https://github.com/sanjeeth-solleti/WFT"><img src="assets/card-wft.svg" alt="WFT — Windows Forensic Examination Platform" width="49%"></a>
@@ -82,7 +82,7 @@ A standalone DFIR suite engineered for parsing, reconstructing, and analyzing Mi
 
 <br>
 
-## ▍Field Kit &amp; Arsenal
+## ▍Field Kit & Arsenal
 
 <table>
 <tr><td width="22%"><b>Forensic Suites</b></td><td>
@@ -135,7 +135,7 @@ A standalone DFIR suite engineered for parsing, reconstructing, and analyzing Mi
 
 <br>
 
-## ▍Investigative Principles &amp; Evidence Handling
+## ▍Investigative Principles & Evidence Handling
 
 In DFIR, the defensibility of conclusions relies entirely on data integrity and process reproducibility. Every investigation and parser adheres to four principles:
 
@@ -154,5 +154,5 @@ In DFIR, the defensibility of conclusions relies entirely on data integrity and 
   <a href="mailto:vasavasanjeeth@gmail.com"><img src="assets/btn-email.svg" alt="Email" height="34"></a>
   <a href="https://github.com/sanjeeth-solleti?tab=repositories"><img src="assets/btn-repos.svg" alt="GitHub Repositories" height="34"></a>
   <br><br>
-  <img src="https://komarev.com/ghpvc/?username=sanjeeth-solleti&label=PROFILE%20VIEWS&color=1FA8FF&style=flat-square" alt="Profile views">
+  <img src="https://komarev.com/ghpvc/?username=sanjeeth-solleti&label=PROFILE%20VIEWS&color=0284C7&style=flat-square" alt="Profile views">
 </p>

@@ -25,15 +25,15 @@
 
   <!-- Title & Subtitle -->
   <text x="24" y="62" font-family="'Segoe UI', -apple-system, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">WFT — Windows Forensics</text>
-  <text x="24" y="80" font-family="'Segoe UI', sans-serif" font-size="11.5" fill="#94A3B8">Enterprise "Process + Examine" Digital Forensics Platform</text>
+  <text x="24" y="80" font-family="'Segoe UI', sans-serif" font-size="11.5" fill="#CBD5E1">Enterprise "Process + Examine" Digital Forensics Platform</text>
   <line x1="24" y1="92" x2="461" y2="92" stroke="#1E293B" stroke-width="1"/>
 
   <!-- Core Highlights -->
-  <g font-family="'Segoe UI', sans-serif" font-size="11" fill="#CBD5E1">
-    <text x="24" y="112"><tspan fill="#38BDF8">&#x25B8;</tspan> <tspan font-weight="600" fill="#FFFFFF">DuckDB Columnar Core:</tspan> Sub-millisecond unpivoted super-timeline</text>
-    <text x="24" y="132"><tspan fill="#38BDF8">&#x25B8;</tspan> <tspan font-weight="600" fill="#FFFFFF">Dirty Registry Replay:</tspan> Automated RLA .LOG1/.LOG2 transaction commit</text>
-    <text x="24" y="152"><tspan fill="#38BDF8">&#x25B8;</tspan> <tspan font-weight="600" fill="#FFFFFF">Native VFS Intake:</tspan> Direct E01, RAW, VHDX, VMDK mounting via dissect</text>
-    <text x="24" y="172"><tspan fill="#38BDF8">&#x25B8;</tspan> <tspan font-weight="600" fill="#FFFFFF">Threat Hunting &amp; Carving:</tspan> Rust YARA-X scanning + RapidOCR triage</text>
+  <g font-family="'Segoe UI', sans-serif" font-size="11" fill="#E2E8F0">
+    <text x="24" y="112"><tspan fill="#38BDF8">&#x25B8;</tspan> <tspan font-weight="700" fill="#FFFFFF">DuckDB Columnar Core:</tspan> Sub-millisecond unpivoted super-timeline</text>
+    <text x="24" y="132"><tspan fill="#38BDF8">&#x25B8;</tspan> <tspan font-weight="700" fill="#FFFFFF">Dirty Registry Replay:</tspan> Automated RLA .LOG1/.LOG2 transaction commit</text>
+    <text x="24" y="152"><tspan fill="#38BDF8">&#x25B8;</tspan> <tspan font-weight="700" fill="#FFFFFF">Native VFS Intake:</tspan> Direct E01, RAW, VHDX, VMDK mounting via dissect</text>
+    <text x="24" y="172"><tspan fill="#38BDF8">&#x25B8;</tspan> <tspan font-weight="700" fill="#FFFFFF">Threat Hunting &amp; Carving:</tspan> Rust YARA-X scanning + RapidOCR triage</text>
   </g>
 
   <!-- Divider before tags -->
@@ -50,6 +50,6 @@
   </g>
 
   <!-- Bottom Link Line -->
-  <text x="24" y="242" font-family="'Cascadia Code', Consolas, monospace" font-size="10" fill="#64748B">github.com/sanjeeth-solleti/WFT</text>
+  <text x="24" y="242" font-family="'Cascadia Code', Consolas, monospace" font-size="10" fill="#94A3B8">github.com/sanjeeth-solleti/WFT</text>
   <text x="461" y="242" text-anchor="end" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#38BDF8">Explore Repository &#x2197;</text>
 </svg>

@@ -2,7 +2,8 @@
   <defs>
     <linearGradient id="sgrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#080D1A"/>
-      <stop offset="100%" stop-color="#0B1326"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#0A1122"/>
     </linearGradient>
   </defs>
 
@@ -11,9 +12,9 @@
 
   <!-- Station 1: Organization & Role -->
   <g transform="translate(125, 0)">
-    <text x="0" y="27" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#38BDF8" letter-spacing="1.2">ENTERPRISE DFIR</text>
+    <text x="0" y="26" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#38BDF8" letter-spacing="1.4">ENTERPRISE DFIR</text>
     <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">TCS</text>
-    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#94A3B8">Tata Consultancy Services</text>
+    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#CBD5E1">Tata Consultancy Services</text>
   </g>
 
   <!-- Divider 1 -->
@@ -22,9 +23,9 @@
 
   <!-- Station 2: WFT Platform -->
   <g transform="translate(375, 0)">
-    <text x="0" y="27" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#34D399" letter-spacing="1.2">PRIMARY WORKSTATION</text>
+    <text x="0" y="26" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#34D399" letter-spacing="1.4">PRIMARY PLATFORM</text>
     <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">WFT</text>
-    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#94A3B8">Process + Examine DFIR</text>
+    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#CBD5E1">Windows Forensics Suite</text>
   </g>
 
   <!-- Divider 2 -->
@@ -33,9 +34,9 @@
 
   <!-- Station 3: MSTeams_Parser -->
   <g transform="translate(625, 0)">
-    <text x="0" y="27" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#C084FC" letter-spacing="1.2">SPECIALIZED SUITE</text>
+    <text x="0" y="26" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#C084FC" letter-spacing="1.4">COLLABORATION DFIR</text>
     <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">MSTeams</text>
-    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#94A3B8">IndexedDB / LevelDB Suite</text>
+    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#CBD5E1">IndexedDB / LevelDB Suite</text>
   </g>
 
   <!-- Divider 3 -->
@@ -44,8 +45,8 @@
 
   <!-- Station 4: Engine Backbone -->
   <g transform="translate(875, 0)">
-    <text x="0" y="27" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#FBBF24" letter-spacing="1.2">ANALYTICAL CORE</text>
+    <text x="0" y="26" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#FBBF24" letter-spacing="1.4">ANALYTIC CORE</text>
     <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">DuckDB</text>
-    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#94A3B8">Zero-Copy Columnar Engine</text>
+    <text x="0" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#CBD5E1">Zero-Copy Super-Timeline</text>
   </g>
 </svg>
