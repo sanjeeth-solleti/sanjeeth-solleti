@@ -1,45 +1,61 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" width="1280" height="300" role="img" aria-label="Vasava Sanjeeth Solleti — Digital Forensics &amp; Incident Response Analyst at TCS">
   <defs>
-    <linearGradient id="bg-canvas" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#05070E"/>
-      <stop offset="50%" stop-color="#090E1D"/>
-      <stop offset="100%" stop-color="#05070E"/>
+    <!-- Background Canvas -->
+    <linearGradient id="bg-banner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040711"/>
+      <stop offset="50%" stop-color="#070C18"/>
+      <stop offset="100%" stop-color="#04060E"/>
     </linearGradient>
 
-    <radialGradient id="nebula-cyan" cx="15%" cy="30%" r="65%">
-      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.16"/>
+    <!-- Radial Cyan Glow -->
+    <radialGradient id="nebula-cyan" cx="12%" cy="25%" r="60%">
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.18"/>
       <stop offset="50%" stop-color="#0284C7" stop-opacity="0.04"/>
-      <stop offset="100%" stop-color="#05070E" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#040711" stop-opacity="0"/>
     </radialGradient>
 
+    <radialGradient id="nebula-right" cx="88%" cy="75%" r="55%">
+      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.10"/>
+      <stop offset="60%" stop-color="#040711" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Border Gradients -->
     <linearGradient id="frame-border" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.5"/>
-      <stop offset="40%" stop-color="#1E293B" stop-opacity="0.6"/>
-      <stop offset="80%" stop-color="#0284C7" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.8"/>
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.6"/>
+      <stop offset="35%" stop-color="#1E3A8A" stop-opacity="0.4"/>
+      <stop offset="70%" stop-color="#0F172A" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.3"/>
     </linearGradient>
 
     <linearGradient id="top-specular" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#00D2FF" stop-opacity="0"/>
-      <stop offset="20%" stop-color="#38BDF8" stop-opacity="0.8"/>
-      <stop offset="80%" stop-color="#0284C7" stop-opacity="0.8"/>
+      <stop offset="25%" stop-color="#38BDF8" stop-opacity="0.85"/>
+      <stop offset="75%" stop-color="#0284C7" stop-opacity="0.85"/>
       <stop offset="100%" stop-color="#00D2FF" stop-opacity="0"/>
     </linearGradient>
 
+    <!-- Text Name Gradient -->
     <linearGradient id="name-grad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="60%" stop-color="#F0F9FF"/>
+      <stop offset="65%" stop-color="#F0F9FF"/>
       <stop offset="100%" stop-color="#BAE6FD"/>
     </linearGradient>
 
+    <!-- HUD Console Background -->
     <linearGradient id="hud-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#080E1C" stop-opacity="0.92"/>
-      <stop offset="100%" stop-color="#050914" stop-opacity="0.96"/>
+      <stop offset="0%" stop-color="#070E1C" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#050914" stop-opacity="0.98"/>
     </linearGradient>
 
-    <pattern id="dot-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="0.9" fill="#1E293B" fill-opacity="0.35"/>
+    <!-- Dot Grid Pattern -->
+    <pattern id="dot-grid" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.0" fill="#1E293B" fill-opacity="0.4"/>
     </pattern>
+
+    <!-- Shadow for HUD -->
+    <filter id="hud-shadow" x="-5%" y="-5%" width="115%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
 
     <clipPath id="banner-clip"><rect width="1280" height="300" rx="16"/></clipPath>
   </defs>
@@ -52,112 +68,148 @@
   </style>
 
   <g clip-path="url(#banner-clip)">
-    <rect width="1280" height="300" rx="16" fill="url(#bg-canvas)"/>
+    <!-- Canvas &amp; Atmospheric Lighting -->
+    <rect width="1280" height="300" rx="16" fill="url(#bg-banner)"/>
     <rect width="1280" height="300" rx="16" fill="url(#nebula-cyan)"/>
+    <rect width="1280" height="300" rx="16" fill="url(#nebula-right)"/>
     <rect width="1280" height="300" rx="16" fill="url(#dot-grid)"/>
     <rect x="0.5" y="0.5" width="1279" height="299" rx="16" fill="none" stroke="url(#frame-border)" stroke-width="1"/>
 
+    <!-- Specular Highlight Line -->
     <line x1="24" y1="1" x2="1256" y2="1" stroke="url(#top-specular)" stroke-width="2" stroke-linecap="round"/>
 
-    <!-- TOP TELEMETRY BAR -->
-    <g transform="translate(48, 20)">
-      <rect x="0" y="0" width="350" height="26" rx="13" fill="#091322" stroke="#0284C7" stroke-width="0.75"/>
-      <circle class="pulse-glow" cx="14" cy="13" r="3.5" fill="#38BDF8"/>
-      <text x="26" y="17" class="font-sans" font-size="10.5" font-weight="700" fill="#38BDF8" letter-spacing="1">TATA CONSULTANCY SERVICES <tspan fill="#475569" font-weight="400">|</tspan> <tspan fill="#94A3B8" font-weight="600">DFIR OPERATIONS</tspan></text>
-
-      <g transform="translate(814, 0)">
-        <rect x="0" y="0" width="370" height="26" rx="13" fill="#091322" stroke="#0284C7" stroke-width="0.75"/>
-        <circle cx="14" cy="13" r="3.5" fill="#38BDF8"/>
-        <text x="26" y="17" class="font-sans" font-size="10" font-weight="700" fill="#BAE6FD" letter-spacing="0.8">DEFENSIBLE CHAIN-OF-CUSTODY <tspan fill="#475569" font-weight="400">|</tspan> <tspan fill="#94A3B8" font-weight="600">SHA-256 SOUND</tspan></text>
+    <!-- ==================== LEFT HERO COLUMN ==================== -->
+    <g transform="translate(52, 28)">
+      <!-- Eyebrow Organization Capsule -->
+      <g>
+        <rect width="320" height="26" rx="13" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
+        <circle class="pulse-glow" cx="14" cy="13" r="3.5" fill="#38BDF8"/>
+        <text x="26" y="17" class="font-sans" font-size="10.5" font-weight="700" fill="#38BDF8" letter-spacing="1">TATA CONSULTANCY SERVICES <tspan fill="#475569" font-weight="400">|</tspan> <tspan fill="#94A3B8" font-weight="600">DFIR</tspan></text>
       </g>
-    </g>
 
-    <line x1="48" y1="58" x2="1232" y2="58" stroke="#1E293B" stroke-width="0.8"/>
+      <!-- Hero Name -->
+      <text x="0" y="76" class="font-sans" font-size="44" font-weight="800" fill="url(#name-grad)" letter-spacing="-0.5">Vasava Sanjeeth Solleti</text>
 
-    <!-- LEFT HERO CONTENT -->
-    <g transform="translate(48, 76)">
-      <text x="0" y="16" class="font-mono" font-size="11.5" font-weight="700" fill="#38BDF8" letter-spacing="2">DIGITAL FORENSICS &amp; INCIDENT RESPONSE ANALYST</text>
-
-      <text x="0" y="58" class="font-sans" font-size="40" font-weight="800" fill="url(#name-grad)" letter-spacing="-0.5">Vasava Sanjeeth Solleti</text>
-
-      <text x="0" y="90" class="font-sans" font-size="16" font-weight="600" fill="#E2E8F0">
-        DFIR Analyst @ TCS <tspan fill="#475569" font-weight="400">|</tspan> Windows Endpoint &amp; Collaboration Forensics Engine Architect
+      <!-- Role &amp; Specialization -->
+      <text x="0" y="106" class="font-sans" font-size="16.5" font-weight="700" fill="#F8FAFC">
+        Digital Forensics &amp; Incident Response Specialist
       </text>
 
-      <text x="0" y="116" class="font-sans" font-size="13" fill="#94A3B8">
-        Reconstructing attack chronologies across raw disk images, dirty hives, &amp; IndexedDB stores.
+      <text x="0" y="128" class="font-sans" font-size="13.5" font-weight="500" fill="#94A3B8">
+        Windows Endpoint Telemetry <tspan fill="#475569">&#x2022;</tspan> Cloud Collaboration Forensics <tspan fill="#475569">&#x2022;</tspan> High-Throughput Engines
       </text>
 
-      <!-- Badges Row (Unified theme) -->
-      <g transform="translate(0, 138)">
+      <text x="0" y="152" class="font-sans" font-size="12" fill="#64748B">
+        Deterministic artifact reconstruction across raw disk VFS, dirty registry replay, &amp; IndexedDB stores.
+      </text>
+
+      <!-- Credential &amp; Tech Chips Row -->
+      <g transform="translate(0, 172)">
         <g transform="translate(0, 0)">
-          <rect width="134" height="26" rx="13" fill="#091322" stroke="#0284C7" stroke-width="0.8"/>
-          <circle cx="13" cy="13" r="3" fill="#38BDF8"/>
-          <text x="23" y="17" class="font-mono" font-size="10.5" font-weight="700" fill="#BAE6FD">WFT Platform</text>
+          <rect width="128" height="25" rx="12.5" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
+          <circle cx="12" cy="12.5" r="3" fill="#38BDF8"/>
+          <text x="22" y="16.5" class="font-mono" font-size="10" font-weight="700" fill="#BAE6FD">Hyderabad, IN</text>
         </g>
 
-        <g transform="translate(144, 0)">
-          <rect width="148" height="26" rx="13" fill="#091322" stroke="#0284C7" stroke-width="0.8"/>
-          <circle cx="13" cy="13" r="3" fill="#38BDF8"/>
-          <text x="23" y="17" class="font-mono" font-size="10.5" font-weight="700" fill="#BAE6FD">MSTeams_Parser</text>
+        <g transform="translate(136, 0)">
+          <rect width="138" height="25" rx="12.5" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
+          <circle cx="12" cy="12.5" r="3" fill="#38BDF8"/>
+          <text x="22" y="16.5" class="font-mono" font-size="10" font-weight="700" fill="#BAE6FD">CEH v12 Certified</text>
         </g>
 
-        <g transform="translate(302, 0)">
-          <rect width="134" height="26" rx="13" fill="#091322" stroke="#0284C7" stroke-width="0.8"/>
-          <circle cx="13" cy="13" r="3" fill="#38BDF8"/>
-          <text x="23" y="17" class="font-mono" font-size="10.5" font-weight="700" fill="#BAE6FD">CEH Certified</text>
+        <g transform="translate(282, 0)">
+          <rect width="144" height="25" rx="12.5" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
+          <circle cx="12" cy="12.5" r="3" fill="#38BDF8"/>
+          <text x="22" y="16.5" class="font-mono" font-size="10" font-weight="700" fill="#BAE6FD">dissect VFS &amp; RLA</text>
         </g>
 
-        <g transform="translate(446, 0)">
-          <rect width="130" height="26" rx="13" fill="#091322" stroke="#0284C7" stroke-width="0.8"/>
-          <circle cx="13" cy="13" r="3" fill="#38BDF8"/>
-          <text x="23" y="17" class="font-mono" font-size="10.5" font-weight="700" fill="#BAE6FD">DuckDB Core</text>
+        <g transform="translate(434, 0)">
+          <rect width="122" height="25" rx="12.5" fill="#081426" stroke="#0284C7" stroke-width="0.75"/>
+          <circle cx="12" cy="12.5" r="3" fill="#38BDF8"/>
+          <text x="22" y="16.5" class="font-mono" font-size="10" font-weight="700" fill="#BAE6FD">DuckDB Core</text>
         </g>
       </g>
     </g>
 
-    <!-- RIGHT DFIR HUD WIDGET -->
-    <g transform="translate(784, 74)">
-      <rect width="448" height="162" rx="12" fill="url(#hud-bg)" stroke="#1E3A8A" stroke-width="1"/>
-      
-      <rect width="448" height="32" rx="12" fill="#0B162C"/>
-      <rect y="24" width="448" height="8" fill="#0B162C"/>
+    <!-- ==================== RIGHT DFIR HUD CONSOLE ==================== -->
+    <g transform="translate(738, 26)">
+      <!-- Console Body Shell -->
+      <rect width="490" height="226" rx="12" fill="url(#hud-bg)" stroke="#1E3A8A" stroke-width="1" filter="url(#hud-shadow)"/>
 
-      <circle cx="18" cy="16" r="3.5" fill="#38BDF8"/>
-      <text x="32" y="20" class="font-mono" font-size="10.5" font-weight="700" fill="#BAE6FD" letter-spacing="1.2">SPECIALIZED INVESTIGATION SCOPE</text>
+      <!-- Console Titlebar -->
+      <rect width="490" height="32" rx="12" fill="#0A152A"/>
+      <rect y="22" width="490" height="10" fill="#0A152A"/>
+      <line x1="0" y1="32" x2="490" y2="32" stroke="#1E293B" stroke-width="0.8"/>
 
-      <g transform="translate(18, 50)" class="font-sans" font-size="12">
+      <!-- Titlebar Controls -->
+      <circle cx="16" cy="16" r="3.5" fill="#334155"/>
+      <circle cx="28" cy="16" r="3.5" fill="#475569"/>
+      <circle cx="40" cy="16" r="3.5" fill="#38BDF8"/>
+
+      <text x="56" y="20" class="font-mono" font-size="10" font-weight="700" fill="#94A3B8" letter-spacing="1">DFIR-KERNEL // FORENSIC TELEMETRY</text>
+
+      <g transform="translate(378, 8)">
+        <rect width="100" height="17" rx="8.5" fill="#081A33" stroke="#0284C7" stroke-width="0.6"/>
+        <circle class="pulse-glow" cx="9" cy="8.5" r="2.5" fill="#38BDF8"/>
+        <text x="18" y="12" class="font-mono" font-size="8.5" font-weight="700" fill="#38BDF8" letter-spacing="0.5">DEFENSIBLE</text>
+      </g>
+
+      <!-- Telemetry Specifications Rows -->
+      <g transform="translate(18, 42)">
+        <!-- Row 1: Domain -->
         <g transform="translate(0, 0)">
-          <rect x="0" y="-8" width="22" height="22" rx="5" fill="#0B1A33" stroke="#0284C7" stroke-width="0.6"/>
-          <path d="M5 2 H17 M5 6 H17" stroke="#38BDF8" stroke-width="1.3" stroke-linecap="round"/>
-          <circle cx="14" cy="-1" r="1.2" fill="#38BDF8"/>
-          <circle cx="14" cy="3" r="1.2" fill="#38BDF8"/>
-          <text x="32" y="7" fill="#F1F5F9" font-weight="600">Native VFS Ingestion <tspan fill="#64748B">|</tspan> <tspan fill="#94A3B8" font-size="11" font-weight="400">E01, RAW, VHDX, VMDK</tspan></text>
+          <rect width="88" height="18" rx="4" fill="#081E38" stroke="#0284C7" stroke-width="0.5"/>
+          <text x="44" y="12.5" text-anchor="middle" class="font-mono" font-size="8.5" font-weight="700" fill="#38BDF8" letter-spacing="0.8">OPERATIONS</text>
+          
+          <text x="100" y="13" class="font-sans" font-size="11.5" font-weight="700" fill="#F1F5F9">Enterprise Incident Response &amp; Threat Hunting</text>
+          <text x="100" y="26" class="font-sans" font-size="10" fill="#94A3B8">Active DFIR Casework &#x2022; Tata Consultancy Services</text>
         </g>
 
-        <g transform="translate(0, 34)">
-          <rect x="0" y="-8" width="22" height="22" rx="5" fill="#0B1A33" stroke="#0284C7" stroke-width="0.6"/>
-          <path d="M5 -1 C5 -3 17 -3 17 -1 C17 1 5 1 5 -1 Z M5 3 C5 5 17 5 17 3 M5 7 C5 9 17 9 17 7" fill="none" stroke="#38BDF8" stroke-width="1.3"/>
-          <text x="32" y="7" fill="#F1F5F9" font-weight="600">Dirty Registry Replay <tspan fill="#64748B">|</tspan> <tspan fill="#94A3B8" font-size="11" font-weight="400">Automated RLA Commit</tspan></text>
+        <!-- Row 2: VFS & Replay -->
+        <g transform="translate(0, 38)">
+          <rect width="88" height="18" rx="4" fill="#081E38" stroke="#0284C7" stroke-width="0.5"/>
+          <text x="44" y="12.5" text-anchor="middle" class="font-mono" font-size="8.5" font-weight="700" fill="#38BDF8" letter-spacing="0.8">INGESTION</text>
+
+          <text x="100" y="13" class="font-sans" font-size="11.5" font-weight="700" fill="#F1F5F9">Raw Disk VFS Intake + Mandatory Dirty Replay</text>
+          <text x="100" y="26" class="font-sans" font-size="10" fill="#94A3B8">dissect.target read-only &#x2022; Automated RLA transaction commit</text>
         </g>
 
-        <g transform="translate(0, 68)">
-          <rect x="0" y="-8" width="22" height="22" rx="5" fill="#0B1A33" stroke="#0284C7" stroke-width="0.6"/>
-          <path d="M5 -1 H17 V7 H11 L7 10 V7 H5 Z" fill="none" stroke="#38BDF8" stroke-width="1.3"/>
-          <text x="32" y="7" fill="#F1F5F9" font-weight="600">Collaboration Forensics <tspan fill="#64748B">|</tspan> <tspan fill="#94A3B8" font-size="11" font-weight="400">Teams LevelDB / IndexedDB</tspan></text>
+        <!-- Row 3: Columnar Engine -->
+        <g transform="translate(0, 76)">
+          <rect width="88" height="18" rx="4" fill="#081E38" stroke="#0284C7" stroke-width="0.5"/>
+          <text x="44" y="12.5" text-anchor="middle" class="font-mono" font-size="8.5" font-weight="700" fill="#38BDF8" letter-spacing="0.8">ANALYTICS</text>
+
+          <text x="100" y="13" class="font-sans" font-size="11.5" font-weight="700" fill="#F1F5F9">Zero-Copy Columnar DuckDB Engine</text>
+          <text x="100" y="26" class="font-sans" font-size="10" fill="#94A3B8">Sub-millisecond query execution on 500K+ event super-timelines</text>
         </g>
+
+        <!-- Row 4: Collaboration Forensics -->
+        <g transform="translate(0, 114)">
+          <rect width="88" height="18" rx="4" fill="#081E38" stroke="#0284C7" stroke-width="0.5"/>
+          <text x="44" y="12.5" text-anchor="middle" class="font-mono" font-size="8.5" font-weight="700" fill="#38BDF8" letter-spacing="0.8">MESSAGING</text>
+
+          <text x="100" y="13" class="font-sans" font-size="11.5" font-weight="700" fill="#F1F5F9">Chromium LevelDB &amp; IndexedDB Reconstruction</text>
+          <text x="100" y="26" class="font-sans" font-size="10" fill="#94A3B8">Teams chats, call logs, GUID resolution, &amp; HTML forensic dossier</text>
+        </g>
+      </g>
+
+      <!-- Bottom HUD Status Bar -->
+      <g transform="translate(18, 194)">
+        <line x1="0" y1="0" x2="454" y2="0" stroke="#1E293B" stroke-width="0.75"/>
+        <text x="0" y="14" class="font-mono" font-size="9" font-weight="600" fill="#64748B">INTEGRITY: <tspan fill="#BAE6FD">SHA-256 SOUND</tspan></text>
+        <text x="454" y="14" text-anchor="end" class="font-mono" font-size="9" font-weight="600" fill="#38BDF8">COURT-DEFENSIBLE CHAIN-OF-CUSTODY</text>
       </g>
     </g>
 
-    <!-- BOTTOM TELEMETRY FOOTER -->
-    <line x1="48" y1="256" x2="1232" y2="256" stroke="#1E293B" stroke-width="0.8"/>
-    <g transform="translate(48, 278)">
+    <!-- ==================== BANNER FOOTER TELEMETRY BAR ==================== -->
+    <line x1="52" y1="262" x2="1228" y2="262" stroke="#1E293B" stroke-width="0.8"/>
+    <g transform="translate(52, 284)">
       <circle class="pulse-glow" cx="4" cy="-3" r="3.5" fill="#38BDF8"/>
       <text x="18" y="0" class="font-sans" font-size="11.5" font-weight="500" fill="#94A3B8">
         ACTIVE RESEARCH: <tspan fill="#E2E8F0">Dirty Registry Replay</tspan> &#x2022; <tspan fill="#E2E8F0">IndexedDB Messaging Stores</tspan> &#x2022; <tspan fill="#E2E8F0">Sub-Millisecond Super-Timelines</tspan>
       </text>
-      <text x="1184" y="0" text-anchor="end" class="font-mono" font-size="11" font-weight="600" fill="#94A3B8">
-        HYDERABAD, INDIA
+      <text x="1176" y="0" text-anchor="end" class="font-mono" font-size="11" font-weight="600" fill="#38BDF8">
+        OPEN SOURCE DFIR ENGINES
       </text>
     </g>
   </g>
