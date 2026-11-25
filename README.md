@@ -26,9 +26,3 @@
 </a>
 
 <br><br>
-
-<p align="center">
-  <sub>Got an artifact your tools can't parse or need custom DFIR tooling? Open an issue on any repo — or <a href="https://www.linkedin.com/in/sanjeeth-solleti/"><b>find me on LinkedIn</b></a>.</sub>
-  <br><br>
-  <img src="https://komarev.com/ghpvc/?username=sanjeeth-solleti&label=PROFILE%20VIEWS&color=0284C7&style=flat-square" alt="Profile views">
-</p>
